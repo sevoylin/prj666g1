@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
+// Page Declaration
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreateEventPage } from '../pages/create-event/create-event';
@@ -15,6 +16,17 @@ import { ChatPage } from '../pages/chat/chat';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChatProvider } from '../providers/chat/chat';
+
+// Angularfire2
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from "angularfire2/auth"
+
+// api file
+import { FIREBASE_CONFIG,
+         GOOGLE_MAP_KEY } from './app.api.config';
+// Every api key (like firebase access profile...) 
+//    should put into './app.api.config.ts'
 
 @NgModule({
   declarations: [
@@ -32,6 +44,9 @@ import { ChatProvider } from '../providers/chat/chat';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
