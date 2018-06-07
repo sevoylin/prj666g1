@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{chatTitle}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <!-- Message Area -->
+  <div class="message-area">
+    <div *ngFor="let msg of msgList"
+         class="message">
+      <p>{{msg.sender}} :  {{msg.content}}</p>
+    </div>
+
+  </div>
+</ion-content>
+
+<ion-footer no-border [style.height]="emojiDisplay ? '255px' : '55px'">
+  <div class="input-area">
+    <!-- Emoji Button -->
+    <button ion-button clear icon-only item-right (click)="emojiBtnListener()">
+      <ion-icon name="md-happy"></ion-icon>
+    </button>
+
+    <!-- Input Area -->
+    <textarea #msg_Input
+              (keyup.enter)="sendBtnListener" 
+              placeholder="Say Something" 
+              [(ngModel)]="msgInput"> &nbsp;
+    </textarea>
+    
+    <!-- Submit Button -->
+    <button ion-button clear icon-only item-right (click)="sendBtnListener()">
+      <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+    </button>
+
+  </div>
+
+</ion-footer>

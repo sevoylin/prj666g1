@@ -1,0 +1,8 @@
+{
+  "name": "MeeTogether",
+  "app_id": "516f7224",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
