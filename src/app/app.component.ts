@@ -13,6 +13,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { RegisterPage } from '../pages/register/register';
 import { ChatPage } from '../pages/chat/chat';
 
+// Import plugins
 import firebase from 'firebase';
 
 @Component({
@@ -31,11 +32,11 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'CreateEvent', component: CreateEventPage },
-      { title: 'ManageEvent', component: ManageEventPage },
-      { title: 'FriendList', component: FriendListPage},
+      { title: 'X CreateEvent', component: CreateEventPage },
+      { title: 'X ManageEvent', component: ManageEventPage },
+      { title: 'X FriendList', component: FriendListPage},
       { title: 'Login', component: LoginPage},
-      { title: 'Profile', component: ProfilePage},
+      { title: 'X Profile', component: ProfilePage},
       { title: 'Register', component: RegisterPage},
       { title: 'Chat', component:ChatPage}
     ];

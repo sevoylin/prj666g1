@@ -13,6 +13,10 @@ import { ProfilePage } from '../pages/profile/profile';
 import { RegisterPage } from '../pages/register/register';
 import { ChatPage } from '../pages/chat/chat';
 
+// Page Module Import
+import { HomePageModule } from '../pages/home/home.module';
+import { RegisterPageModule } from '../pages/register/register.module';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ChatProvider } from '../providers/chat/chat';
@@ -31,9 +35,9 @@ import { FIREBASE_CONFIG,
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    //HomePage,
     LoginPage,
-    RegisterPage,
+    //RegisterPage,
     ManageEventPage,
     CreateEventPage,
     ManageEventPage,
@@ -46,7 +50,9 @@ import { FIREBASE_CONFIG,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HomePageModule,
+    RegisterPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
