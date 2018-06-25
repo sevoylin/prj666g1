@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -9,8 +9,8 @@ import { CreateEventPage } from '../pages/create-event/create-event';
 import { ManageEventPage } from '../pages/manage-event/manage-event';
 import { FriendListPage } from '../pages/friend-list/friend-list';
 import { LoginPage } from '../pages/login/login';
+import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from '../pages/profile/profile';
-import { RegisterPage } from '../pages/register/register';
 import { ChatPage } from '../pages/chat/chat';
 
 // Import plugins
@@ -26,21 +26,41 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform,
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen,
+              public events: Events) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
+    // default navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'X CreateEvent', component: CreateEventPage },
-      { title: 'X ManageEvent', component: ManageEventPage },
-      { title: 'X FriendList', component: FriendListPage},
-      { title: 'Login', component: LoginPage},
-      { title: 'X Profile', component: ProfilePage},
-      { title: 'Register', component: RegisterPage},
-      { title: 'Chat', component:ChatPage}
+      { title: 'Login', component: LoginPage}
     ];
 
+    // using events subscribe to track login/out status
+    events.subscribe('login_status', (isLogin, user) => {
+      if (isLogin && user != null) {
+        this.pages = [
+          { title: 'Home', component: HomePage },
+          //{ title: 'X CreateEvent', component: CreateEventPage },
+          //{ title: 'X ManageEvent', component: ManageEventPage },
+          //{ title: 'X FriendList', component: FriendListPage},
+          { title: 'Profile', component: ProfilePage},
+          { title: 'X Chat', component:ChatPage},
+          { title: 'Logout', component: LogoutPage}
+          //{ title: 'Register', component: RegisterPage}
+        ];
+      }
+      else {
+        this.pages = [
+          { title: 'Home', component: HomePage },
+          { title: 'Login', component: LoginPage}
+        ];
+      }
+    })
+    /*
     firebase.initializeApp({
       apiKey: "AIzaSyAbvHri--QkO91_9FMMGvMdeLlTGp7Gtvw",
       authDomain: "meetogether-prj666g1.firebaseapp.com",
@@ -49,6 +69,7 @@ export class MyApp {
       storageBucket: "meetogether-prj666g1.appspot.com",
       messagingSenderId: "719772453281"
     });
+    */
   }
 
   initializeApp() {

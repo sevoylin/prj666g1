@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+
+// model import
+import { User } from '../../models/user';
 
 @IonicPage()
 @Component({
@@ -9,24 +12,24 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class HomePage {
 
-  constructor(private afAuth: AngularFireAuth, private toast: ToastController, public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+  home_msg = "";
+
+  constructor(private afAuth: AngularFireAuth,
+              public events: Events,
+              public navCtrl: NavController,
+              public navParams: NavParams) {
+    events.subscribe('login_status', (isLogin, user) =>{
+      if (isLogin && user != null){
+        this.home_msg = 'Hello ' + user.uid;
+      }
+      else{
+        this.home_msg = "Hello there! Use the left side menue to login!";
+      }
+    });
+    
   }
 
-  ionViewWillLoad() { 
-    this.afAuth.authState.subscribe(data => {
-      if(data && data.email && data.uid){
-    this.toast.create({
-      message: `Welcome to MeeTogether, ${data.email}`,
-      duration: 10000
-    }).present();
-  }else{
-    this.toast.create({
-      message: `No valid user with that email`,
-      duration: 10000
-    }).present();
-
+  ionViewWillLoad() {
   }
-   });
-  }
-
 }

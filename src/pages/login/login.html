@@ -17,7 +17,7 @@
   
     <ion-item>
       <ion-label floating>Email</ion-label>
-      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
     </ion-item>
     
     <ion-item>
@@ -25,14 +25,18 @@
       <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
   
-    
+    <p color="light" (click)="resetPwd()">forget password?</p>
   
-    <br>
     <button ion-button (click)="login(user)">Login</button>
     <button ion-button color="light" (click)="register()">Register</button>
-  
+
     <br>
-    <p><i>Test User: testaccount<br>
-    Email:     test@example.com<br>
-    Password:  123456</i></p>
+    <p>{{err_msg}}</p>
+    <p>Test User 1: not verified by email<br>
+      Email:     test@example.com<br>
+      Password:  123456</p>
+
+    <p>Test User 2: Email Verified<br>
+      Email:     prj666g1@gmail.com<br>
+      Password:  123456</p>
   </ion-content>

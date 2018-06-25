@@ -9,13 +9,16 @@ import { CreateEventPage } from '../pages/create-event/create-event';
 import { ManageEventPage } from '../pages/manage-event/manage-event';
 import { FriendListPage } from '../pages/friend-list/friend-list';
 import { LoginPage } from '../pages/login/login';
+import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from '../pages/profile/profile';
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { RegisterPage } from '../pages/register/register';
 import { ChatPage } from '../pages/chat/chat';
 
 // Page Module Import
 import { HomePageModule } from '../pages/home/home.module';
 import { RegisterPageModule } from '../pages/register/register.module';
+import { EditProfilePageModule } from '../pages/edit-profile/edit-profile.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,8 +26,10 @@ import { ChatProvider } from '../providers/chat/chat';
 
 // Angularfire2
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from "angularfire2/auth"
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 // api file
 import { FIREBASE_CONFIG,
@@ -37,6 +42,7 @@ import { FIREBASE_CONFIG,
     MyApp,
     //HomePage,
     LoginPage,
+    LogoutPage,
     //RegisterPage,
     ManageEventPage,
     CreateEventPage,
@@ -49,9 +55,12 @@ import { FIREBASE_CONFIG,
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    AngularFireDatabaseModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
     HomePageModule,
+    EditProfilePageModule,
     RegisterPageModule
   ],
   bootstrap: [IonicApp],
@@ -59,17 +68,20 @@ import { FIREBASE_CONFIG,
     MyApp,
     HomePage,
     LoginPage,
+    LogoutPage,
     RegisterPage,
     ManageEventPage,
     CreateEventPage,
     ManageEventPage,
     ProfilePage,
+    EditProfilePage,
     FriendListPage,
     ChatPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ChatProvider
   ]
