@@ -44,9 +44,9 @@ export class MyApp {
       if (isLogin && user != null) {
         this.pages = [
           { title: 'Home', component: HomePage },
-          //{ title: 'X CreateEvent', component: CreateEventPage },
-          //{ title: 'X ManageEvent', component: ManageEventPage },
-          //{ title: 'X FriendList', component: FriendListPage},
+          { title: 'X CreateEvent', component: CreateEventPage },
+          { title: 'X ManageEvent', component: ManageEventPage },
+          { title: 'X FriendList', component: FriendListPage},
           { title: 'Profile', component: ProfilePage},
           { title: 'X Chat', component:ChatPage},
           { title: 'Logout', component: LogoutPage}
