@@ -24,6 +24,12 @@
     },
     "cordova-plugin-local-notification": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-googlemaps": {
+      "API_KEY_FOR_ANDROID": "AIzaSyCubQUSITHvTab3y1jOhajTt2ArR-5b7_s",
+      "PLAY_SERVICES_VERSION": "15.0.1",
+      "ANDROID_SUPPORT_V4_VERSION": "26.1.0",
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {

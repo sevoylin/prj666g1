@@ -36993,3 +36993,7 @@ ion-navbar.toolbar {
   min-height: calc(46px + constant(safe-area-inset-bottom));
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
+
+page-create-event #map_canvas {
+  height: 90%;
+}
