@@ -89,5 +89,8 @@
         <variable name="ANDROID_SUPPORT_V4_VERSION" value="26.1.0" />
     </plugin>
     <allow-navigation href="http://10.43.111.122:8100" />
+    <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
+        <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="geolocation" />
+    </plugin>
     <engine name="android" spec="~7.0.0" />
 </widget>

@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  Marker,
-  GoogleMapsAnimation,
-  MyLocation
-} from '@ionic-native/google-maps';
+import { Component,ElementRef,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps,GoogleMap, GoogleMapsEvent, Marker} from '@ionic-native/google-maps';
+import { User } from '../../models/user';
+import { Event } from '../../models/event';
+import * as firebase from 'firebase';
+/**
+ * Generated class for the CreateEventPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+declare var google: any;
 
 @IonicPage()
 @Component({
@@ -15,74 +19,67 @@ import {
   templateUrl: 'create-event.html',
 })
 export class CreateEventPage {
-  map: GoogleMap;
-  mapReady: boolean = false;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreateEventPage');
-    this.loadMap();
-  } 
-  loadMap() {
-    // Create a map after the view is loaded.
-    // (platform is already ready in app.component.ts)
-    this.map = GoogleMaps.create('map_canvas', {
-      camera: {
-        target: {
-          lat: 43.0741704,
-          lng: -89.3809802
-        },
-        zoom: 18,
-        tilt: 30
-      }
-    });
-
-    // Wait the maps plugin is ready until the MAP_READY event
-    this.map.one(GoogleMapsEvent.MAP_READY).then(() => {
-      this.mapReady = true;
+  user = {} as User;
+  event = {} as Event;
+ 
+  @ViewChild('map') mapElement:ElementRef;
+  
+  map: any;
+  marker = {} as Marker;
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams,public platform:Platform,private geolocation:Geolocation) {
+    platform.ready().then(() => {
+      this.initMap();
     });
   }
-
-  onButtonClick() {
-    if (!this.mapReady) {
-      this.showToast('map is not ready yet. Please try again.');
-      return;
-    }
-    this.map.clear();
-
-    // Get the location of you
-    this.map.getMyLocation()
-      .then((location: MyLocation) => {
-        console.log(JSON.stringify(location, null ,2));
-
-        // Move the map camera to the location with animation
-        return this.map.animateCamera({
-          target: location.latLng,
-          zoom: 17,
-          tilt: 30
-        }).then(() => {
-          // add a marker
-          return this.map.addMarker({
-            title: '@ionic-native/google-maps plugin!',
-            snippet: 'This plugin is awesome!',
-            position: location.latLng,
-            animation: GoogleMapsAnimation.BOUNCE
-          });
-        })
-      }).then((marker: Marker) => {
-        // show the infoWindow
-        marker.showInfoWindow();
-
-        // If clicked it, display the alert
-        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-          this.showToast('clicked!');
-        });
-      });
-  }
-
-  showToast(message: string) {
+  
+  saveBtn() {
+    var doc = firebase.firestore().collection('Event').doc();
+    
+    doc.set({
+      eventName: this.event.eventName,
+      isPrivate: this.event.isPrivate,
+      setPassword:this.event.setPassword,
+      password:this.event.password
+    });
+    this.navCtrl.setRoot('HomePage');
     
   }
+
+  initMap() {
+    this.geolocation.getCurrentPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true }).then((resp) => {
+        let mylocation = new google.maps.LatLng(resp.coords.latitude,resp.coords.longitude);
+        this.map = new google.maps.Map(this.mapElement.nativeElement, {
+          zoom: 15,
+          center: mylocation
+        });
+      });
+    let watch = this.geolocation.watchPosition();
+    watch.subscribe((data) => {
+      let updatelocation = new google.maps.LatLng(data.coords.latitude,data.coords.longitude);
+      this.addMarker(updatelocation,null);
+    });
+    /*
+    this.map.on(GoogleMapsEvent.MAP_CLICK).subscribe(
+      (data) => {
+        console.log("Click MAP");
+      }
+    );
+    */
+  }
+
+  addMarker(location, image) {
+    let marker = new google.maps.Marker({
+      position: location,
+      map: this.map,
+      icon: image
+    });
+    this.marker = marker;
+  }
+  
+ 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad CreateEventPage');
+  }
+
 }

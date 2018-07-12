@@ -83,6 +83,10 @@
             {
               "xml": "<feature name=\"StreetViewPanorama\"><param name=\"android-package\" value=\"plugin.google.maps.PluginStreetViewPanorama\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -170,6 +174,20 @@
               "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
               "count": 1
             }
+          ],
+          "/*": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
+              "count": 1
+            }
           ]
         }
       }
@@ -201,6 +219,9 @@
       "API_KEY_FOR_ANDROID": "AIzaSyCubQUSITHvTab3y1jOhajTt2ArR-5b7_s",
       "PLAY_SERVICES_VERSION": "15.0.1",
       "ANDROID_SUPPORT_V4_VERSION": "26.1.0",
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },
@@ -475,6 +496,20 @@
       "clobbers": [
         "plugin.google.maps"
       ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "runs": true
     }
   ],
   "plugin_metadata": {
@@ -485,6 +520,7 @@
     "cordova-plugin-ionic-keyboard": "2.0.5",
     "cordova-plugin-badge": "0.8.7",
     "cordova-plugin-local-notification": "0.9.0-beta.2",
-    "cordova-plugin-googlemaps": "2.3.6"
+    "cordova-plugin-googlemaps": "2.3.6",
+    "cordova-plugin-geolocation": "4.0.1"
   }
 }

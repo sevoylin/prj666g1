@@ -14,13 +14,35 @@
   </ion-navbar>
 
 </ion-header>
-  <h3>Ionic GoogleMaps Demo</h3>
-  <p>
-  This is a demo application of <b>@ionic-native/google-maps</b> plugin.
-  </p>
-  <div id="map_canvas">
-    <button ion-button (click)="onButtonClick($event)">Demo</button>
-  </div>
+
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Event Title</ion-label>
+      <ion-input type="text" [(ngModel)]="event.eventName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Private Event</ion-label>
+      <ion-toggle [(ngModel)]="event.isPrivate"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Set Password</ion-label>
+      <ion-toggle [(ngModel)]="event.setPassword"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="event.password" type="password" *ngIf="event.setPassword" placeholder="enter password" ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Set Range</ion-label>
+      <ion-toggle [(ngModel)]="range"></ion-toggle>
+    </ion-item> 
+      
+  </ion-list>
+<!--  <button class="button button-block button-positive" ng-disabled="$invalid" ng-click="create">Create Event</button>
+ -->
+ <div #map id="map"></div>
+ <button ion-button block (click)="saveBtn()">Save</button>
 
 </ion-content>

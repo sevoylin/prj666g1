@@ -32,8 +32,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 
 // api file
-import { FIREBASE_CONFIG,
-         GOOGLE_MAP_KEY } from './app.api.config';
+import { FIREBASE_CONFIG } from './app.api.config';
+import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
+import { Platform } from 'ionic-angular';
 // Every api key (like firebase access profile...) 
 //    should put into './app.api.config.ts'
 
@@ -83,7 +85,9 @@ import { FIREBASE_CONFIG,
     SplashScreen,
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ChatProvider
+    ChatProvider,
+    GoogleMaps,
+    Geolocation
   ]
 })
 export class AppModule {}
