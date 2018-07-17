@@ -42,6 +42,9 @@ export class ChatPage {
           this.user = doc.data().username;
       }
     });
+
+    // detach listener
+    doc.onSnapshot(()=>{});
   }
 
   // Chat listener

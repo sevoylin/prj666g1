@@ -14,11 +14,13 @@ import { ProfilePage } from '../pages/profile/profile';
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { RegisterPage } from '../pages/register/register';
 import { ChatPage } from '../pages/chat/chat';
+import { ViewEventPage } from '../pages/view-event/view-event';
 
 // Page Module Import
 import { HomePageModule } from '../pages/home/home.module';
 import { RegisterPageModule } from '../pages/register/register.module';
 import { EditProfilePageModule } from '../pages/edit-profile/edit-profile.module';
+import { ViewEventPageModule } from '../pages/view-event/view-event.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -48,7 +50,7 @@ import { Platform } from 'ionic-angular';
     //RegisterPage,
     ManageEventPage,
     CreateEventPage,
-    ManageEventPage,
+    //ViewEventPage,
     ProfilePage,
     FriendListPage,
     ChatPage
@@ -63,7 +65,8 @@ import { Platform } from 'ionic-angular';
     AngularFireStorageModule,
     HomePageModule,
     EditProfilePageModule,
-    RegisterPageModule
+    RegisterPageModule,
+    ViewEventPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -74,7 +77,7 @@ import { Platform } from 'ionic-angular';
     RegisterPage,
     ManageEventPage,
     CreateEventPage,
-    ManageEventPage,
+    ViewEventPage,
     ProfilePage,
     EditProfilePage,
     FriendListPage,

@@ -1,8 +1,17 @@
-import { User } from "./user"
-export interface Event{
-    admin: Array<User>;
+import { User } from "./user";
+import * as firebase from 'firebase';
+
+export interface Event {
+    admins: Array<any>;
+    participants: Array<any>;
+    blockedUsers: Array<any>;
+    creator: any;
     eventName: string;
+    description: string;
+    location: firebase.firestore.GeoPoint;
     isPrivate: boolean;
-    setPassword: boolean;
     password: string;
+    radius: number;
+    date: Date;
+    dateCreated: Date;
 }
