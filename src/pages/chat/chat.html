@@ -22,19 +22,19 @@
 <ion-footer no-border [style.height]="emojiDisplay ? '255px' : '55px'">
   <div class="input-area">
     <!-- Emoji Button -->
-    <button ion-button clear icon-only item-right (click)="emojiBtnListener()">
+    <button ion-button clear icon-only item-right (click)="emojiBtn()">
       <ion-icon name="md-happy"></ion-icon>
     </button>
 
     <!-- Input Area -->
     <textarea #msg_Input
-              (keyup.enter)="sendBtnListener" 
+              (keyup.enter)="sendBtn()" 
               placeholder="Say Something" 
               [(ngModel)]="msgInput"> &nbsp;
     </textarea>
     
     <!-- Submit Button -->
-    <button ion-button clear icon-only item-right (click)="sendBtnListener()">
+    <button ion-button clear icon-only item-right (click)="sendBtn()">
       <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
     </button>
 

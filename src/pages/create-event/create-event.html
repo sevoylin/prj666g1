@@ -23,7 +23,7 @@
 
     <ion-item>
       <ion-label floating>Event Date</ion-label>
-      <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="event.date"></ion-datetime>
+      <ion-datetime displayFormat="MM/DD/YYYY H:mm" [(ngModel)]="event.date"></ion-datetime>
     </ion-item>
 
     <ion-item>
@@ -46,17 +46,16 @@
 
     <ion-item>
       <ion-label>Set Range</ion-label>
-      <ion-toggle [(ngModel)]="hasRadius"></ion-toggle>
+      <ion-toggle [(ngModel)]="hasRadius" (ngModelChange)="setCircle()"></ion-toggle>
     </ion-item>
     <ion-item *ngIf="hasRadius">
-      <ion-input [(ngModel)]="event.radius" type="number" placeholder="range in meter" >0</ion-input>
+      <ion-input [(ngModel)]="event.radius" type="number" placeholder="range in meter" (ngModelChange)="setCircle()">0</ion-input>
     </ion-item>
 
-      
   </ion-list>
 <!--  <button class="button button-block button-positive" ng-disabled="$invalid" ng-click="create">Create Event</button>
  -->
- <div #map id="map"></div>
- <button ion-button block (click)="saveBtn()">Save</button>
+  <div #map id="map"></div>
+  <button ion-button block (click)="saveBtn()">Save</button>
 
 </ion-content>

@@ -1,8 +1,8 @@
-import { Component,ElementRef,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Geolocation } from '@ionic-native/geolocation';
-import { GoogleMaps, GoogleMap, GoogleMapsEvent, CameraPosition, GoogleMapOptions, Marker, MarkerOptions, LatLng} from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, GoogleMapsEvent, CameraPosition, GoogleMapOptions, Circle, Marker, MarkerOptions, LatLng} from '@ionic-native/google-maps';
 import { User } from '../../models/user';
 import { Event } from '../../models/event';
 import * as firebase from 'firebase';
@@ -19,6 +19,7 @@ export class CreateEventPage {
   event = {} as Event;
   map: GoogleMap;
   marker = {} as Marker;
+  circle = {} as Circle;
  
   @ViewChild('map') mapElement:ElementRef;
 
@@ -41,7 +42,9 @@ export class CreateEventPage {
   
   saveBtn() {
 
-    var doc = firebase.firestore().collection('Event').doc();
+    var eventDoc = firebase.firestore().collection('Event').doc();
+    var userDoc = firebase.firestore().collection('Users').doc(this.user.uid);
+    var chatDoc = firebase.firestore().collection('Chat').doc();
     
     if (!this.hasRadius || this.event.radius==undefined)
       this.event.radius = 0;
@@ -49,10 +52,33 @@ export class CreateEventPage {
       this.event.password = "";
 
     if (this.validateValue()){
-      //doc.set(this.event);
-      console.log("Saved!");
-      // wpI1Zae9qHlF9ZxSXtzn should replaced to doc.id
-      this.navCtrl.push('ViewEventPage', 'wpI1Zae9qHlF9ZxSXtzn')
+      // save in "chat" collection
+      chatDoc.set({
+        name: this.event.eventName,
+        messages: []
+      });
+      this.event.chat = chatDoc;
+
+      // save in "event" collection
+      eventDoc.set(this.event);
+
+      // save in "users" collection
+      var saved = false;
+      userDoc.onSnapshot((doc)=>{
+        if (!saved){
+          this.user.eventList = doc.data().eventList;
+          this.user.eventList.push(eventDoc);
+          userDoc.update("eventList",this.user.eventList);
+          saved = true;
+        }
+      });
+      userDoc.onSnapshot(()=>{});
+
+      // !
+      this.navCtrl.push('ViewEventPage', eventDoc.id);
+    }
+    else{
+      // handle pop msg
     }
     // this.navCtrl.setRoot('HomePage');
   }
@@ -62,13 +88,15 @@ export class CreateEventPage {
     // Check Name
     if (this.event.eventName==undefined || this.event.eventName.trim() == "")
       isValid = false;
-    // Check
-
+    // Check Radius
+    if (this.event.radius <0 )
+      isValid = false;
     // Pre-fix
     if (isValid) {
       var owner = firebase.firestore().collection('Users').doc(this.user.uid);
       this.event.creator = owner;
       this.event.admins = [owner];
+      this.event.participants = [owner];
       this.event.eventName = this.event.eventName.trim();
       this.event.password = this.event.password.trim();
       this.event.dateCreated = new Date();
@@ -99,19 +127,38 @@ export class CreateEventPage {
           center: mylocation
         });
         
-        this.addMarker(mylocation,null);
+        this.marker = new google.maps.Marker({
+          position: mylocation,
+          map: this.map,
+          animation: 'Drop',
+          draggable: true
+        });
+
+        this.circle = new google.maps.Circle({
+          strokeColor: '#21E7B6',
+          strokeOpacity: 0.8,
+          strokeWeight: 1,
+          fillColor: '#21E7B6',
+          fillOpacity: 0.35,
+          map: this.map,
+          center: mylocation,
+          radius: 0
+        });
+        google.maps.event.addListener(this.marker, 'dragend',()=>{this.setCircle()});
     });
   }
-  addMarker(location, image) {
-    let marker = new google.maps.Marker({
-      position: location,
-      map: this.map,
-      icon: image,
-      animation: 'Drop',
-      draggable: true
-    });
-    this.marker = marker;
+
+  setCircle(){
+    if (this.hasRadius){
+      this.circle.setCenter(this.marker.getPosition());
+      this.circle.setRadius(Number.parseInt(this.event.radius + ""));
+    }
+    else{
+      this.circle.setCenter(this.marker.getPosition());
+      this.circle.setRadius(0);
+    }
   }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateEventPage');
   }

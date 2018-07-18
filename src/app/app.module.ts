@@ -21,10 +21,10 @@ import { HomePageModule } from '../pages/home/home.module';
 import { RegisterPageModule } from '../pages/register/register.module';
 import { EditProfilePageModule } from '../pages/edit-profile/edit-profile.module';
 import { ViewEventPageModule } from '../pages/view-event/view-event.module';
+import { ChatPageModule } from '../pages/chat/chat.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ChatProvider } from '../providers/chat/chat';
 
 // Angularfire2
 import { AngularFireModule } from 'angularfire2';
@@ -52,8 +52,8 @@ import { Platform } from 'ionic-angular';
     CreateEventPage,
     //ViewEventPage,
     ProfilePage,
-    FriendListPage,
-    ChatPage
+    FriendListPage
+    //ChatPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +66,8 @@ import { Platform } from 'ionic-angular';
     HomePageModule,
     EditProfilePageModule,
     RegisterPageModule,
-    ViewEventPageModule
+    ViewEventPageModule,
+    ChatPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -88,7 +89,6 @@ import { Platform } from 'ionic-angular';
     SplashScreen,
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ChatProvider,
     GoogleMaps,
     Geolocation
   ]

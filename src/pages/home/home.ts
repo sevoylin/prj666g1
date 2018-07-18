@@ -30,6 +30,10 @@ export class HomePage {
     
   }
 
+  tester(){
+    this.navCtrl.push('ViewEventPage','wpI1Zae9qHlF9ZxSXtzn');
+  }
+
   ionViewWillLoad() {
   }
 }

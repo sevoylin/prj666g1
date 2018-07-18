@@ -1,4 +1,5 @@
 export interface User{
+    fireRef: any;
     uid: string;
     email: string;
     password: string;
@@ -6,4 +7,7 @@ export interface User{
     firstName: string;
     lastName: string;
     avatar: string;
+    eventList: Array<any>;
+    friendList: Array<any>;
+    location: any;
 }

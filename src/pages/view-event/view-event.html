@@ -16,13 +16,26 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-label>Event Title</ion-label>
+      <h6>Event Name</h6>
       {{event.eventName}}
     </ion-item>
 
     <ion-item>
-      <ion-label>Event Description</ion-label>
+      <h6>Description</h6>
       {{event.description}}
     </ion-item>
+
+    <ion-item>
+      <h6>Date</h6>
+      {{event.date | date:'yyyy MMM dd H:mm'}}
+    </ion-item>
   </ion-list>
+  <div #map id="map"></div>
+
+  <!-- Buttons -->
+  <button ion-button clear block (click)="groupChatBtn()">Group Message</button>
+
+  <button ion-button clear block (click)="viewParticipants()">Participants</button>
+
+  <button ion-button block *ngIf="isAdmin" (click)="editEventBtn()">Edit Event</button>
 </ion-content>

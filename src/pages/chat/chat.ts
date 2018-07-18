@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ChatProvider } from '../../providers/chat/chat';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { User } from '../../models/user';
+
 import * as firebase from 'firebase';
+import { DocumentReference } from 'angularfire2/firestore';
 
 @IonicPage()
 @Component({
@@ -13,29 +15,28 @@ import * as firebase from 'firebase';
 export class ChatPage {
 
   // Properties
-  public msgList = null;
-  user="";
+  msgList = [];
+  user = {} as User;
+  chatRef: DocumentReference;
   chatTitle="";
   msgInput="";
   emojiDisplay = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private afAuth: AngularFireAuth,
-              private chatpvd: ChatProvider) {
-    this.user = this.afAuth.auth.currentUser.email;
-    this.chatTitle = navParams.get('chatWithId');
-    this.chatListener();
+              private afAuth: AngularFireAuth) {
+    this.user.uid = this.afAuth.auth.currentUser.uid;
+    this.user.email = this.afAuth.auth.currentUser.email;
+    this.chatRef = navParams.data;
+    this.getUser();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ChatPage');
-    this.getUser();
+    this.chatListener();
   }
   
   getUser() {
-    var uid = this.afAuth.auth.currentUser.uid;
-    var doc = firebase.firestore().collection('Users').doc(uid);
+    var doc = firebase.firestore().collection('Users').doc(this.user.uid);
     doc.onSnapshot((doc) => {
       if (doc.data() != null){
         if (doc.data().username != "")
@@ -49,28 +50,27 @@ export class ChatPage {
 
   // Chat listener
   chatListener() {
-    this.chatpvd.fsDoc.onSnapshot((doc) => {  // set Listener
+    this.chatRef.onSnapshot((doc) => {  // set Listener
       this.msgList = doc.data().messages;
       this.chatTitle = doc.data().name;
     }, (err) => {                             // err Handler
       console.error("Error: " + err.message);
-    })
+    });
   }
 
   // Button Listeners
-  emojiBtnListener() {
+  emojiBtn() {
     this.emojiDisplay = !this.emojiDisplay;
   }
 
-  sendBtnListener() {
+  sendBtn() {
     // Do nothing if there is nothing but &nbsp;
     if (!this.msgInput.trim()) return;
 
     var msg = {sender: this.user, content: this.msgInput.trim()};
     // console.log("From Input : " + msg.sender + " said " + msg.content);
     this.msgList.push(msg);
-    this.chatpvd.fsDoc.update({messages: this.msgList});
+    this.chatRef.update({messages: this.msgList});
   }
-
 
 }

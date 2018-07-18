@@ -36997,3 +36997,11 @@ ion-navbar.toolbar {
 page-create-event #map {
   height: 50%;
 }
+
+page-edit-event #map {
+  height: 50%;
+}
+
+page-view-event #map {
+  height: 50%;
+}

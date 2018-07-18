@@ -75,5 +75,13 @@
     "variables": {
       "GEOLOCATION_USAGE_DESCRIPTION": "geolocation"
     }
+  },
+  "cordova-plugin-googleplus": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googleplus"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

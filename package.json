@@ -34,6 +34,7 @@
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-googlemaps": "^2.3.6",
+    "cordova-plugin-googleplus": "^5.3.0",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.19",
     "cordova-plugin-local-notification": "^0.9.0-beta.2",
@@ -69,7 +70,8 @@
       },
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "geolocation"
-      }
+      },
+      "cordova-plugin-googleplus": {}
     },
     "platforms": [
       "android"
