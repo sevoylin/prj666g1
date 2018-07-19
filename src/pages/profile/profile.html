@@ -16,7 +16,7 @@
     src="https://firebasestorage.googleapis.com/v0/b/meetogether-prj666g1.appspot.com/o/avatar%2Fdefault_avatar.png?alt=media&token=c0c88e7e-71cd-4de5-aa78-27573c8f3f2a" />
   </ion-avatar>
   {{user.avatar}}
-  <ion-item>
+  <ion-item (click)="getQr()">
     <ion-icon ios="ios-finger-print" md="md-finger-print"></ion-icon>
     {{user.uid}}
   </ion-item>

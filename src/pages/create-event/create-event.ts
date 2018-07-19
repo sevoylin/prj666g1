@@ -94,6 +94,7 @@ export class CreateEventPage {
       this.event.creator = owner;
       this.event.admins = [owner];
       this.event.participants = [owner];
+      this.event.blockedUsers = [];
       this.event.eventName = this.event.eventName.trim();
       this.event.password = this.event.password.trim();
       this.event.dateCreated = new Date();

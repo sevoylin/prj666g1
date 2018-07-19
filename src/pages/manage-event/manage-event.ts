@@ -50,7 +50,7 @@ export class ManageEventPage {
         this.user.eventList.forEach((e)=>{
           let event = {} as Event;
           event.eventId = e.id;
-          e.onSnapshot((content)=>{
+          e.get().then((content)=>{
             event.eventName = content.data().eventName;
             // ?
             this.events.push(event);

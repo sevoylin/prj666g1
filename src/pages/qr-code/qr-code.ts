@@ -19,7 +19,7 @@ export class QrCodePage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
-    this.QRstr = navParams.data;
+    this.QRstr = ""+navParams.data;
   }
 
   ionViewDidLoad() {

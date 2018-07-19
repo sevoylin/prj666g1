@@ -49,6 +49,10 @@ export class ProfilePage {
     });
   }
 
+  getQr(){
+    this.navCtrl.push('QrCodePage', this.user.uid);
+  }
+
   editProfile() {
     this.navCtrl.push('EditProfilePage', this.user);
   }

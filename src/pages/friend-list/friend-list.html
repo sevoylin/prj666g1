@@ -22,7 +22,10 @@
     <ion-item *ngFor="let f of friendList">
       <ion-icon ios="ios-person" md="md-person"></ion-icon>
         {{f.username}} as {{f.firstName}} {{f.lastName}}
-        <p>{{f.email}}</p>
+        <p>
+          <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+          {{f.email}}
+        </p>
     </ion-item>
   </ion-list>
 
