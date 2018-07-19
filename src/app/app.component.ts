@@ -22,7 +22,7 @@ export class MyApp {
 
   rootPage: any = LoginPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
 
   constructor(public platform: Platform,
               public statusBar: StatusBar, 
@@ -33,26 +33,26 @@ export class MyApp {
     // used for an example of ngFor and navigation
     // default navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage}
+      { title: 'Home', component: HomePage, icon: 'home' },
+      { title: 'Login', component: LoginPage, icon: 'log-in' }
     ];
 
     // using events subscribe to track login/out status
     events.subscribe('login_status', (isLogin, user) => {
       if (isLogin && user != null) {
         this.pages = [
-          { title: 'Home', component: HomePage },
-          { title: 'My Event', component: ManageEventPage },
-          { title: 'My Friends', component: FriendListPage},
-          { title: 'My Profile', component: ProfilePage},
-          { title: 'Logout', component: LogoutPage}
+          { title: 'Home', component: HomePage, icon: 'home' },
+          { title: 'My Event', component: ManageEventPage, icon: 'calendar' },
+          { title: 'My Friends', component: FriendListPage, icon: 'people' },
+          { title: 'My Profile', component: ProfilePage, icon: 'person' },
+          { title: 'Logout', component: LogoutPage, icon: 'exit' }
           //{ title: 'Register', component: RegisterPage}
         ];
       }
       else {
         this.pages = [
-          { title: 'Home', component: HomePage },
-          { title: 'Login', component: LoginPage}
+          { title: 'Home', component: HomePage, icon: 'home' },
+          { title: 'Login', component: LoginPage, icon: 'log-in' }
         ];
       }
     })
