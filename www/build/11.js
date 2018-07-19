@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 745:
+/***/ 742:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreateEventPageModule", function() { return CreateEventPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditProfilePageModule", function() { return EditProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__create_event__ = __webpack_require__(760);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_profile__ = __webpack_require__(758);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CreateEventPageModule = /** @class */ (function () {
-    function CreateEventPageModule() {
+var EditProfilePageModule = /** @class */ (function () {
+    function EditProfilePageModule() {
     }
-    CreateEventPageModule = __decorate([
+    EditProfilePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__create_event__["a" /* CreateEventPage */],
+                __WEBPACK_IMPORTED_MODULE_2__edit_profile__["a" /* EditProfilePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__create_event__["a" /* CreateEventPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__edit_profile__["a" /* EditProfilePage */]),
             ],
         })
-    ], CreateEventPageModule);
-    return CreateEventPageModule;
+    ], EditProfilePageModule);
+    return EditProfilePageModule;
 }());
 
-//# sourceMappingURL=create-event.module.js.map
+//# sourceMappingURL=edit-profile.module.js.map
 
 /***/ }),
 
-/***/ 760:
+/***/ 758:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreateEventPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__ = __webpack_require__(380);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -61,154 +59,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-var CreateEventPage = /** @class */ (function () {
-    function CreateEventPage(navCtrl, navParams, afAuth, platform, geolocation) {
-        var _this = this;
+var EditProfilePage = /** @class */ (function () {
+    function EditProfilePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.afAuth = afAuth;
-        this.platform = platform;
-        this.geolocation = geolocation;
         this.user = {};
-        this.event = {};
-        this.marker = {};
-        this.circle = {};
-        // Toggle
-        this.hasRadius = false;
-        this.hasPassword = false;
-        this.user.uid = afAuth.auth.currentUser.uid;
-        this.event.isPrivate = false;
-        this.event.date = new Date();
-        platform.ready().then(function () {
-            _this.initMap();
-        });
+        // receive data from push
+        this.user = navParams.data;
     }
-    CreateEventPage.prototype.saveBtn = function () {
-        var _this = this;
-        var eventDoc = __WEBPACK_IMPORTED_MODULE_4_firebase__["firestore"]().collection('Event').doc();
-        var userDoc = __WEBPACK_IMPORTED_MODULE_4_firebase__["firestore"]().collection('Users').doc(this.user.uid);
-        var chatDoc = __WEBPACK_IMPORTED_MODULE_4_firebase__["firestore"]().collection('Chat').doc();
-        if (!this.hasRadius || this.event.radius == undefined)
-            this.event.radius = 0;
-        if (!this.hasPassword)
-            this.event.password = "";
-        if (this.validateValue()) {
-            // save in "chat" collection
-            chatDoc.set({
-                name: this.event.eventName,
-                messages: []
-            });
-            this.event.chat = chatDoc;
-            // save in "event" collection
-            eventDoc.set(this.event);
-            // save in "users" collection
-            var saved = false;
-            userDoc.onSnapshot(function (doc) {
-                if (!saved) {
-                    _this.user.eventList = doc.data().eventList;
-                    _this.user.eventList.push(eventDoc);
-                    userDoc.update("eventList", _this.user.eventList);
-                    saved = true;
-                }
-            });
-            userDoc.onSnapshot(function () { });
-            this.navCtrl.pop();
-        }
-        else {
-            // * handle pop msg
-        }
+    EditProfilePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad EditProfilePage');
     };
-    CreateEventPage.prototype.validateValue = function () {
-        var isValid = true;
-        // Check Name
-        if (this.event.eventName == undefined || this.event.eventName.trim() == "")
-            isValid = false;
-        // Check Radius
-        if (this.event.radius < 0)
-            isValid = false;
-        // Pre-fix
-        if (isValid) {
-            var owner = __WEBPACK_IMPORTED_MODULE_4_firebase__["firestore"]().collection('Users').doc(this.user.uid);
-            this.event.creator = owner;
-            this.event.admins = [owner];
-            this.event.participants = [owner];
-            this.event.blockedUsers = [];
-            this.event.eventName = this.event.eventName.trim();
-            this.event.password = this.event.password.trim();
-            this.event.dateCreated = new Date();
-            /* Trick things here:
-              marker.getPostion().lat and marker.getPostion().lng supposed to be 2 number
-              in this plugin it turned to 2 getter function
-              it act like function when I add 2 bracket after them
-              it won't compile because cordova treat it as an error
-              it will work after `ionic serve`
-              so I decided transfer position to string and re-form it to number
-            */
-            var loc = this.marker.getPosition().toString();
-            var lat = Number.parseFloat(loc.substring(loc.indexOf('(') + 1, loc.indexOf(',')));
-            var lng = Number.parseFloat(loc.substring(loc.indexOf(' ') + 1, loc.indexOf(')')));
-            this.event.location = new __WEBPACK_IMPORTED_MODULE_4_firebase__["firestore"].GeoPoint(lat, lng);
-        }
-        return isValid;
-    };
-    CreateEventPage.prototype.initMap = function () {
-        var _this = this;
-        this.geolocation.getCurrentPosition({ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true })
-            .then(function (resp) {
-            var mylocation = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-            _this.map = new google.maps.Map(_this.mapElement.nativeElement, {
-                zoom: 15,
-                center: mylocation
-            });
-            _this.marker = new google.maps.Marker({
-                position: mylocation,
-                map: _this.map,
-                animation: 'Drop',
-                draggable: true
-            });
-            _this.circle = new google.maps.Circle({
-                strokeColor: '#21E7B6',
-                strokeOpacity: 0.8,
-                strokeWeight: 1,
-                fillColor: '#21E7B6',
-                fillOpacity: 0.35,
-                map: _this.map,
-                center: mylocation,
-                radius: 0
-            });
-            google.maps.event.addListener(_this.marker, 'dragend', function () { _this.setCircle(); });
+    EditProfilePage.prototype.saveBtn = function () {
+        var doc = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
+        doc.update({
+            username: this.user.username,
+            firstName: this.user.firstName,
+            lastName: this.user.lastName
         });
+        this.navCtrl.pop();
     };
-    CreateEventPage.prototype.setCircle = function () {
-        if (this.hasRadius) {
-            this.circle.setCenter(this.marker.getPosition());
-            this.circle.setRadius(Number.parseInt(this.event.radius + ""));
-        }
-        else {
-            this.circle.setCenter(this.marker.getPosition());
-            this.circle.setRadius(0);
-        }
-    };
-    CreateEventPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad CreateEventPage');
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
-    ], CreateEventPage.prototype, "mapElement", void 0);
-    CreateEventPage = __decorate([
+    EditProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-create-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/create-event/create-event.html"*/'<!--\n  Generated template for the CreateEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Create Event</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <ion-label floating>Event Title</ion-label>\n      <ion-input type="text" [(ngModel)]="event.eventName"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Event Date</ion-label>\n      <ion-datetime displayFormat="MM/DD/YYYY H:mm" [(ngModel)]="event.date"></ion-datetime>\n    </ion-item>\n\n    <ion-item>\n      <ion-label floating>Description</ion-label>\n      <ion-textarea type="text" [(ngModel)]="event.description"></ion-textarea>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Private Event</ion-label>\n      <ion-toggle [(ngModel)]="event.isPrivate"></ion-toggle>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Set Password</ion-label>\n      <ion-toggle [(ngModel)]="hasPassword"></ion-toggle>\n    </ion-item>\n    <ion-item *ngIf="hasPassword">\n      <ion-input [(ngModel)]="event.password" type="password" placeholder="enter password" ></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-label>Set Range</ion-label>\n      <ion-toggle [(ngModel)]="hasRadius" (ngModelChange)="setCircle()"></ion-toggle>\n    </ion-item>\n    <ion-item *ngIf="hasRadius">\n      <ion-input [(ngModel)]="event.radius" type="number" placeholder="range in meter" (ngModelChange)="setCircle()">0</ion-input>\n    </ion-item>\n\n  </ion-list>\n<!--  <button class="button button-block button-positive" ng-disabled="$invalid" ng-click="create">Create Event</button>\n -->\n  <div #map id="map"></div>\n  <button ion-button block (click)="saveBtn()">Save</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/create-event/create-event.html"*/,
+            selector: 'page-edit-profile',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/edit-profile/edit-profile.html"*/'<!--\n  Generated template for the EditProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit Profile</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-icon ios="ios-finger-print" md="md-finger-print"></ion-icon>\n    {{user.uid}}\n  </ion-item>\n  <ion-item>\n    <ion-icon ios="ios-mail" md="md-mail"></ion-icon>\n    {{user.email}}\n  </ion-item>\n  <ion-item>\n    <ion-label floating>User Name</ion-label>\n    <ion-input type="text" [(ngModel)]="user.username"></ion-input>\n  </ion-item>\n  <ion-item>\n      <ion-label floating>First Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.firstName"></ion-input>\n  </ion-item>\n  <ion-item>\n      <ion-label floating>Last Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>\n  </ion-item>\n  <button ion-button block (click) = "saveBtn()">Save</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/edit-profile/edit-profile.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _f || Object])
-    ], CreateEventPage);
-    return CreateEventPage;
-    var _a, _b, _c, _d, _e, _f;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+    ], EditProfilePage);
+    return EditProfilePage;
 }());
 
-//# sourceMappingURL=create-event.js.map
+//# sourceMappingURL=edit-profile.js.map
 
 /***/ })
 

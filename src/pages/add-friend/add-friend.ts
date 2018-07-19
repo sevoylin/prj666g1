@@ -17,10 +17,11 @@ import * as firebase from 'firebase';
 })
 export class AddFriendPage {
   user = {} as User;
+  email = "";
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams) {
-    console.log(firebase.auth().currentUser.email);
+    this.user = navParams.data;
   }
 
   ionViewDidLoad() {
@@ -29,13 +30,34 @@ export class AddFriendPage {
 
 
   submitEmail(){
-    console.log("submitEmail");
-
-    //this.navCtrl.pop();
+    var friend_id;
+    var ucRef = firebase.firestore().collection('Users').where("email", "==", this.email).get().then((d)=>{
+      if (d.docs.length > 0){
+        this.pushFriendRequest(d.docs[0].id);
+      }
+      else{
+        // cannot find this guy
+        console.log("cannot find user with email: " + this.email);
+      }
+    });
   }
 
   scanQR(){
-    console.log("scan QR");
-
+    this.navCtrl.push('QrScanPage');
   }
+
+  pushFriendRequest(fId){
+    // find the friend list if it has the user
+    let fRef = firebase.firestore().collection('Users').doc(fId);
+    let uRef = firebase.firestore().collection('Users').doc(this.user.uid);
+    if (fId == this.user.uid){
+      console.log("same person");
+      return undefined;
+    }
+    if (this.user.friendList.find((ele)=>{return ele.isEqual(uRef);})){
+      console.log("find in list");
+    }
+  }
+
+
 }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../models/user';
 import * as firebase from 'firebase';
 
@@ -21,9 +20,8 @@ export class FriendListPage {
   friendList = [];
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public afAuth: AngularFireAuth) {
-    this.user.uid = afAuth.auth.currentUser.uid;
+              public navParams: NavParams) {
+    this.user.uid = firebase.auth().currentUser.uid;
   }
 
   ionViewDidLoad(){ }
@@ -51,6 +49,6 @@ export class FriendListPage {
   }
 
   addFriend(){
-    this.navCtrl.push('AddFriendPage');
+    this.navCtrl.push('AddFriendPage',this.user);
   }
 }
