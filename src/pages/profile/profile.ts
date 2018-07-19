@@ -40,8 +40,8 @@ export class ProfilePage {
     */
     // get informations
     var doc = firebase.firestore().collection('Users').doc(this.user.uid);
-    doc.onSnapshot((doc) => {
-      if (doc.data() != null){
+    doc.get().then((doc) => {
+      if (doc.exists){
         this.user.username = doc.data().username;
         this.user.firstName = doc.data().firstName;
         this.user.lastName = doc.data().lastName;

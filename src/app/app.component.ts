@@ -5,13 +5,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Page declarations for navigations
 import { HomePage } from '../pages/home/home';
-import { CreateEventPage } from '../pages/create-event/create-event';
 import { ManageEventPage } from '../pages/manage-event/manage-event';
 import { FriendListPage } from '../pages/friend-list/friend-list';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from '../pages/profile/profile';
-import { ChatPage } from '../pages/chat/chat';
 
 // Import plugins
 import firebase from 'firebase';
@@ -44,11 +42,9 @@ export class MyApp {
       if (isLogin && user != null) {
         this.pages = [
           { title: 'Home', component: HomePage },
-          { title: 'CreateEvent', component: CreateEventPage },
-          { title: 'X ManageEvent', component: ManageEventPage },
-          { title: 'X FriendList', component: FriendListPage},
-          { title: 'Profile', component: ProfilePage},
-          //{ title: 'X Chat', component:ChatPage},
+          { title: 'My Event', component: ManageEventPage },
+          { title: 'My Friends', component: FriendListPage},
+          { title: 'My Profile', component: ProfilePage},
           { title: 'Logout', component: LogoutPage}
           //{ title: 'Register', component: RegisterPage}
         ];

@@ -29,8 +29,7 @@ export class ViewEventPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public afAuth: AngularFireAuth,
-              public platform:Platform,
-              private geolocation:Geolocation) {
+              public platform:Platform) {
     this.user.uid = afAuth.auth.currentUser.uid;
     this.event.eventId = navParams.data;
     this.initialEmptyEvent();
@@ -138,6 +137,43 @@ export class ViewEventPage {
 
   editEventBtn(){
     this.navCtrl.push('EditEventPage', this.eventRef);
+  }
+
+  leaveEventBtn(){
+    let userRef = firebase.firestore().collection('Users').doc(this.user.uid);
+    userRef.get().then((doc)=>{
+      this.user.eventList = doc.data().eventList;
+      var index = this.user.eventList.indexOf(
+        this.user.eventList.find((e)=>{return e.isEqual(this.eventRef);})
+      );
+      if (index > -1)
+        this.user.eventList.splice(index,1);
+      userRef.update('eventList',this.user.eventList);
+    });
+    var index = this.event.participants.indexOf(
+      this.event.participants.find((p)=>{return p.isEqual(userRef);})
+    );
+    if (index > -1){
+      this.event.participants.splice(index,1);
+      this.eventRef.update('participants',this.event.participants);
+    }
+    var index = this.event.admins.indexOf(
+      this.event.admins.find((p)=>{return p.isEqual(userRef);})
+    );
+    if (index > -1){
+      this.event.admins.splice(index,1);
+      this.eventRef.update('admins',this.event.admins);
+    }
+
+    //delete event
+    this.eventRef.get().then((e)=>{
+      var admins = e.data().admins;
+      if (admins.length == 0){
+        e.data().chat.delete();
+        this.eventRef.delete();
+      }
+    });
+    this.navCtrl.pop();
   }
 
   ionViewDidLoad() {

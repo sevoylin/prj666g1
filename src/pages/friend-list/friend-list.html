@@ -10,7 +10,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>friend_list</ion-title>
+    <ion-title>Friend List</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,4 +18,17 @@
 
 <ion-content padding>
 
+  <ion-list>
+    <ion-item *ngFor="let f of friendList">
+      <ion-icon ios="ios-person" md="md-person"></ion-icon>
+        {{f.username}} as {{f.firstName}} {{f.lastName}}
+        <p>{{f.email}}</p>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab bottom right>
+    <button ion-fab (click)="addFriend()">
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

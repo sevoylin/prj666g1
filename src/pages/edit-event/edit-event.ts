@@ -41,6 +41,7 @@ export class EditEventPage {
         this.event.isPrivate = doc.data().isPrivate;
         this.event.radius = doc.data().radius;
         this.event.location = doc.data().location;
+        this.event.dateCreated = doc.data().dateCreated;
         if (this.event.radius > 0) this.hasRadius = true;
         if (this.event.password != "") this.hasPassword = true;
         this.platform.ready().then(()=>{ this.initMap(); });
@@ -90,6 +91,11 @@ export class EditEventPage {
   saveBtn(){
     // Save function here
     if (this.validateValue()){
+      if (!this.hasRadius)
+        this.event.radius = 0;
+      if (!this.hasPassword)
+        this.event.password = "";
+      console.log(this.event);
       this.eventRef.update(this.event);
       this.navCtrl.pop();
     }
@@ -110,7 +116,6 @@ export class EditEventPage {
     if (isValid) {
       this.event.eventName = this.event.eventName.trim();
       this.event.password = this.event.password.trim();
-      this.event.dateCreated = new Date();
 
       /* Trick things here:
         marker.getPostion().lat and marker.getPostion().lng supposed to be 2 number

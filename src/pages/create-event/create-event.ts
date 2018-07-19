@@ -73,14 +73,11 @@ export class CreateEventPage {
         }
       });
       userDoc.onSnapshot(()=>{});
-
-      // !
-      this.navCtrl.push('ViewEventPage', eventDoc.id);
+      this.navCtrl.pop();
     }
     else{
-      // handle pop msg
+      // * handle pop msg
     }
-    // this.navCtrl.setRoot('HomePage');
   }
 
   validateValue() {

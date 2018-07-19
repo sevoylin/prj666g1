@@ -5,23 +5,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 // Page Declaration
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { CreateEventPage } from '../pages/create-event/create-event';
 import { ManageEventPage } from '../pages/manage-event/manage-event';
 import { FriendListPage } from '../pages/friend-list/friend-list';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from '../pages/profile/profile';
-import { EditProfilePage } from '../pages/edit-profile/edit-profile';
-import { RegisterPage } from '../pages/register/register';
-import { ChatPage } from '../pages/chat/chat';
-import { ViewEventPage } from '../pages/view-event/view-event';
 
 // Page Module Import
 import { HomePageModule } from '../pages/home/home.module';
-import { RegisterPageModule } from '../pages/register/register.module';
-import { EditProfilePageModule } from '../pages/edit-profile/edit-profile.module';
-import { ViewEventPageModule } from '../pages/view-event/view-event.module';
-import { ChatPageModule } from '../pages/chat/chat.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,16 +35,11 @@ import { Platform } from 'ionic-angular';
 @NgModule({
   declarations: [
     MyApp,
-    //HomePage,
     LoginPage,
     LogoutPage,
-    //RegisterPage,
     ManageEventPage,
-    CreateEventPage,
-    //ViewEventPage,
     ProfilePage,
     FriendListPage
-    //ChatPage
   ],
   imports: [
     BrowserModule,
@@ -63,11 +49,7 @@ import { Platform } from 'ionic-angular';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    HomePageModule,
-    EditProfilePageModule,
-    RegisterPageModule,
-    ViewEventPageModule,
-    ChatPageModule
+    HomePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -75,14 +57,9 @@ import { Platform } from 'ionic-angular';
     HomePage,
     LoginPage,
     LogoutPage,
-    RegisterPage,
     ManageEventPage,
-    CreateEventPage,
-    ViewEventPage,
     ProfilePage,
-    EditProfilePage,
-    FriendListPage,
-    ChatPage
+    FriendListPage
   ],
   providers: [
     StatusBar,

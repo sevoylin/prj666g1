@@ -2,7 +2,6 @@ import { User } from "./user";
 import * as firebase from 'firebase';
 
 export interface Event {
-    eventRef: any;
     eventId: string;
     admins: Array<any>;
     participants: Array<any>;

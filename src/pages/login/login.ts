@@ -27,7 +27,7 @@ export class LoginPage {
 
   async login(user: User) {
     try {
-      const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
         .then( () =>{
           // to see the email if it is verified
           this.afAuth.auth.onAuthStateChanged( data => {

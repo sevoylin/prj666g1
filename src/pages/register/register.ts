@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
-import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -20,7 +14,8 @@ export class RegisterPage {
   user = {} as User;
   err_msg = "";
 
-  constructor(private afAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) {
   }
 
   async register(user: User){
@@ -28,14 +23,14 @@ export class RegisterPage {
       if (user.password.length < 6 || user.password.length > 18){
         throw {code: "pwd/length"};
       }
-      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
-      .then(res => {
+      const result = await firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+      .then((res) => {
         let user = firebase.auth().currentUser;
         user.sendEmailVerification();
-        this.afAuth.auth.signOut();
-        console.log(result);
+        this.initialUserDoc(user.uid, user.email);
+        firebase.auth().signOut();
         this.navCtrl.pop();
-      })
+      });
     }
     catch(e){
       switch (e.code){
@@ -59,8 +54,21 @@ export class RegisterPage {
     }
   }
 
+  initialUserDoc(userId, userEmail){
+    let cu = {} as User;
+    cu.email = userEmail;
+    cu.username = "";
+    cu.firstName = "";
+    cu.lastName = "";
+    cu.eventList = [];
+    cu.friendList = [];
+    cu.blockedUsers = [];
+    cu.location = new firebase.firestore.GeoPoint(0,0);
+    firebase.firestore().collection('Users').doc(userId).set(cu);
+  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+    
   }
 
 }

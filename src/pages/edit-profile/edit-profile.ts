@@ -25,7 +25,7 @@ export class EditProfilePage {
 
   saveBtn() {
     var doc = firebase.firestore().collection('Users').doc(this.user.uid);
-    doc.set({
+    doc.update({
       username: this.user.username,
       firstName: this.user.firstName,
       lastName: this.user.lastName
