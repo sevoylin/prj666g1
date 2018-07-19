@@ -291,6 +291,14 @@ module.exports = [
     "clobbers": [
       "window.plugins.googleplus"
     ]
+  },
+  {
+    "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+    "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+    "pluginId": "phonegap-plugin-barcodescanner",
+    "clobbers": [
+      "cordova.plugins.barcodeScanner"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -305,7 +313,8 @@ module.exports.metadata =
   "cordova-plugin-local-notification": "0.9.0-beta.2",
   "cordova-plugin-googlemaps": "2.3.6",
   "cordova-plugin-geolocation": "4.0.1",
-  "cordova-plugin-googleplus": "5.3.0"
+  "cordova-plugin-googleplus": "5.3.0",
+  "phonegap-plugin-barcodescanner": "8.0.0"
 };
 // BOTTOM OF METADATA
 });
