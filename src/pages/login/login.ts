@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, ToastController } from 'ionic-angular';
 import { User } from "../../models/user"; 
 import { AngularFireAuth } from "angularfire2/auth"
-
-// pages
+import * as firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -13,45 +12,54 @@ import { AngularFireAuth } from "angularfire2/auth"
 export class LoginPage {
 
   user = {} as User;
+  password = "";
   err_msg = "";
 
   constructor(public afAuth: AngularFireAuth,
               public events: Events,
               public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              private toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   async login(user: User) {
     try {
-      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
+      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email, this.password)
         .then( () =>{
           // to see the email if it is verified
           this.afAuth.auth.onAuthStateChanged( data => {
             if (!data.emailVerified) {
               // email not verified
-              console.log("email not verified");
-              this.err_msg = "Email is not verified! Please check your mailbox!";
+              throw {code: 'auth/email-not-verified'};
             }
-            else {
-              // email verified
-              console.log("email verified");
-              this.afAuth.auth.onAuthStateChanged(data =>{
-                user.password=""; // delete password
-                user.uid = data.uid;
-              });
-              this.events.publish('login_status', true, user);
-              this.navCtrl.setRoot('HomePage');
-            }
+            // email verified
+            this.afAuth.auth.onAuthStateChanged(data =>{
+              this.password=""; // delete password
+              user.uid = data.uid;
+              firebase.firestore().collection('Users').doc(user.uid).get().then(data=>{
+                this.user.firstName = data.data().firstName;
+                this.user.lastName = data.data().lastName;
+                this.events.publish('login_status', true, user);
+                this.toastCtrl.create({
+                  message: "Welcome! " + this.user.firstName + " " + this.user.lastName,
+                  duration: 3000,
+                  position: "bottom"
+                }).present();
+                this.navCtrl.setRoot('HomePage');
+              }); 
+            });
           });
-          
         })
         // Error control
         .catch( err =>{
           switch (err.code) {
+            case ('auth/email-not-verified'): {
+              this.err_msg = "Email is not verified! Please check your mailbox!";
+              break;
+            }
             case('auth/invalid-email'): {
               this.err_msg = "Please enter a valid email!";
               break;
@@ -69,7 +77,11 @@ export class LoginPage {
               this.err_msg = err.code;
             }
           }
-
+          this.toastCtrl.create({
+            message: this.err_msg,
+            duration: 3000,
+            position: "bottom"
+          }).present();
         });
       console.log(result);
       if (result) {

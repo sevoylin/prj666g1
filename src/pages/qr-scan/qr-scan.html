@@ -14,5 +14,9 @@
 
 
 <ion-content padding>
-
+  <ion-card *ngIf="code">
+    <ion-card-content>
+      Result from Scan: {{ code }}
+    </ion-card-content>
+  </ion-card>
 </ion-content>

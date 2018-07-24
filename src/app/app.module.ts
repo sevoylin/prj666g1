@@ -13,7 +13,6 @@ import { ProfilePage } from '../pages/profile/profile';
 
 // Page Module Import
 import { HomePageModule } from '../pages/home/home.module';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -29,6 +28,9 @@ import { FIREBASE_CONFIG } from './app.api.config';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { Platform } from 'ionic-angular';
+
+//  Bar code
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 // Every api key (like firebase access profile...) 
 //    should put into './app.api.config.ts'
 
@@ -67,7 +69,8 @@ import { Platform } from 'ionic-angular';
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GoogleMaps,
-    Geolocation
+    Geolocation,
+    BarcodeScanner
   ]
 })
 export class AppModule {}

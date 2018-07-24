@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { QrScanPageModule } from '../qr-scan/qr-scan.module';
 import { AddFriendPage } from './add-friend';
+import { QrScanPageModule } from '../qr-scan/qr-scan.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +9,7 @@ import { AddFriendPage } from './add-friend';
   ],
   imports: [
     IonicPageModule.forChild(AddFriendPage),
-    QrScanPageModule
+    QrScanPageModule,
   ],
 })
 export class AddFriendPageModule {}

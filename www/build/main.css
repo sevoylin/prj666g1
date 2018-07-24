@@ -36994,12 +36994,321 @@ ion-navbar.toolbar {
   min-height: calc(46px + env(safe-area-inset-bottom));
 }
 
+[header-background-image] {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-color: #00ff36 !important;
+  background-blend-mode: multiply;
+}
+
+[header-background-image]::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00ff36;
+  mix-blend-mode: multiply;
+}
+
+[header-background-image]::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #23278a;
+  mix-blend-mode: lighten;
+}
+
+[header-background-image] [header-title] {
+  padding-right: 10%;
+  z-index: 99999;
+  font-weight: bold;
+  color: white !important;
+  position: relative;
+}
+
+[header-background-image] img {
+  position: relative;
+  display: block;
+  padding-top: 24px;
+  max-width: 60px;
+  z-index: 99999;
+  position: relative;
+}
+
+[header-background-image] p {
+  font-size: 14px !important;
+  color: white;
+  z-index: 99999;
+  position: relative;
+}
+
+ion-header [class^="icon-"]:before, ion-header [class*=" icon-"]:before {
+  width: auto !important;
+  margin-left: 0 !important;
+}
+
+[main-menu] .item-inner {
+  margin-left: 6px !important;
+}
+
 page-create-event #map {
   height: 50%;
 }
 
 page-edit-event #map {
   height: 50%;
+}
+
+page-home [default-background] {
+  height: 100%;
+  width: 100%;
+  display: table;
+  background-color: #00ff36 !important;
+  background-blend-mode: multiply;
+}
+
+page-home [default-background]::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00ff36;
+  mix-blend-mode: multiply;
+}
+
+page-home [default-background]::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #23278a;
+  mix-blend-mode: lighten;
+}
+
+page-home [default-background] .ionic-description {
+  display: table-cell;
+  vertical-align: middle;
+  z-index: 999;
+  position: relative;
+}
+
+page-home [default-background] .ionic-description h2[item-title] {
+  margin: 0;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+page-home [default-background] .ionic-description p[item-subtitle] {
+  color: white !important;
+  z-index: 999;
+  position: relative;
+}
+
+page-home [default-background] a {
+  color: #21e7b6 !important;
+  text-decoration: underline;
+  visibility: visible !important;
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
+  z-index: 999;
+}
+
+page-home ion-navbar [buy] .title-ios {
+  width: 90%;
+}
+
+page-home ion-navbar [buy] .button-ios {
+  height: 3rem !important;
+  position: absolute;
+  right: 5px;
+  top: 20px !important;
+}
+
+page-home ion-navbar [buy] ion-title {
+  width: 70%;
+}
+
+page-home ion-navbar [buy] [defoult-button] {
+  background: #21E7B6;
+  color: #fff;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+page-login ion-grid,
+page-login ion-row {
+  height: 100%;
+}
+
+page-login img {
+  max-width: 72px;
+  max-height: 72px;
+  margin-bottom: 24px;
+  display: block;
+}
+
+page-login ion-item {
+  padding-left: 0 !important;
+  padding-bottom: 15px !important;
+}
+
+page-login ion-item [error-field] {
+  margin: 0 !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  font-size: 12px;
+}
+
+page-login ion-item .item-inner {
+  border-bottom-color: #8e8e93 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-login ion-item ion-label {
+  margin: 0 !important;
+}
+
+page-login [stacked] {
+  font-size: 10px !important;
+}
+
+page-login [login-title] {
+  color: #efeff4;
+}
+
+page-login [login-subtitle] {
+  color: black;
+}
+
+page-login [description] {
+  font-size: 15px !important;
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: #8e8e93;
+}
+
+page-login [bottom-form] button:nth-child(1) {
+  margin: 12px 0;
+}
+
+page-login [bottom-form] [default-button] {
+  font-weight: 400 !important;
+}
+
+page-register .scroll-content {
+  margin-top: 0 !important;
+}
+
+page-register .back-button,
+page-register .toolbar-title {
+  color: white !important;
+}
+
+page-register .toolbar-ios {
+  min-height: 64px;
+}
+
+page-register .bar-button-default-ios,
+page-register .toolbar-title-ios {
+  padding-top: 20px;
+}
+
+page-register ion-grid,
+page-register ion-row {
+  height: 100%;
+}
+
+page-register ion-grid [form],
+page-register ion-row [form] {
+  padding: 16px 16px 0 16px !important;
+}
+
+page-register ion-grid [form] ion-item,
+page-register ion-row [form] ion-item {
+  padding-left: 0 !important;
+  padding-bottom: 15px !important;
+}
+
+page-register ion-grid [form] ion-item [error-field],
+page-register ion-row [form] ion-item [error-field] {
+  margin: 0 !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  font-size: 12px;
+}
+
+page-register ion-grid [form] ion-item .item-inner,
+page-register ion-row [form] ion-item .item-inner {
+  border-bottom-color: #8e8e93 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-register ion-grid [form] ion-item ion-label,
+page-register ion-row [form] ion-item ion-label {
+  margin: 0 !important;
+}
+
+page-register ion-grid [form] [stacked],
+page-register ion-row [form] [stacked] {
+  font-size: 10px !important;
+}
+
+page-register ion-grid [background-size],
+page-register ion-row [background-size] {
+  height: 40%;
+  position: relative;
+  background-color: #00ff36 !important;
+  background-blend-mode: multiply;
+}
+
+page-register ion-grid [background-size]::before,
+page-register ion-row [background-size]::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00ff36;
+  mix-blend-mode: multiply;
+}
+
+page-register ion-grid [background-size]::after,
+page-register ion-row [background-size]::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #23278a;
+  mix-blend-mode: lighten;
+}
+
+page-register ion-grid [register-title],
+page-register ion-row [register-title] {
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  left: 25px;
+  z-index: 999;
 }
 
 page-view-event #map {

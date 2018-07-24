@@ -10,23 +10,55 @@
   </ion-header>
   
   <ion-content padding>
-    <!--<ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text" [(ngModel)]="user.username"></ion-input>
-    </ion-item>-->
+    <ion-grid no-padding>
+      <ion-row padding-horizontal align-self-center>
   
-    <ion-item>
-      <ion-label floating>Email</ion-label>
-      <ion-input type="email" [(ngModel)]="user.email"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-    </ion-item>
+        <ion-col align-self start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+          <button ion-button button-clear text-capitalize clear float-left>Some other button</button>
+          <button ion-button button-clear text-capitalize clear float-right (click)="resetPwd()">Forgot Password</button>
+        </ion-col>
+        
+        <ion-col align-self-end col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+          <!--Logo-->
+          <img src="../../assets/images/logo/2.png">
+          <!--Logo Subtitle-->
+          <h2 login-subtitle no-margin>Welcome</h2>
+          <!---Logo Title-->
+          <h1 ion-text padding-bottom login-title no-margin>Login to your account</h1>
+        </ion-col>
   
-    <p color="light" (click)="resetPwd()">forget password?</p>
+        <ion-col align-self-start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+          <!--Input field username-->
+          <ion-item transparent>
+            <ion-label stacked>Email</ion-label>
+            <ion-input required placeholder="email" type="email" [(ngModel)]="user.email"></ion-input>
+          </ion-item>
   
-    <button ion-button (click)="login(user)">Login</button>
-    <button ion-button color="light" (click)="register()">Register</button>
+          <!--Input field password-->
+          <ion-item transparent>
+              <ion-label stacked>Password</ion-label>
+              <ion-input required type="password" placeholder="password" [(ngModel)]="password"></ion-input>
+          </ion-item>
+        </ion-col>
+  
+        <!--Share Section-->
+        <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
+          <!---Login button-->
+          <button ion-button  full text-capitalize default-button (click)="login(user)">Login</button>
+          <!---Facebook button-->
+          <button ion-button default-button color="facebook" full text-capitalize block>Login with Facebook</button>
+          <!---Google button-->
+          <button ion-button default-button color="goole" full text-capitalize block>Login with Google</button>
+          <!---Twitter button-->
+          <button ion-button default-button color="twitter" full text-capitalize block>Login with Twitter</button>
+        </ion-col>
+  
+        <ion-col col-12>
+          <div description text-center>
+            <p>Don't have an account? <a text-capitalize ion-text color="primary" (click)="register()">Register</a></p>
+          </div>
+        </ion-col>
+        <!--End Share Section-->
+      </ion-row>
+    </ion-grid>
   </ion-content>

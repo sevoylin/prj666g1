@@ -1,3 +1,65 @@
 page-home {
-
+    [default-background] {
+        height: 100%;
+        width: 100%;
+        display: table;
+        @include darkening-blend-mode;
+    
+        .ionic-description {
+          display: table-cell;
+          vertical-align: middle;
+          z-index: 999;
+          position: relative;
+    
+          h2[item-title] {
+            margin: 0;
+            color: theme-colors('textColors', 'secondaryBase') !important;
+            font-weight: bold !important;
+          }
+    
+          p[item-subtitle] {
+            color: theme-colors('textColors', 'secondaryBase') !important;
+            z-index: 999;
+            position: relative;
+          }
+        }
+    
+        a {
+          color: theme-colors('textColors', 'accent') !important;
+          text-decoration: underline;
+          visibility: visible !important;
+          position: absolute;
+          bottom: 25px;
+          left: 25px;
+          right: 25px;
+          z-index: 999;
+        }
+      }
+    
+      ion-navbar {
+        [buy] {
+          .title-ios {
+            width: 90%;
+          }
+    
+          .button-ios {
+            height: 3rem !important;
+            position: absolute;
+            right: 5px;
+            top: 20px !important;
+          }
+    
+          ion-title {
+            width: 70%;
+          }
+    
+          [defoult-button] {
+            background: #21E7B6;
+            color: #fff;
+            position: absolute;
+            right: 5px;
+            top: 5px;
+          }
+        }
+      }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 // model import
@@ -30,10 +30,9 @@ export class HomePage {
     
   }
 
-  tester(){
-    this.navCtrl.push('ViewEventPage','wpI1Zae9qHlF9ZxSXtzn');
+  ionViewWillLoad() {
   }
 
-  ionViewWillLoad() {
+  ionViewDidLoad(){
   }
 }

@@ -14,5 +14,12 @@
 
 
 <ion-content padding>
-  <div>{{QRstr}}</div>
+  <div>
+    <ion-card>
+        <ngx-qrcode [qrc-value]="QRstr"></ngx-qrcode>
+        <ion-card-content>
+          <p></p>
+        </ion-card-content>
+      </ion-card>
+  </div>
 </ion-content>

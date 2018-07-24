@@ -25,9 +25,4 @@ export class QrCodePage {
   ionViewDidLoad() {
 
   }
-
-  generateQR(str){
-    
-  }
-
 }
