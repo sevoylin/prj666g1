@@ -15,7 +15,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   templateUrl: 'qr-scan.html',
 })
 export class QrScanPage {
-  code = null;
+  code = "papaya";
+  callback: any;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -40,4 +41,11 @@ export class QrScanPage {
     this.navCtrl.pop();
   }
 
+  ionViewWillEnter(){
+    this.callback = this.navParams.get("callback");
+  }
+
+  ionViewWillLeave() {
+    this.callback(this.code);
+}
 }
