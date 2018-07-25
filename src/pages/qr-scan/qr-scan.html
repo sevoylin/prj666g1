@@ -12,11 +12,7 @@
 
 </ion-header>
 
-
 <ion-content padding>
-  <ion-card *ngIf="code">
-    <ion-card-content>
-      Result from Scan: {{ code }}
-    </ion-card-content>
-  </ion-card>
+  <h6>Cannot Read QR Code<br></h6>
+  <button ion-button block outline (click)="scanQR()">Scan Again?</button>
 </ion-content>

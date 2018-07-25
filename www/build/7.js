@@ -100,43 +100,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the QrScanPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 var QrScanPage = /** @class */ (function () {
     function QrScanPage(navCtrl, navParams, barcodeScanner) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.barcodeScanner = barcodeScanner;
-        this.code = "papaya";
+        this.code = "";
     }
     QrScanPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad QrScanPage');
     };
     QrScanPage.prototype.scanCode = function () {
-        /*
-          this.barcodeScanner.scan().then(barcodeData => {
-            this.code = barcodeData.text;
-          }, (err) => {
-            console.log('Error: ', err);
-          });
-        */
-    };
-    QrScanPage.prototype.qrSucceed = function () {
-        this.navCtrl.pop();
+        var _this = this;
+        this.barcodeScanner.scan().then(function (barcodeData) {
+            _this.code = barcodeData.text;
+            _this.navCtrl.pop();
+        }, function (err) {
+            console.log("Cannot Read QR Code!");
+        });
     };
     QrScanPage.prototype.ionViewWillEnter = function () {
         this.callback = this.navParams.get("callback");
+    };
+    QrScanPage.prototype.ionViewDidEnter = function () {
+        this.scanCode();
     };
     QrScanPage.prototype.ionViewWillLeave = function () {
         this.callback(this.code);
     };
     QrScanPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-qr-scan',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-scan/qr-scan.html"*/'<!--\n  Generated template for the QrScanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scan the QR code</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-card *ngIf="code">\n    <ion-card-content>\n      Result from Scan: {{ code }}\n    </ion-card-content>\n  </ion-card>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-scan/qr-scan.html"*/,
+            selector: 'page-qr-scan',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-scan/qr-scan.html"*/'<!--\n  Generated template for the QrScanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scan the QR code</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  Cannot Read QR Code<br>\n  <button ion-button block outline (click)="scanQR()"> Scan Again?</button>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-scan/qr-scan.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]) === "function" && _c || Object])
     ], QrScanPage);
