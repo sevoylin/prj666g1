@@ -60,5 +60,9 @@ page-login {
     [default-button] {
       font-weight: 400 !important;
     }
+    //#db3236
+    [google-button] {
+      $action-sheet-ios-button-background: #db3236;
+    }
   }
 }

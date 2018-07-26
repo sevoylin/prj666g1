@@ -10,7 +10,22 @@ import * as firebase from 'firebase';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  data: any = { "toolbarTitle" : "Login", 
+                "forgotPassword" : "Forgot password?",
+                "other" : "A button",
+                "subtitle"       : "Welcome",
+                "labelEmail"     : "EMAIL",
+                "labelUsername"  : "USERNAME",
+                "labelPassword"  : "PASSWORD",
+                "title"          : "Login to your account",
+                "email"          : "Enter your email",
+                "username"       : "Enter your username",
+                "password"       : "Enter your password",
+                "register"       : "Register",
+                "login"          : "Login",
+                "logo"           : "assets/images/logo/2.png",
+                "errorUser"      : "Field can't be empty.",
+                "errorPassword"  : "Field can't be empty." };
   user = {} as User;
   password = "";
   err_msg = "";
