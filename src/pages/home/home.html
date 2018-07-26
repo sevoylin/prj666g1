@@ -1,22 +1,22 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon class="icon-menu" name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>{{data.toolbarTitle}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <div background-size default-background [ngStyle]="{'background-image': 'url(../../assets/images/splashscreen/3.jpg)'}">
+  <div *ngIf="data != null && data.background != null" background-size default-background [ngStyle]="{'background-image': 'url(' + data.background + ')'}">
     <div class="ionic-description" text-center>
-      <h2 item-title>PRJ666 Group 1</h2>
-      <h2 item-title>MeeTogether</h2>
-      <p item-subtitle>Dennis Arul</p>
-      <p item-subtitle>Jay Ansin</p>
-      <p item-subtitle>Shlok Purani</p>
-      <p item-subtitle>Yankai Tian (leader)</p>
+      <h2 item-title>{{data.title}}</h2>
+      <h2 item-title>{{data.subtitle}}</h2>
+      <p item-subtitle>{{data.subtitle2}}</p>
+      <p item-subtitle>{{data.subtitle3}}</p>
+      <p item-subtitle>{{data.subtitle4}}</p>
+      <p item-subtitle>{{data.subtitle5}}</p>
     </div>
-    <a href="https://zenit.senecac.on.ca/~prj666_182a01/" target="_blank">Group 1 Zenit</a>
+    <a [href]="data.link" target="_blank">{{data.description}}</a>
   </div>
 </ion-content>

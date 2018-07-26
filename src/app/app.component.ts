@@ -20,6 +20,8 @@ import firebase from 'firebase';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  isLogged: boolean = false;
+
   rootPage: any = LoginPage;
 
   pages: Array<{title: string, component: any, icon: string}>;
@@ -48,12 +50,14 @@ export class MyApp {
           { title: 'Logout', component: LogoutPage, icon: 'exit' }
           //{ title: 'Register', component: RegisterPage}
         ];
+        this.isLogged = true;
       }
       else {
         this.pages = [
           { title: 'Home', component: HomePage, icon: 'home' },
           { title: 'Login', component: LoginPage, icon: 'log-in' }
         ];
+        this.isLogged = false;
       }
     })
     /*
@@ -81,5 +85,14 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  appSettings() {
+  }
+
+  login() {
+  }
+
+  logout() {
   }
 }

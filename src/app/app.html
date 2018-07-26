@@ -9,7 +9,9 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         <ion-icon ios="ios-{{p.icon}}" md="md-{{p.icon}}"></ion-icon>{{p.title}}
       </button>
-      <button ion-button clear ><ion-icon name="cog">Settings</ion-icon></button>
+      <button ion-button clear><ion-icon name="cog"  (click)="appSettings()">Settings</ion-icon></button>
+      <button ion-button clear *ngIf = "isLogged == true" (click)="logout()"><ion-icon name="exit">Logout</ion-icon></button>
+      <button ion-button clear *ngIf = "isLogged == false" (click)="login()"><ion-icon name="exit">Login</ion-icon></button>
     </ion-list>
   </ion-content>
 

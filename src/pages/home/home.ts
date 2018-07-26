@@ -11,7 +11,16 @@ import { User } from '../../models/user';
   templateUrl: 'home.html',
 })
 export class HomePage {
-
+  data: any = { "toolbarTitle": "Home",
+                "title": "MeeTogether",
+                "subtitle": "PRJ666 Group 1",
+                "subtitle2": "Dennis Arul",
+                "subtitle3": "Jay Ansin",
+                "subtitle4": "Shlok Purani",
+                "subtitle5": "Yankai Tian (leader)",
+                "link":"https://zenit.senecac.on.ca/~prj666_182a01/",
+                "description": "Link to zenit",
+                "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
   user = {} as User;
   home_msg = "";
 
