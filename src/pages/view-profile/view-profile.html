@@ -1,21 +1,21 @@
-<ion-header>
-
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>View Profile</ion-title>
-  </ion-navbar>
-
-</ion-header>
+<ion-header header-ios>
+    <ion-navbar transparent>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <!--<ion-title>{{data.toolbarTitle}}</ion-title>-->
+    </ion-navbar>
+  </ion-header>
 
 
-<ion-content padding>
-  <ion-avatar block>
-    <img class="circle-pic" 
-    src="https://firebasestorage.googleapis.com/v0/b/meetogether-prj666g1.appspot.com/o/avatar%2Fdefault_avatar.png?alt=media&token=c0c88e7e-71cd-4de5-aa78-27573c8f3f2a" />
-  </ion-avatar>
-  {{user.avatar}}
+<ion-content  elastic-header>
+  <div padding background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + data.background + ')'}">
+    <ion-thumbnail *ngIf="user != null">
+      <img [src]="user.avatar" />
+    </ion-thumbnail>
+    <h2 text-center parallax-title *ngIf="user != null">{{user.username}}</h2>
+    <h3 text-center parallax-subtitle *ngIf="user != null">{{user.firstName}} {{user.lastName}}</h3>
+  </div>
 
   <ion-item>
     <ion-icon ios="ios-mail" md="md-mail"></ion-icon>

@@ -37843,3 +37843,133 @@ page-view-event-participants ion-badge {
   right: 0;
   bottom: 0;
 }
+
+@keyframes headerOff {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+page-view-profile ion-navbar {
+  background-color: transparent;
+  -webkit-animation-name: headerOff;
+  animation-name: headerOff;
+  -webkit-animation-duration: 100ms;
+  animation-duration: 100ms;
+}
+
+@keyframes headerOn {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+page-view-profile .active {
+  background-color: white !important;
+  -webkit-animation-name: headerOn;
+  animation-name: headerOn;
+  -webkit-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@-webkit-keyframes color-change {
+  0% {
+    color: white;
+  }
+  100% {
+    color: #21e7b6 !important;
+  }
+}
+
+page-view-profile .toolbar-ios {
+  min-height: 64px;
+}
+
+page-view-profile .bar-button-default-ios,
+page-view-profile .toolbar-title-ios {
+  padding-top: 20px;
+}
+
+page-view-profile .content-ios .scroll-content {
+  top: -64px !important;
+}
+
+page-view-profile .active .back-button,
+page-view-profile .active .toolbar-title {
+  color: #21e7b6 !important;
+  -webkit-animation-name: color-change;
+  animation-name: color-change;
+  -webkit-animation-duration: 400ms;
+  animation-duration: 400ms;
+}
+
+page-view-profile .back-button,
+page-view-profile .toolbar-title {
+  color: white !important;
+}
+
+page-view-profile .scroll-content {
+  top: -56px;
+}
+
+page-view-profile [background-size] {
+  background-color: #00ff36 !important;
+  background-blend-mode: multiply;
+  height: 300px;
+  position: relative;
+}
+
+page-view-profile [background-size]::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00ff36;
+  mix-blend-mode: multiply;
+}
+
+page-view-profile [background-size]::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #23278a;
+  mix-blend-mode: lighten;
+}
+
+page-view-profile [background-size] [parallax-title] {
+  color: white;
+  z-index: 99999;
+  position: relative;
+}
+
+page-view-profile [background-size] [parallax-subtitle] {
+  color: white;
+  z-index: 99999;
+  position: relative;
+}
+
+page-view-profile [background-size] ion-thumbnail {
+  opacity: 1 !important;
+  z-index: 99999;
+  position: relative;
+}
+
+page-view-profile [background-size] ion-thumbnail img {
+  border-radius: 50% !important;
+  height: 92px;
+  width: 92px;
+  margin: 50px auto 0;
+}

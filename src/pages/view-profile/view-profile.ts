@@ -11,6 +11,10 @@ import * as firebase from 'firebase';
 })
 export class ViewProfilePage {
 
+  data: any = { "toolbarTitle"   : "View Profile", 
+                "title" : "",
+                "subtitle" : "",
+                "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
   user = {} as User;
 
   constructor(public navCtrl: NavController,
@@ -23,6 +27,7 @@ export class ViewProfilePage {
       var doc = firebase.firestore().collection('Users').doc(this.user.uid);
       doc.get().then((doc) => {
         if (doc.exists){
+          this.user.avatar = doc.data().avatar;
           this.user.email = doc.data().email;
           this.user.username = doc.data().username;
           this.user.firstName = doc.data().firstName;
