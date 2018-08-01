@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../models/user';
 
 import * as firebase from 'firebase';
@@ -11,14 +12,19 @@ import * as firebase from 'firebase';
 })
 export class ProfilePage {
 
+  data: any = { "toolbarTitle"   : "Profile", 
+                "title" : "",
+                "subtitle" : "",
+                "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
   user = {} as User;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              private afAuth: AngularFireAuth,
               private toast: ToastController) {
     
-    this.user.uid = firebase.auth().currentUser.uid;
-    this.user.email = firebase.auth().currentUser.email;
+    this.user.uid = afAuth.auth.currentUser.uid;
+    this.user.email = afAuth.auth.currentUser.email;
 
     /* empty info */
     this.user.username = ""
@@ -43,6 +49,7 @@ export class ProfilePage {
         this.user.username = doc.data().username;
         this.user.firstName = doc.data().firstName;
         this.user.lastName = doc.data().lastName;
+        this.user.avatar = doc.data().avatar;
       }
     });
   }

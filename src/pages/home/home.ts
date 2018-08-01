@@ -11,7 +11,13 @@ import { User } from '../../models/user';
   templateUrl: 'home.html',
 })
 export class HomePage {
-
+  data: any = { "toolbarTitle": "Home",
+                "title": "MeeTogether",
+                "subtitle": "- Group 1 -",
+                "subtitle2": "Something something dark side",
+                "link":"https://zenit.senecac.on.ca/~prj666_182a01/",
+                "description": "Link to zenit",
+                "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
   user = {} as User;
   home_msg = "";
 
