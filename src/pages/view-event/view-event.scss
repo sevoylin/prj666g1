@@ -1,5 +1,49 @@
 page-view-event {
-   #map {
-        height: 50%;
-   }
-}
+    @include settingAnimationHeader;
+    @-webkit-keyframes color-change {
+      0% {
+        color: theme-colors('mainColors', 'primary');
+      }
+  
+      100% {
+        color: theme-colors('textColors', 'accent') !important;
+      }
+    }
+  
+  
+     #map {
+          height: 50%;
+          width: 100%;
+     }
+     .toolbar-ios {
+      min-height: 64px;
+    }
+  
+    .bar-button-default-ios,
+    .toolbar-title-ios {
+      padding-top: 20px;
+    }
+    .sebm-google-map-container {
+      height: 350px;
+    }
+  
+    .item-inner {
+      margin-left: 0 !important;
+    }
+  
+    [maps-title] {
+        font-weight: bold !important;
+    }
+  
+    [span-small] {
+      margin-top: 6px;
+      display: block;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+  
+    .icon-star::before {
+      margin: 0 !important;
+    }
+  }
+  

@@ -1,5 +1,5 @@
 import { Component,ElementRef,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Platform, ActionSheetController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, CameraPosition, GoogleMapOptions, Marker, Circle, MarkerOptions, LatLng} from '@ionic-native/google-maps';
@@ -15,6 +15,9 @@ declare var google: any;
   templateUrl: 'view-event.html',
 })
 export class ViewEventPage {
+  data: any = { "toolbarTitle" : "View Event",
+                "participants" : 0,
+                "description" : "Description", };
   user = {} as User;
   event = {} as Event;
   eventRef: any;
@@ -24,13 +27,17 @@ export class ViewEventPage {
   othersMarker = [];
   isAdmin = false as boolean;
   viewOnly = true as boolean;
+
+  creator = "";
+  locStr = "";
  
   @ViewChild('map') mapElement:ElementRef;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public afAuth: AngularFireAuth,
-              public platform:Platform) {
+              public platform:Platform,
+              public actionSheetCtrl: ActionSheetController) {
     this.user.uid = afAuth.auth.currentUser.uid;
     this.event.eventId = navParams.get('eventId').toString();
     this.viewOnly = navParams.get('viewOnly');
@@ -47,9 +54,10 @@ export class ViewEventPage {
     this.event.dateCreated = new Date();
     this.event.isPrivate = false;
     this.event.location = null;
-    this.event.participants = null;
+    this.event.participants = [];
     this.event.password = "";
     this.event.radius = 0;
+
   }
 
   loadEvent(eventId){
@@ -60,6 +68,9 @@ export class ViewEventPage {
         this.event.description = doc.data().description;
         this.event.date = doc.data().date;
         this.event.creator = doc.data().creator;
+        this.event.creator = doc.data().creator.get().then(doc=>{
+          this.creator = doc.data().firstName + " " + doc.data().lastName;
+        })
         this.event.admins = doc.data().admins;
         this.event.blockedUsers = doc.data().blockedUsers;
         this.event.dateCreated = doc.data().dateCreated;
@@ -67,6 +78,7 @@ export class ViewEventPage {
         this.event.chat = doc.data().chat;
         this.event.radius = doc.data().radius;
         this.event.location = doc.data().location;
+        this.locStr = this.event.location.latitude + ", " + this.event.location.longitude;
         var userRef = firebase.firestore().collection('Users').doc(this.user.uid);
         this.event.admins.forEach( (adminRef) => {
           if (adminRef.isEqual(userRef)) this.isAdmin = true;
@@ -210,5 +222,55 @@ export class ViewEventPage {
   
   private deg2rad(deg) {
     return deg * (Math.PI/180);
+  }
+  
+  //
+  presentActionSheet(user, event) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: '',
+      buttons: [
+        {
+          // if user is in event.admin?
+          text: 'Edit Event',
+          handler: () => {
+            this.editEventBtn();
+          }
+        },
+        {
+          text: 'Event Settings',
+          handler: () => {
+            //
+          }
+        },
+        {
+          text: 'Group Chat',
+          handler: () => {
+            this.groupChatBtn();
+          }
+        },
+        {
+          text: 'View Participants',
+          handler: () => {
+            this.viewParticipants();
+          }
+        },
+        {
+          text: 'Leave Event',
+          role: 'destructive',
+          handler: () => {
+            this.leaveEventBtn();
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            //
+          }
+        }
+      ]
+    });
+ 
+    actionSheet.present();
   }
 }

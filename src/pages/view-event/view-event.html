@@ -1,38 +1,85 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>View Event</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <ion-list>
-    <ion-item>
-      <h6>Event Name</h6>
-      {{event.eventName}}
-    </ion-item>
-
-    <ion-item>
-      <h6>Description</h6>
-      {{event.description}}
-    </ion-item>
-
-    <ion-item>
-      <h6>Date</h6>
-      {{event.date | date:'yyyy MMM dd H:mm'}}
-    </ion-item>
-  </ion-list>
-  <div #map id="map"></div>
-
-  <!-- Buttons -->
-  <div *ngIf="!viewOnly">
-    <button ion-button clear block (click)="groupChatBtn()">Group Message</button>
-
-    <button ion-button clear block (click)="viewParticipants()">Participants</button>
-
-    <button ion-button block *ngIf="isAdmin" (click)="editEventBtn()">Edit Event</button>
-    <button ion-button block (click)="leaveEventBtn()">Leave Event</button>
-  </div>
-</ion-content>
+    <ion-navbar transparent>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <!--<ion-title *ngIf="data != null">{{data.headerTitle}}</ion-title>-->
+      <ion-title *ngIf="data != null">{{event.eventName}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <!--Content -->
+  <ion-content elastic-header>
+    <div #map id="map"></div>
+    <ion-grid no-padding *ngIf="data != null">
+      <ion-row>
+        <ion-col col-12 map-header>
+          <ion-item lines no-padding>
+            <!--Event Title/Name-->
+            <ion-item-divider border no-lines>
+              <h1 no-padding padding-left maps-title margin-top text-wrap>{{event.eventName}}</h1>
+              <!--<ion-icon no-padding item-end (click)="presentActionSheet()" icon-medium ios="ios-more" md="md-more"></ion-icon>-->
+              <button *ngIf="!viewOnly" padding-top text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(user, event)"><ion-icon name="more"></ion-icon></button>
+            </ion-item-divider>
+            <!--Event Info-->
+            <div padding-left padding-top>
+                <h2 ion-text float-left color="primary"> Participants: {{event.participants.length}}</h2><!--{{event.participants.length}}-->
+                <!--<ion-icon no-padding no-margin no-border icon-small ios="ios-people" md="md-people" (click)="viewParticipants()" item-start></ion-icon>-->
+            </div>
+          </ion-item>
+        </ion-col>
+  
+        <ion-col col-12 map-content transparent>
+          <ion-item-group>
+            <ion-item-divider no-lines>
+              <h2 maps-description-title text-wrap margin-bottom>{{data.description}}</h2>
+              <p maps-description text-wrap>{{event.description}}</p>
+            </ion-item-divider>
+            <!--Info Location-->
+            <ion-item border>
+              <ion-icon icon-medium ion-text color="primary" ios="ios-locate" md="md-locate" item-start></ion-icon>
+              <h2 no-padding>{{locStr}}</h2>
+            </ion-item>
+            <!--Info Time-->
+            <ion-item border>
+              <ion-icon icon-medium color="primary" ios="ios-timer" md="md-timer" item-start></ion-icon>
+              <h2 no-padding>{{event.date | date:'yyyy MMM dd H:mm'}}</h2>
+            </ion-item>
+            <!--Info Creator-->
+            <ion-item border>
+              <ion-icon icon-medium color="primary" ios="ios-person" md="md-person" item-start></ion-icon>
+              <h2 no-padding>Created by {{creator}}</h2>
+            </ion-item>
+            <!--Info Chat-->
+            <ion-item border>
+              <button button-clear clear ion-button (click)="groupChatBtn()" no-padding>
+                <ion-icon icon-medium color="primary" ios="ios-chatbubbles" md="md-chatbubbles" item-start></ion-icon>
+                <h2 no-padding>Group Chat</h2>
+              </button>
+            </ion-item>
+            <!--Info Participants-->
+            <ion-item border>
+              <button button-clear clear ion-button (click)="viewParticipants()" no-padding>
+                <ion-icon icon-medium color="primary" ios="ios-people" md="md-people" item-start></ion-icon>
+                <h2 no-padding>View Participants</h2>
+              </button>
+            </ion-item>
+            <!--Edit Event-->
+            <ion-item border>
+              <button button-clear color="danger" clear ion-button (click)="editEventBtn()" no-padding>
+                  <ion-icon icon-medium color="primary" ios="ios-settings" md="md-settings" item-start></ion-icon>
+                  <h2 no-padding>Edit Event</h2>
+                </button>
+              </ion-item>
+            <!--Leave Event-->
+            <ion-item border>
+              <button button-clear color="danger" clear ion-button (click)="leaveEventBtn()" no-padding>
+                <ion-icon icon-medium color="primary" ios="ios-exit" md="md-exit" item-start></ion-icon>
+                <h2 no-padding>Leave Event</h2>
+              </button>
+            </ion-item>
+          </ion-item-group>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>

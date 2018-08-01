@@ -37513,8 +37513,104 @@ page-register ion-row [register-title] {
   z-index: 999;
 }
 
+@-webkit-keyframes headerOff {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes headerOff {
+  from {
+    background-color: white;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+page-view-event ion-navbar {
+  background-color: transparent;
+  -webkit-animation-name: headerOff;
+  animation-name: headerOff;
+  -webkit-animation-duration: 100ms;
+  animation-duration: 100ms;
+}
+
+@-webkit-keyframes headerOn {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+@keyframes headerOn {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+page-view-event .active {
+  background-color: white !important;
+  -webkit-animation-name: headerOn;
+  animation-name: headerOn;
+  -webkit-animation-duration: 400ms;
+  animation-duration: 400ms;
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+@-webkit-keyframes color-change {
+  0% {
+    color: white;
+  }
+  100% {
+    color: #21e7b6 !important;
+  }
+}
+
 page-view-event #map {
   height: 50%;
+  width: 100%;
+}
+
+page-view-event .toolbar-ios {
+  min-height: 64px;
+}
+
+page-view-event .bar-button-default-ios,
+page-view-event .toolbar-title-ios {
+  padding-top: 20px;
+}
+
+page-view-event .sebm-google-map-container {
+  height: 350px;
+}
+
+page-view-event .item-inner {
+  margin-left: 0 !important;
+}
+
+page-view-event [maps-title] {
+  font-weight: bold !important;
+}
+
+page-view-event [span-small] {
+  margin-top: 6px;
+  display: block;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+page-view-event .icon-star::before {
+  margin: 0 !important;
 }
 
 page-view-event-participants [images-filter] {

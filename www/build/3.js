@@ -589,16 +589,18 @@ var EditEventPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], EditEventPage.prototype, "mapElement", void 0);
     EditEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-edit-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/edit-event/edit-event.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit Event</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <ion-label floating>Event Title</ion-label>\n      <ion-input type="text" [(ngModel)]="event.eventName"></ion-input>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label floating>Event Date</ion-label>\n      <ion-datetime displayFormat="MM/DD/YYYY H:mm" [(ngModel)]="event.date"></ion-datetime>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label floating>Description</ion-label>\n      <ion-textarea type="text" [(ngModel)]="event.description"></ion-textarea>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label>Private Event</ion-label>\n      <ion-toggle [(ngModel)]="event.isPrivate"></ion-toggle>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label>Set Password</ion-label>\n      <ion-toggle [(ngModel)]="hasPassword"></ion-toggle>\n    </ion-item>\n    <ion-item *ngIf="hasPassword">\n      <ion-input [(ngModel)]="event.password" type="password" placeholder="enter password" ></ion-input>\n    </ion-item>\n    \n    <ion-item>\n      <ion-label>Set Range</ion-label>\n      <ion-toggle [(ngModel)]="hasRadius" (ngModelChange)="setCircle()"></ion-toggle>\n    </ion-item>\n    <ion-item *ngIf="hasRadius">\n      <ion-input [(ngModel)]="event.radius" type="number" placeholder="range in meter" (ngModelChange)="setCircle()">0</ion-input>\n    </ion-item>\n  </ion-list>\n  <div #map id="map"></div>\n  <button ion-button block (click)="saveBtn()">Save</button>\n  <button ion-button block (click)="endBtn()">Eliminate</button>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/edit-event/edit-event.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
     ], EditEventPage);
     return EditEventPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=edit-event.js.map
@@ -758,11 +760,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ViewEventPage = /** @class */ (function () {
-    function ViewEventPage(navCtrl, navParams, afAuth, platform) {
+    function ViewEventPage(navCtrl, navParams, afAuth, platform, actionSheetCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afAuth = afAuth;
         this.platform = platform;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.data = { "toolbarTitle": "View Event",
+            "participants": 0,
+            "description": "Description", };
         this.user = {};
         this.event = {};
         this.marker = {};
@@ -770,6 +776,8 @@ var ViewEventPage = /** @class */ (function () {
         this.othersMarker = [];
         this.isAdmin = false;
         this.viewOnly = true;
+        this.creator = "";
+        this.locStr = "";
         this.user.uid = afAuth.auth.currentUser.uid;
         this.event.eventId = navParams.get('eventId').toString();
         this.viewOnly = navParams.get('viewOnly');
@@ -785,7 +793,7 @@ var ViewEventPage = /** @class */ (function () {
         this.event.dateCreated = new Date();
         this.event.isPrivate = false;
         this.event.location = null;
-        this.event.participants = null;
+        this.event.participants = [];
         this.event.password = "";
         this.event.radius = 0;
     };
@@ -798,6 +806,9 @@ var ViewEventPage = /** @class */ (function () {
                 _this.event.description = doc.data().description;
                 _this.event.date = doc.data().date;
                 _this.event.creator = doc.data().creator;
+                _this.event.creator = doc.data().creator.get().then(function (doc) {
+                    _this.creator = doc.data().firstName + " " + doc.data().lastName;
+                });
                 _this.event.admins = doc.data().admins;
                 _this.event.blockedUsers = doc.data().blockedUsers;
                 _this.event.dateCreated = doc.data().dateCreated;
@@ -805,6 +816,7 @@ var ViewEventPage = /** @class */ (function () {
                 _this.event.chat = doc.data().chat;
                 _this.event.radius = doc.data().radius;
                 _this.event.location = doc.data().location;
+                _this.locStr = _this.event.location.latitude + ", " + _this.event.location.longitude;
                 var userRef = __WEBPACK_IMPORTED_MODULE_4_firebase__["firestore"]().collection('Users').doc(_this.user.uid);
                 _this.event.admins.forEach(function (adminRef) {
                     if (adminRef.isEqual(userRef))
@@ -931,18 +943,70 @@ var ViewEventPage = /** @class */ (function () {
     ViewEventPage.prototype.deg2rad = function (deg) {
         return deg * (Math.PI / 180);
     };
+    //
+    ViewEventPage.prototype.presentActionSheet = function (user, event) {
+        var _this = this;
+        var actionSheet = this.actionSheetCtrl.create({
+            title: '',
+            buttons: [
+                {
+                    // if user is in event.admin?
+                    text: 'Edit Event',
+                    handler: function () {
+                        _this.editEventBtn();
+                    }
+                },
+                {
+                    text: 'Event Settings',
+                    handler: function () {
+                        //
+                    }
+                },
+                {
+                    text: 'Group Chat',
+                    handler: function () {
+                        _this.groupChatBtn();
+                    }
+                },
+                {
+                    text: 'View Participants',
+                    handler: function () {
+                        _this.viewParticipants();
+                    }
+                },
+                {
+                    text: 'Leave Event',
+                    role: 'destructive',
+                    handler: function () {
+                        _this.leaveEventBtn();
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () {
+                        //
+                    }
+                }
+            ]
+        });
+        actionSheet.present();
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('map'),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
     ], ViewEventPage.prototype, "mapElement", void 0);
     ViewEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-view-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event/view-event.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>View Event</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <h6>Event Name</h6>\n      {{event.eventName}}\n    </ion-item>\n\n    <ion-item>\n      <h6>Description</h6>\n      {{event.description}}\n    </ion-item>\n\n    <ion-item>\n      <h6>Date</h6>\n      {{event.date | date:\'yyyy MMM dd H:mm\'}}\n    </ion-item>\n  </ion-list>\n  <div #map id="map"></div>\n\n  <!-- Buttons -->\n  <div *ngIf="!viewOnly">\n    <button ion-button clear block (click)="groupChatBtn()">Group Message</button>\n\n    <button ion-button clear block (click)="viewParticipants()">Participants</button>\n\n    <button ion-button block *ngIf="isAdmin" (click)="editEventBtn()">Edit Event</button>\n    <button ion-button block (click)="leaveEventBtn()">Leave Event</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event/view-event.html"*/,
+            selector: 'page-view-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event/view-event.html"*/'<ion-header>\n    <ion-navbar transparent>\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <!--<ion-title *ngIf="data != null">{{data.headerTitle}}</ion-title>-->\n      <ion-title *ngIf="data != null">{{event.eventName}}</ion-title>\n    </ion-navbar>\n  </ion-header>\n  \n  <!--Content -->\n  <ion-content elastic-header>\n    <div #map id="map"></div>\n    <ion-grid no-padding *ngIf="data != null">\n      <ion-row>\n        <ion-col col-12 map-header>\n          <ion-item lines no-padding>\n            <!--Event Title/Name-->\n            <ion-item-divider border no-lines>\n              <h1 no-padding padding-left maps-title margin-top text-wrap>{{event.eventName}}</h1>\n              <!--<ion-icon no-padding item-end (click)="presentActionSheet()" icon-medium ios="ios-more" md="md-more"></ion-icon>-->\n              <button *ngIf="!viewOnly" padding-top text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(user, event)"><ion-icon name="more"></ion-icon></button>\n            </ion-item-divider>\n            <!--Event Info-->\n            <div padding-left padding-top>\n                <h2 ion-text float-left color="primary"> Participants: {{event.participants.length}}</h2><!--{{event.participants.length}}-->\n                <!--<ion-icon no-padding no-margin no-border icon-small ios="ios-people" md="md-people" (click)="viewParticipants()" item-start></ion-icon>-->\n            </div>\n          </ion-item>\n        </ion-col>\n  \n        <ion-col col-12 map-content transparent>\n          <ion-item-group>\n            <ion-item-divider no-lines>\n              <h2 maps-description-title text-wrap margin-bottom>{{data.description}}</h2>\n              <p maps-description text-wrap>{{event.description}}</p>\n            </ion-item-divider>\n            <!--Info Location-->\n            <ion-item border>\n              <ion-icon icon-medium ion-text color="primary" ios="ios-locate" md="md-locate" item-start></ion-icon>\n              <h2 no-padding>{{locStr}}</h2>\n            </ion-item>\n            <!--Info Time-->\n            <ion-item border>\n              <ion-icon icon-medium color="primary" ios="ios-timer" md="md-timer" item-start></ion-icon>\n              <h2 no-padding>{{event.date | date:\'yyyy MMM dd H:mm\'}}</h2>\n            </ion-item>\n            <!--Info Creator-->\n            <ion-item border>\n              <ion-icon icon-medium color="primary" ios="ios-person" md="md-person" item-start></ion-icon>\n              <h2 no-padding>Created by {{creator}}</h2>\n            </ion-item>\n            <!--Info Chat-->\n            <ion-item border>\n              <button button-clear clear ion-button (click)="groupChatBtn()" no-padding>\n                <ion-icon icon-medium color="primary" ios="ios-chatbubbles" md="md-chatbubbles" item-start></ion-icon>\n                <h2 no-padding>Group Chat</h2>\n              </button>\n            </ion-item>\n            <!--Info Participants-->\n            <ion-item border>\n              <button button-clear clear ion-button (click)="viewParticipants()" no-padding>\n                <ion-icon icon-medium color="primary" ios="ios-people" md="md-people" item-start></ion-icon>\n                <h2 no-padding>View Participants</h2>\n              </button>\n            </ion-item>\n            <!--Edit Event-->\n            <ion-item border>\n              <button button-clear color="danger" clear ion-button (click)="editEventBtn()" no-padding>\n                  <ion-icon icon-medium color="primary" ios="ios-exit" md="md-exit" item-start></ion-icon>\n                  <h2 no-padding>Edit Event</h2>\n                </button>\n              </ion-item>\n            <!--Leave Event-->\n            <ion-item border>\n              <button button-clear color="danger" clear ion-button (click)="leaveEventBtn()" no-padding>\n                <ion-icon icon-medium color="primary" ios="ios-exit" md="md-exit" item-start></ion-icon>\n                <h2 no-padding>Leave Event</h2>\n              </button>\n            </ion-item>\n          </ion-item-group>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-content>'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event/view-event.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]])
     ], ViewEventPage);
     return ViewEventPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=view-event.js.map
