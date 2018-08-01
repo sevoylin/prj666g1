@@ -20,6 +20,10 @@
       <ion-label floating>Enter the email</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-label floating>Enter the message:</ion-label>
+      <ion-input type="text" [(ngModel)]="msg"></ion-input>
+    </ion-item>
   </ion-list>
   <span (click)="scanQR()">OR Scan their QR Code</span>
   <button ion-button (click)="submitEmail()">Submit</button>

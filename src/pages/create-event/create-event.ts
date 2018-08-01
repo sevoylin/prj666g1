@@ -35,6 +35,7 @@ export class CreateEventPage {
     this.user.uid = afAuth.auth.currentUser.uid;
     this.event.isPrivate = false;
     this.event.date = new Date();
+    this.event.description = " ";
     platform.ready().then(() => {
       this.initMap();
     });

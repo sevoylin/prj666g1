@@ -1,14 +1,14 @@
-webpackJsonp([6,11],{
+webpackJsonp([6,9],{
 
-/***/ 738:
+/***/ 739:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QrScanPageModule", function() { return QrScanPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewProfilePageModule", function() { return ViewProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__qr_scan__ = __webpack_require__(758);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_profile__ = __webpack_require__(760);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-//import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-var QrScanPageModule = /** @class */ (function () {
-    function QrScanPageModule() {
+var ViewProfilePageModule = /** @class */ (function () {
+    function ViewProfilePageModule() {
     }
-    QrScanPageModule = __decorate([
+    ViewProfilePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__qr_scan__["a" /* QrScanPage */],
+                __WEBPACK_IMPORTED_MODULE_2__view_profile__["a" /* ViewProfilePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__qr_scan__["a" /* QrScanPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__view_profile__["a" /* ViewProfilePage */]),
             ],
         })
-    ], QrScanPageModule);
-    return QrScanPageModule;
+    ], ViewProfilePageModule);
+    return ViewProfilePageModule;
 }());
 
-//# sourceMappingURL=qr-scan.module.js.map
+//# sourceMappingURL=view-profile.module.js.map
 
 /***/ }),
 
-/***/ 744:
+/***/ 742:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JoinEventPageModule", function() { return JoinEventPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewEventParticipantsPageModule", function() { return ViewEventParticipantsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__qr_scan_qr_scan_module__ = __webpack_require__(738);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__join_event__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_event_participants__ = __webpack_require__(765);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__view_profile_view_profile_module__ = __webpack_require__(739);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,97 +58,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var JoinEventPageModule = /** @class */ (function () {
-    function JoinEventPageModule() {
+var ViewEventParticipantsPageModule = /** @class */ (function () {
+    function ViewEventParticipantsPageModule() {
     }
-    JoinEventPageModule = __decorate([
+    ViewEventParticipantsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__join_event__["a" /* JoinEventPage */],
+                __WEBPACK_IMPORTED_MODULE_2__view_event_participants__["a" /* ViewEventParticipantsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__join_event__["a" /* JoinEventPage */]),
-                __WEBPACK_IMPORTED_MODULE_2__qr_scan_qr_scan_module__["QrScanPageModule"],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__view_event_participants__["a" /* ViewEventParticipantsPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__view_profile_view_profile_module__["ViewProfilePageModule"]
             ],
         })
-    ], JoinEventPageModule);
-    return JoinEventPageModule;
+    ], ViewEventParticipantsPageModule);
+    return ViewEventParticipantsPageModule;
 }());
 
-//# sourceMappingURL=join-event.module.js.map
+//# sourceMappingURL=view-event-participants.module.js.map
 
 /***/ }),
 
-/***/ 758:
+/***/ 760:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QrScanPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(379);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var QrScanPage = /** @class */ (function () {
-    function QrScanPage(navCtrl, navParams, barcodeScanner) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.barcodeScanner = barcodeScanner;
-        this.code = "";
-    }
-    QrScanPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad QrScanPage');
-    };
-    QrScanPage.prototype.scanCode = function () {
-        var _this = this;
-        this.barcodeScanner.scan().then(function (barcodeData) {
-            _this.code = barcodeData.text;
-            _this.navCtrl.pop();
-        }, function (err) {
-            console.log("Cannot Read QR Code!");
-        });
-    };
-    QrScanPage.prototype.ionViewWillEnter = function () {
-        this.callback = this.navParams.get("callback");
-    };
-    QrScanPage.prototype.ionViewDidEnter = function () {
-        this.scanCode();
-    };
-    QrScanPage.prototype.ionViewWillLeave = function () {
-        this.callback(this.code);
-    };
-    QrScanPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-qr-scan',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-scan/qr-scan.html"*/'<!--\n  Generated template for the QrScanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scan the QR code</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  Cannot Read QR Code<br>\n  <button ion-button block outline (click)="scanQR()"> Scan Again?</button>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-scan/qr-scan.html"*/,
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]) === "function" && _c || Object])
-    ], QrScanPage);
-    return QrScanPage;
-    var _a, _b, _c;
-}());
-
-//# sourceMappingURL=qr-scan.js.map
-
-/***/ }),
-
-/***/ 770:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return JoinEventPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -163,93 +100,168 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var JoinEventPage = /** @class */ (function () {
-    function JoinEventPage(navCtrl, navParams, toastCtrl) {
+var ViewProfilePage = /** @class */ (function () {
+    function ViewProfilePage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.toastCtrl = toastCtrl;
         this.user = {};
-        this.event = {};
-        this.targetId = "";
-        this.hasPasswd = false;
-        this.needScan = true;
-        this.user.uid = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().currentUser.uid;
+        this.user.uid = navParams.data;
     }
-    JoinEventPage.prototype.scanQR = function () {
+    ViewProfilePage.prototype.fillUserInfo = function () {
         var _this = this;
-        var cbFunction = function (params) {
-            return new Promise(function (resolve, reject) {
-                _this.targetId = params;
-                _this.needScan = false;
-                resolve();
+        if (undefined != this.user.uid) {
+            var doc = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
+            doc.get().then(function (doc) {
+                if (doc.exists) {
+                    _this.user.email = doc.data().email;
+                    _this.user.username = doc.data().username;
+                    _this.user.firstName = doc.data().firstName;
+                    _this.user.lastName = doc.data().lastName;
+                }
             });
-        };
-        this.navCtrl.push('QrScanPage', { callback: cbFunction });
-    };
-    JoinEventPage.prototype.joinBtn = function () {
-        if (this.verifyPwd())
-            this.joinEvent(this.targetId);
-        else
-            this.toastCtrl.create({
-                message: "Incorrect Password",
-                duration: 3000,
-                position: "bottom"
-            }).present();
-    };
-    JoinEventPage.prototype.verifyPwd = function () {
-        if (this.hasPasswd) {
-            // verify password
-            return false;
         }
-        return true;
     };
-    JoinEventPage.prototype.joinEvent = function (eventId) {
-        var _this = this;
-        var userRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
-        var eventRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Event').doc(eventId);
-        eventRef.get().then(function (data) {
-            var isBlocked = data.data().blockedUsers.find(function (bu) { return bu.isEqual(userRef); });
-            if (undefined == isBlocked) {
-                var userDoc = userRef.get().then(function (data) {
-                    _this.user.eventList = data.data().eventList;
-                    _this.user.eventList.push(eventRef);
-                    userRef.update('eventList', _this.user.eventList);
-                });
-                var eventDoc = eventRef.get().then(function (da) {
-                    _this.event.participants = da.data().participants;
-                    _this.event.participants.push(userRef);
-                    eventRef.update('participants', _this.event.participants);
-                });
-            }
-            else {
-                _this.toastCtrl.create({
-                    message: "Cannot join this event",
-                    duration: 3000,
-                    position: "bottom"
-                }).present();
-            }
-        });
+    ViewProfilePage.prototype.ionViewDidLoad = function () {
+        this.fillUserInfo();
     };
-    JoinEventPage.prototype.ionViewDidLoad = function () {
-        this.targetId = this.navParams.get('fromQR');
-        if (undefined == this.targetId)
-            this.targetId = "";
-        else
-            this.needScan = false;
-        console.log(this.targetId);
-    };
-    JoinEventPage = __decorate([
+    ViewProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-join-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/join-event/join-event.html"*/'<!--\n  Generated template for the JoinEventPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Join Event</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <button *ngIf="needScan" ion-button full outline (click)="scanQR()">ScanQR</button>\n  </ion-item>\n  <ion-item *ngIf="!needScan">\n    {{targetId}}\n  </ion-item>\n  <ion-item *ngIf="hasPasswd">\n    <ion-label color="primary">Password</ion-label>\n    <ion-input [(ngModel)]="eventPwd"></ion-input>\n  </ion-item>\n  <button *ngIf="!needScan" ion-button block (click)="joinBtn()">Join</button>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/join-event/join-event.html"*/,
+            selector: 'page-view-profile',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-profile/view-profile.html"*/'<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>View Profile</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-avatar block>\n    <img class="circle-pic" \n    src="https://firebasestorage.googleapis.com/v0/b/meetogether-prj666g1.appspot.com/o/avatar%2Fdefault_avatar.png?alt=media&token=c0c88e7e-71cd-4de5-aa78-27573c8f3f2a" />\n  </ion-avatar>\n  {{user.avatar}}\n\n  <ion-item>\n    <ion-icon ios="ios-mail" md="md-mail"></ion-icon>\n    {{user.email}}\n  </ion-item>\n  <ion-item>\n    <ion-icon ios="ios-glasses" md="md-glasses"></ion-icon>\n    {{user.username}}\n  </ion-item>\n  <ion-item>\n    <ion-icon ios="ios-contact" md="md-contact"></ion-icon>\n    {{user.firstName}} {{user.lastName}}\n  </ion-item>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-profile/view-profile.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
-    ], JoinEventPage);
-    return JoinEventPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], ViewProfilePage);
+    return ViewProfilePage;
 }());
 
-//# sourceMappingURL=join-event.js.map
+//# sourceMappingURL=view-profile.js.map
+
+/***/ }),
+
+/***/ 765:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewEventParticipantsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the ViewEventParticipantsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ViewEventParticipantsPage = /** @class */ (function () {
+    function ViewEventParticipantsPage(navCtrl, navParams, actionSheetCtrl) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.data = { "toolbarTitle": "Participants",
+            "title": "Search for participant",
+            "headerImage": "assets/images/background/" + Math.ceil(Math.random() * 23) + ".jpg" };
+        this.searchTerm = "";
+        this.participants = [];
+        this.listReady = false;
+        this.isAdmin = true;
+        this.displayList = [];
+        this.searchTerm = "";
+    }
+    ViewEventParticipantsPage.prototype.getParticipants = function (pRef) {
+        var _this = this;
+        this.listReady = false;
+        this.participants.length = 0;
+        this.displayList.length = 0;
+        pRef.forEach(function (participant) {
+            participant.get().then(function (doc) {
+                var p = {};
+                // need to change there
+                p.avatar = "assets/images/avatar/25.jpg";
+                p.uid = participant.id;
+                p.email = doc.data().email;
+                p.username = doc.data().username;
+                _this.participants.push(p);
+                if (_this.searchTerm.trim() == "")
+                    _this.displayList.push(p);
+            });
+        });
+        this.listReady = true;
+    };
+    ViewEventParticipantsPage.prototype.search = function (keyword) {
+        var _this = this;
+        keyword = keyword.trim().toLowerCase();
+        this.listReady = false;
+        this.displayList.length = 0;
+        this.participants.forEach(function (ppl) {
+            var isFound = false;
+            if (!isFound)
+                isFound = ppl.username.toLowerCase().includes(keyword);
+            if (!isFound)
+                isFound = ppl.email.toLowerCase().includes(keyword);
+            if (isFound)
+                _this.displayList.push(ppl);
+        });
+        this.listReady = true;
+        if (keyword.length == 0)
+            this.displayList = this.participants.slice(0);
+    };
+    ViewEventParticipantsPage.prototype.presentActionSheet = function (uid) {
+        var _this = this;
+        var actionSheet = this.actionSheetCtrl.create({
+            title: '',
+            buttons: [
+                {
+                    text: 'View Profile',
+                    handler: function () {
+                        _this.navCtrl.push("ViewProfilePage", uid);
+                    }
+                },
+                {
+                    text: 'Block',
+                    handler: function () {
+                        console.log("Block " + uid);
+                    }
+                },
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function () { }
+                }
+            ]
+        });
+        actionSheet.present();
+    };
+    ViewEventParticipantsPage.prototype.ionViewDidLoad = function () {
+        this.getParticipants(this.navParams.data);
+    };
+    ViewEventParticipantsPage.prototype.ionViewDidLeave = function () {
+        // detach listener
+        this.navParams.data.forEach(function (p) {
+            p.onSnapshot(function () { });
+        });
+    };
+    ViewEventParticipantsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-view-event-participants',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event-participants/view-event-participants.html"*/'<ion-header header-ios>\n  <ion-navbar transparent>\n  </ion-navbar>\n\n  <ion-toolbar no-padding>\n      <div background-size *ngIf="data != null" [ngStyle]="{\'background-image\': \'url(\' + data.headerImage + \')\'}">\n        <div search-bar-bcg>\n          <!-- Header Title -->\n          <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>\n          <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>\n        </div>\n      </div>\n  </ion-toolbar>\n\n</ion-header>\n \n<ion-content elastic-header>\n  <ion-list *ngIf="participants != null && listReady">\n    <ion-item *ngIf="displayList.length == 0"><p>No results for:{{searchTerm}}</p></ion-item>\n    <ion-item border no-lines *ngFor="let p of displayList">\n        <ion-avatar item-start>\n          <img [src]="p.avatar"/>\n        </ion-avatar>\n        <h2 item-title>{{p.username}}</h2>\n        <h3 item-subtitle text-wrap>{{p.email}}</h3>\n        <button *ngIf="isAdmin" text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(p.uid)"><ion-icon name="more"></ion-icon></button>\n    </ion-item>\n  </ion-list>\n    \n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event-participants/view-event-participants.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]])
+    ], ViewEventParticipantsPage);
+    return ViewEventParticipantsPage;
+}());
+
+//# sourceMappingURL=view-event-participants.js.map
 
 /***/ })
 

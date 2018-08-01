@@ -27,10 +27,12 @@
   <div #map id="map"></div>
 
   <!-- Buttons -->
-  <button ion-button clear block (click)="groupChatBtn()">Group Message</button>
+  <div *ngIf="!viewOnly">
+    <button ion-button clear block (click)="groupChatBtn()">Group Message</button>
 
-  <button ion-button clear block (click)="viewParticipants()">Participants</button>
+    <button ion-button clear block (click)="viewParticipants()">Participants</button>
 
-  <button ion-button block *ngIf="isAdmin" (click)="editEventBtn()">Edit Event</button>
-  <button ion-button block (click)="leaveEventBtn()">Leave Event</button>
+    <button ion-button block *ngIf="isAdmin" (click)="editEventBtn()">Edit Event</button>
+    <button ion-button block (click)="leaveEventBtn()">Leave Event</button>
+  </div>
 </ion-content>

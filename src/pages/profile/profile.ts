@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { User } from '../../models/user';
 
 import * as firebase from 'firebase';
@@ -16,11 +15,10 @@ export class ProfilePage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private afAuth: AngularFireAuth,
               private toast: ToastController) {
     
-    this.user.uid = afAuth.auth.currentUser.uid;
-    this.user.email = afAuth.auth.currentUser.email;
+    this.user.uid = firebase.auth().currentUser.uid;
+    this.user.email = firebase.auth().currentUser.email;
 
     /* empty info */
     this.user.username = ""

@@ -1,14 +1,14 @@
-webpackJsonp([5,7,11],{
+webpackJsonp([5,10,11],{
 
-/***/ 738:
+/***/ 746:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QrScanPageModule", function() { return QrScanPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterPageModule", function() { return RegisterPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__qr_scan__ = __webpack_require__(758);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register__ = __webpack_require__(773);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-//import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-var QrScanPageModule = /** @class */ (function () {
-    function QrScanPageModule() {
+//import { GoogleLoginComponent} from '../../components/google-login/google-login'; 
+var RegisterPageModule = /** @class */ (function () {
+    function RegisterPageModule() {
     }
-    QrScanPageModule = __decorate([
+    RegisterPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__qr_scan__["a" /* QrScanPage */],
+                __WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__qr_scan__["a" /* QrScanPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__register__["a" /* RegisterPage */]),
             ],
         })
-    ], QrScanPageModule);
-    return QrScanPageModule;
+    ], RegisterPageModule);
+    return RegisterPageModule;
 }());
 
-//# sourceMappingURL=qr-scan.module.js.map
+//# sourceMappingURL=register.module.js.map
 
 /***/ }),
 
-/***/ 742:
+/***/ 747:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddFriendPageModule", function() { return AddFriendPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResetPageModule", function() { return ResetPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_friend__ = __webpack_require__(768);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__qr_scan_qr_scan_module__ = __webpack_require__(738);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reset__ = __webpack_require__(774);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,38 +57,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var AddFriendPageModule = /** @class */ (function () {
-    function AddFriendPageModule() {
+var ResetPageModule = /** @class */ (function () {
+    function ResetPageModule() {
     }
-    AddFriendPageModule = __decorate([
+    ResetPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__add_friend__["a" /* AddFriendPage */],
+                __WEBPACK_IMPORTED_MODULE_2__reset__["a" /* ResetPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__add_friend__["a" /* AddFriendPage */]),
-                __WEBPACK_IMPORTED_MODULE_3__qr_scan_qr_scan_module__["QrScanPageModule"],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__reset__["a" /* ResetPage */]),
             ],
         })
-    ], AddFriendPageModule);
-    return AddFriendPageModule;
+    ], ResetPageModule);
+    return ResetPageModule;
 }());
 
-//# sourceMappingURL=add-friend.module.js.map
+//# sourceMappingURL=reset.module.js.map
 
 /***/ }),
 
-/***/ 750:
+/***/ 752:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FriendListPageModule", function() { return FriendListPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_friend_add_friend_module__ = __webpack_require__(742);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__friend_list__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_register_module__ = __webpack_require__(746);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reset_reset_module__ = __webpack_require__(747);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login__ = __webpack_require__(167);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -100,97 +98,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var FriendListPageModule = /** @class */ (function () {
-    function FriendListPageModule() {
+
+var LoginPageModule = /** @class */ (function () {
+    function LoginPageModule() {
     }
-    FriendListPageModule = __decorate([
+    LoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__friend_list__["a" /* FriendListPage */],
+                __WEBPACK_IMPORTED_MODULE_4__login__["a" /* LoginPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__friend_list__["a" /* FriendListPage */]),
-                __WEBPACK_IMPORTED_MODULE_2__add_friend_add_friend_module__["AddFriendPageModule"]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_4__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_2__register_register_module__["RegisterPageModule"],
+                __WEBPACK_IMPORTED_MODULE_3__reset_reset_module__["ResetPageModule"]
             ],
         })
-    ], FriendListPageModule);
-    return FriendListPageModule;
+    ], LoginPageModule);
+    return LoginPageModule;
 }());
 
-//# sourceMappingURL=friend-list.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 758:
+/***/ 773:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QrScanPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(379);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var QrScanPage = /** @class */ (function () {
-    function QrScanPage(navCtrl, navParams, barcodeScanner) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.barcodeScanner = barcodeScanner;
-        this.code = "";
-    }
-    QrScanPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad QrScanPage');
-    };
-    QrScanPage.prototype.scanCode = function () {
-        var _this = this;
-        this.barcodeScanner.scan().then(function (barcodeData) {
-            _this.code = barcodeData.text;
-            _this.navCtrl.pop();
-        }, function (err) {
-            console.log("Cannot Read QR Code!");
-        });
-    };
-    QrScanPage.prototype.ionViewWillEnter = function () {
-        this.callback = this.navParams.get("callback");
-    };
-    QrScanPage.prototype.ionViewDidEnter = function () {
-        this.scanCode();
-    };
-    QrScanPage.prototype.ionViewWillLeave = function () {
-        this.callback(this.code);
-    };
-    QrScanPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-qr-scan',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-scan/qr-scan.html"*/'<!--\n  Generated template for the QrScanPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Scan the QR code</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  Cannot Read QR Code<br>\n  <button ion-button block outline (click)="scanQR()"> Scan Again?</button>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-scan/qr-scan.html"*/,
-        }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]) === "function" && _c || Object])
-    ], QrScanPage);
-    return QrScanPage;
-    var _a, _b, _c;
-}());
-
-//# sourceMappingURL=qr-scan.js.map
-
-/***/ }),
-
-/***/ 768:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddFriendPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -239,126 +177,171 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-/**
- * Generated class for the AddFriendPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var AddFriendPage = /** @class */ (function () {
-    function AddFriendPage(navCtrl, navParams, toastCtrl) {
+var RegisterPage = /** @class */ (function () {
+    function RegisterPage(navCtrl, navParams, toastCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.toastCtrl = toastCtrl;
         this.user = {};
-        this.email = "";
-        this.user = navParams.data;
+        this.password = "";
+        this.retypePwd = "";
+        this.user = {
+            email: "",
+            username: "",
+            firstName: "",
+            lastName: "",
+            eventList: [],
+            friendList: [],
+            blockedUsers: [],
+            location: new __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"].GeoPoint(0, 0)
+        };
     }
-    AddFriendPage.prototype.ionViewDidLoad = function () {
-    };
-    AddFriendPage.prototype.submitEmail = function () {
-        var _this = this;
-        var ucRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').where("email", "==", this.email).get().then(function (d) {
-            if (d.docs.length > 0) {
-                console.log("has !");
-                _this.pushFriendRequest(d.docs[0].id);
-            }
-            else {
-                // cannot find this guy
-                var err = _this.toastCtrl.create({
-                    message: "Cannot find user with email: " + _this.email,
-                    duration: 3000,
-                    position: "bottom"
-                });
-                err.present();
-            }
-        });
-    };
-    AddFriendPage.prototype.scanQR = function () {
-        this.navCtrl.push('QrScanPage');
-    };
-    AddFriendPage.prototype.pushFriendRequest = function (fId) {
+    RegisterPage.prototype.register = function (user) {
         return __awaiter(this, void 0, void 0, function () {
-            var fRef, uRef, err, err, isBlocked, ref, is, err, fReq, fReqGet, fReqList, msg;
+            var _this = this;
+            var result, e_1, err_msg, err;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        fRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(fId);
-                        uRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
-                        // if it is same person, function return
-                        if (fId == this.user.uid) {
-                            err = this.toastCtrl.create({
-                                message: "You cannot add yourself",
-                                duration: 3000,
-                                position: "bottom"
-                            });
-                            err.present();
-                            return [2 /*return*/, undefined]; // skip out
+                        _a.trys.push([0, 2, , 3]);
+                        if (this.user.email.trim().length == 0 || this.user.email.indexOf('@') < 0) {
+                            throw { code: "auth/invalid-email" };
                         }
-                        // determine if the person is already in list
-                        if (this.user.friendList.length > 0 && undefined == this.user.friendList.find(function (ele) { return ele.isEqual(fRef); })) {
-                            err = this.toastCtrl.create({
-                                message: "You've already add your friend",
-                                duration: 3000,
-                                position: "bottom"
-                            });
-                            err.present();
-                            return [2 /*return*/, undefined]; // skip out
+                        if (this.password.length < 6 || this.password.length > 18) {
+                            throw { code: "pwd/length" };
                         }
-                        isBlocked = false;
-                        return [4 /*yield*/, fRef.get()];
+                        if (this.password != this.retypePwd) {
+                            throw { code: "pwd/match" };
+                        }
+                        return [4 /*yield*/, __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().createUserWithEmailAndPassword(user.email, this.password)
+                                .then(function (res) {
+                                var user = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().currentUser;
+                                user.sendEmailVerification();
+                                _this.initialDoc(user.uid);
+                                __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().signOut();
+                                _this.navCtrl.pop();
+                            })];
                     case 1:
-                        ref = _a.sent();
-                        return [4 /*yield*/, ref.data().blockedUsers.find(function (bu) { return bu.isEqual(uRef); })];
+                        result = _a.sent();
+                        return [3 /*break*/, 3];
                     case 2:
-                        is = _a.sent();
-                        if (undefined != is) {
-                            err = this.toastCtrl.create({
-                                message: "Cannot find user with email: " + this.email,
-                                duration: 3000,
-                                position: "bottom"
-                            });
-                            err.present();
-                            isBlocked = true;
+                        e_1 = _a.sent();
+                        err_msg = "";
+                        switch (e_1.code) {
+                            case ('auth/invalid-email'): {
+                                err_msg = "Please Using an email to register!";
+                                break;
+                            }
+                            case ('pwd/match'): {
+                                err_msg = "Re-Type password didn't match!";
+                                this.password = this.retypePwd = "";
+                                break;
+                            }
+                            case ('auth/email-already-in-use'): {
+                                err_msg = "Email already registered!";
+                                break;
+                            }
+                            case ('pwd/length'): {
+                                err_msg = "Password should be 6-18 digits!";
+                                break;
+                            }
+                            default: {
+                                err_msg = e_1.code;
+                                break;
+                            }
                         }
-                        if (!!isBlocked) return [3 /*break*/, 4];
-                        fReq = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Request').doc(fId);
-                        return [4 /*yield*/, fReq.get()];
-                    case 3:
-                        fReqGet = _a.sent();
-                        is = fReqGet.data().friendRequest.find(function (fr) { return fr.from.isEqual(uRef); });
-                        if (undefined == is) {
-                            fReqList = fReqGet.data().friendRequest;
-                            fReqList.push({
-                                from: uRef,
-                                msg: ""
-                            });
-                            fReq.update('friendRequest', fReqList);
-                        }
-                        msg = this.toastCtrl.create({
-                            message: "Sent " + this.email + " a friend request",
+                        err = this.toastCtrl.create({
+                            message: err_msg,
                             duration: 3000,
-                            position: "bottom"
+                            position: 'bottom'
                         });
-                        msg.present();
-                        _a.label = 4;
-                    case 4: return [2 /*return*/];
+                        err.present();
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
                 }
             });
         });
     };
-    AddFriendPage = __decorate([
+    RegisterPage.prototype.initialDoc = function (userId) {
+        __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(userId).set(this.user);
+        __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Request').doc(userId).set({
+            eventRequest: [],
+            friendRequest: []
+        });
+    };
+    RegisterPage.prototype.ionViewDidLoad = function () {
+    };
+    RegisterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-add-friend',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/add-friend/add-friend.html"*/'<!--\n  Generated template for the AddFriendPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Friend</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item>\n      <ion-label floating>Enter the email</ion-label>\n      <ion-input type="email" [(ngModel)]="email"></ion-input>\n    </ion-item>\n  </ion-list>\n  <span (click)="scanQR()">OR Scan their QR Code</span>\n  <button ion-button (click)="submitEmail()">Submit</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/add-friend/add-friend.html"*/,
+            selector: 'page-register',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/register/register.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid no-padding>\n    <ion-row center>\n      <!--Big Image Header-->\n      <!--TODO: figure out how to randomize the image from the folder-->\n      <ion-col no-padding col-12 background-size [ngStyle]="{\'background-image\': \'url(../../assets/images/background/2.jpg)\'}">\n        <!--Header Title-->\n        <h1 ion-text register-title text-wrap>Register</h1>\n      </ion-col>\n\n      <ion-col form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n        <!--Form-->\n        <ion-item>\n          <!--Input field username-->\n          <ion-label stacked>Username</ion-label>\n          <ion-input placeholder="username (optional)" [(ngModel)]="user.username" type="text"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <!--Input field email-->\n          <ion-label stacked>Email</ion-label>\n          <ion-input required placeholder="email" type="text" [(ngModel)]="user.email"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <!--Input field password-->\n          <ion-label stacked>Password</ion-label>\n          <ion-input required placeholder="password" type="password" [(ngModel)]="password"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <!--Input field retype password-->\n          <ion-label stacked>Retype Password</ion-label>\n          <ion-input required placeholder="retype password" type="password" [(ngModel)]="retypePwd"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <!--Input field first name-->\n          <ion-label stacked>First Name</ion-label>\n          <ion-input placeholder="first name (optional)" [(ngModel)]="user.firstName" type="text" pattern="[a-zA-Z]"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <!--Input field last name-->\n          <ion-label stacked>Last Name</ion-label>\n          <ion-input placeholder="last name (optional)" [(ngModel)]="user.lastName" type="text" pattern="[a-zA-Z]"></ion-input>\n        </ion-item>\n\n        <!--Register button-->\n        <button ion-button float-right clear button-clear text-capitalize (click)="register(user)">Register</button>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/register/register.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
-    ], AddFriendPage);
-    return AddFriendPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
+    ], RegisterPage);
+    return RegisterPage;
 }());
 
-//# sourceMappingURL=add-friend.js.map
+//# sourceMappingURL=register.js.map
+
+/***/ }),
+
+/***/ 774:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResetPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the ResetPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ResetPage = /** @class */ (function () {
+    function ResetPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.email = "";
+    }
+    ResetPage.prototype.resetPassword = function () {
+        var _this = this;
+        var auth = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]();
+        return auth.sendPasswordResetEmail(this.email)
+            .then(function () {
+            console.log("email sent");
+            _this.navCtrl.setRoot('HomePage');
+        })
+            .catch(function (error) { return console.log(error); });
+    };
+    ResetPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ResetPage');
+    };
+    ResetPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-reset',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/reset/reset.html"*/'<!--\n  Generated template for the ResetPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Reset Your Password</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <h6>Please enter the email you registered</h6>\n\n  <ion-item>\n    <ion-label floating>Email</ion-label>\n      <ion-input type = "email" [(ngModel)]="email"></ion-input>\n  </ion-item>\n\n  <button ion-button (click) = "resetPassword()">Reset Password</button>\n\n\n\n\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/reset/reset.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
+    ], ResetPage);
+    return ResetPage;
+}());
+
+//# sourceMappingURL=reset.js.map
 
 /***/ })
 

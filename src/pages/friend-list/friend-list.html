@@ -1,37 +1,50 @@
-<!--
-  Generated template for the FriendListPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
+<ion-header header-ios>
+  <ion-navbar transparent>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Friend List</ion-title>
+    <!--<ion-title *ngIf="data != null">{{data.toolbarTitle}}</ion-title>-->
   </ion-navbar>
 
+  <ion-toolbar no-padding>
+      <div background-size *ngIf="data != null" [ngStyle]="{'background-image': 'url(' + data.headerImage + ')'}">
+        <div search-bar-bcg>
+          <!-- Header Title -->
+          <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>
+          <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>
+        </div>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col (click)="switchList(0)">Friends</ion-col>
+          <ion-col (click)="switchList(1)">Request</ion-col>
+          <ion-col (click)="switchList(2)">Blocked</ion-col>
+          <ion-col (click)="addFriend()">Add</ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
+<!-- Content -->
+<ion-content elastic-header>
+  <!-- Display Friend List -->
+  <ion-list *ngIf="listReady">
 
-  <ion-list>
-    <ion-item *ngFor="let f of friendList">
-      <ion-icon ios="ios-person" md="md-person"></ion-icon>
-        {{f.username}} as {{f.firstName}} {{f.lastName}}
-        <p>
-          <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
-          {{f.email}}
-        </p>
+    <ion-item>Place Holder</ion-item> <!-- Need to remove after restyle -->
+
+    <ion-item *ngIf="displayList.length == 0 && listReady && searchTerm.length != 0"><p>No results for: "{{searchTerm}}"</p></ion-item>
+    <ion-item border no-lines *ngFor="let friend of displayList; let i = index">
+      <ion-avatar item-start>
+        <img [src]="friend.avatar"/>
+      </ion-avatar>
+      <h2 item-title>{{friend.firstName}} {{friend.lastName}}</h2>
+      <h3 item-subtitle text-wrap>{{friend.username}}</h3>
+      <h4 text-wrap *ngIf="displayRequest">{{friend.msg}}</h4>
+      <!-- Action Sheet Button-->
+      <button text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(friend.uid)"><ion-icon name="more"></ion-icon></button>
     </ion-item>
   </ion-list>
-
-  <ion-fab bottom right>
-    <button ion-fab (click)="addFriend()">
-      <ion-icon ios="ios-add" md="md-add"></ion-icon>
-    </button>
-  </ion-fab>
+  <!-- Display Blocked List -->
 </ion-content>
+

@@ -23,6 +23,7 @@ export class ViewEventPage {
   circle = {} as Circle;
   othersMarker = [];
   isAdmin = false as boolean;
+  viewOnly = true as boolean;
  
   @ViewChild('map') mapElement:ElementRef;
 
@@ -31,7 +32,8 @@ export class ViewEventPage {
               public afAuth: AngularFireAuth,
               public platform:Platform) {
     this.user.uid = afAuth.auth.currentUser.uid;
-    this.event.eventId = navParams.data;
+    this.event.eventId = navParams.get('eventId').toString();
+    this.viewOnly = navParams.get('viewOnly');
     this.initialEmptyEvent();
   }
 
@@ -104,31 +106,32 @@ export class ViewEventPage {
   }
 
   trackListener(){
-    this.event.participants.forEach((userRef)=>{
-      let marker = new google.maps.Marker({
-        position: new LatLng(this.event.location.latitude, this.event.location.longitude),
-        map: this.map,
-        draggable: false
+    if (!this.viewOnly)
+      this.event.participants.forEach((userRef)=>{
+        let marker = new google.maps.Marker({
+          position: new LatLng(this.event.location.latitude, this.event.location.longitude),
+          map: this.map,
+          draggable: false
+        });
+        userRef.onSnapshot((doc)=>{
+          let position = new LatLng(doc.data().location.latitude,doc.data().location.longitude);
+          marker.setPosition(position);
+          marker.setLabel(doc.data().username);
+          // if event has radius calculate the distance
+          if (this.event.radius > 0){
+            var distance;
+            distance = this.getDistance(doc.data().location.latitude,
+                                        doc.data().location.longitude,
+                                        this.event.location.latitude,
+                                        this.event.location.longitude);
+            if (this.event.radius < distance)
+              marker.setVisible(false);
+            else
+              marker.setVisible(true);
+          }
+        });
+        this.othersMarker.push(marker);
       });
-      userRef.onSnapshot((doc)=>{
-        let position = new LatLng(doc.data().location.latitude,doc.data().location.longitude);
-        marker.setPosition(position);
-        marker.setLabel(doc.data().username);
-        // if event has radius calculate the distance
-        if (this.event.radius > 0){
-          var distance;
-          distance = this.getDistance(doc.data().location.latitude,
-                                      doc.data().location.longitude,
-                                      this.event.location.latitude,
-                                      this.event.location.longitude);
-          if (this.event.radius < distance)
-            marker.setVisible(false);
-          else
-            marker.setVisible(true);
-        }
-      });
-      this.othersMarker.push(marker);
-    });
   }
 
   viewParticipants(){
@@ -176,8 +179,11 @@ export class ViewEventPage {
     this.navCtrl.pop();
   }
 
-  ionViewDidLoad() {
+  ionViewWillLoad() {
     this.loadEvent(this.event.eventId);
+    this.event.eventId = this.navParams.get('eventId').toString();
+    this.viewOnly = this.navParams.get('viewOnly');
+    this.initialEmptyEvent();
   }
 
   ionViewDidLeave(){

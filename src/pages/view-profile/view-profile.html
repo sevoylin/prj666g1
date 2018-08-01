@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>View Profile</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-avatar block>
+    <img class="circle-pic" 
+    src="https://firebasestorage.googleapis.com/v0/b/meetogether-prj666g1.appspot.com/o/avatar%2Fdefault_avatar.png?alt=media&token=c0c88e7e-71cd-4de5-aa78-27573c8f3f2a" />
+  </ion-avatar>
+  {{user.avatar}}
+
+  <ion-item>
+    <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+    {{user.email}}
+  </ion-item>
+  <ion-item>
+    <ion-icon ios="ios-glasses" md="md-glasses"></ion-icon>
+    {{user.username}}
+  </ion-item>
+  <ion-item>
+    <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+    {{user.firstName}} {{user.lastName}}
+  </ion-item>
+</ion-content>

@@ -1,14 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { Event } from '../../models/event';
 import * as firebase from 'firebase';
-/**
- * Generated class for the ManageEventPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -16,35 +10,54 @@ import * as firebase from 'firebase';
   templateUrl: 'manage-event.html',
 })
 export class ManageEventPage {
+
+  eventIcon = "assets/images/logo/1.png";
+
+  data: any = { "toolbarTitle"  : "List of Events",
+                "title"         : "Search for events",
+                "headerImage"   : "assets/images/background/" + Math.ceil(Math.random() * 23) + ".jpg" };
+
   user = {} as User;
   events = [];
-  docRef: any;
+  eventRequests = [];
+  displayList = [];
+  searchTerm: any = "";
+  userRef: any;
+  reqRef: any;
+  displayEvents = true as boolean;
+  listReady = false as boolean;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public actionSheetCtrl: ActionSheetController) {
     this.user.uid = firebase.auth().currentUser.uid;
-  }
-
-  ionViewDidLoad() {
-    
+    this.displayEvents = true;
+    this.searchTerm = "";
+    this.userRef = firebase.firestore().collection('Users').doc(this.user.uid);
+    this.reqRef = firebase.firestore().collection('Request').doc(this.user.uid);
   }
 
   ionViewWillEnter() {
-    this.getEventList();
+    this.getLists();
+  }
+
+  ionViewDidEnter() {
+    this.search("");
   }
 
   ionViewDidLeave(){
     this.events.length = 0; // by set count = 0 not erase all data
-    this.user.eventList.forEach((eventRef)=>{
-      eventRef.onSnapshot(()=>{});
-    })
+    this.userRef.onSnapshot(()=>{});
+    this.reqRef.onSnapshot(()=>{});
   }
 
-  getEventList(){
-    var doc = firebase.firestore().collection('Users').doc(this.user.uid);
-    doc.get().then((doc) => {
+  getLists(){
+    this.listReady = false;
+    this.userRef = firebase.firestore().collection('Users').doc(this.user.uid);
+    this.userRef.onSnapshot((doc) => {
       if (doc.data() != null){
         this.events.length = 0;
+        this.displayList.length = 0;
         this.user.eventList = doc.data().eventList;
         this.user.eventList.forEach((e)=>{
           let event = {} as Event;
@@ -54,15 +67,49 @@ export class ManageEventPage {
               event.eventName = content.data().eventName;
               event.date = content.data().date;
               this.events.push(event);
+              if (this.searchTerm.trim() == "" && this.displayEvents)
+                this.displayList = this.events.slice(0);
             }
           });
         })
       }
+      this.reqRef = firebase.firestore().collection('Request').doc(this.user.uid);
+      this.reqRef.onSnapshot((doc)=>{
+        this.eventRequests.length = 0;
+        var reqList = doc.data().eventRequest;
+        reqList.forEach( req=> {
+          req.from.get().then( e =>{
+            var ne = {
+              eventId: req.from.id,
+              eventName : e.data().eventName,
+              date : e.data().date,
+              msg : req.msg
+            }
+            this.eventRequests.push(ne);
+            if (this.searchTerm.trim() == "" && !this.displayEvents)
+              this.displayList = this.eventRequests.slice(0);
+          });
+        });
+      });
+      this.listReady = true;
     });
   }
 
-  viewEvent(eventRef){
-    this.navCtrl.push('ViewEventPage',eventRef);
+  viewRequest(tf: boolean){
+    this.displayEvents = !tf;
+    this.search("");
+  }
+
+  viewEvent(eventId, viewOnly){
+    this.navCtrl.push('ViewEventPage',{ 'eventId': eventId,
+                                        'viewOnly': viewOnly});
+  }
+
+  groupChat(eventId){
+    firebase.firestore().collection('Event').doc(eventId).get().then( doc=>{
+      var chatRef = doc.data().chat;
+      this.navCtrl.push('ChatPage',chatRef);
+    });
   }
 
   createEvent(){
@@ -73,4 +120,104 @@ export class ManageEventPage {
     this.navCtrl.push('JoinEventPage');
   }
 
+  search(keyword: any) {
+    keyword = keyword.trim().toLowerCase();
+    var currList;
+    if (this.displayEvents) currList = this.events;
+    else currList = this.eventRequests;
+    this.listReady = false;
+    this.displayList.length = 0;
+    currList.forEach(e =>{
+      var isFound = false;
+      if (!isFound)
+        isFound = e.eventName.toLowerCase().includes(keyword);
+      if (isFound)
+        this.displayList.push(e);
+    });
+    this.listReady = true;
+    if (keyword.length == 0)
+      this.displayList = currList.slice(0);
+  }
+
+  presentActionSheet(eid) {
+    let actionSheet;
+    // For displaying event
+    if (this.displayEvents)
+      actionSheet = this.actionSheetCtrl.create({
+        title: '',
+        buttons: [
+          {
+            text: 'View Event',
+            handler: () => { this.viewEvent(eid,false); }
+          },
+          {
+            text: 'Group Chat',
+            handler: () => {
+              this.groupChat(eid);
+            }
+          },
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+            }
+          }
+        ]
+      });
+    // for displaying request
+    else
+      actionSheet = this.actionSheetCtrl.create({
+        title: '',
+        buttons: [
+          {
+            text: 'View Event',
+            handler: () => { this.viewEvent(eid, true); }
+          },
+          {
+            text: 'Join',
+            handler: () => {
+              this.requestOperate(eid,true);
+            }
+          },
+          {
+            text: 'Decline',
+            handler: () => {
+              this.requestOperate(eid,false);
+            }
+          },
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => {
+            }
+          }
+        ]
+      });
+    actionSheet.present();
+  }
+
+  requestOperate(eid, isApproved: boolean){
+    var eRef = firebase.firestore().collection('Event').doc(eid);
+    if (isApproved){
+      this.userRef.get().then(doc=>{
+        var el = doc.data().eventList;
+        el.push(eRef);
+        this.userRef.update('eventList',el);
+      });
+      eRef.get().then(doc=>{
+        var pl = doc.data().participants;
+        pl.push(this.userRef);
+        eRef.update('participants',pl);
+      })
+    }
+    this.reqRef.get().then((doc)=>{
+      var reqList = doc.data().eventRequest;
+      var idx = reqList.findIndex( r =>{
+        return r.from.id == eid;
+      });
+      if (idx > -1)
+        reqList.splice(idx,1);
+      this.reqRef.update('eventRequest',reqList);
+    });
+  }
 }

@@ -18,6 +18,7 @@ import * as firebase from 'firebase';
 export class AddFriendPage {
   user = {} as User;
   email = "";
+  msg = "";
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -68,7 +69,7 @@ export class AddFriendPage {
     }
 
     // determine if the person is already in list
-    if (this.user.friendList.length > 0 && undefined == this.user.friendList.find((ele)=>{return ele.isEqual(fRef);})){
+    if (this.user.friendList.length > 0 && undefined != this.user.friendList.find((ele)=>{return ele.isEqual(fRef);})){
       let err = this.toastCtrl.create({
         message: "You've already add your friend",
         duration: 3000,
@@ -100,7 +101,7 @@ export class AddFriendPage {
         let fReqList = fReqGet.data().friendRequest;
         fReqList.push({
           from: uRef,
-          msg: ""
+          msg: this.msg.trim()
         });
         fReq.update('friendRequest',fReqList);
       }

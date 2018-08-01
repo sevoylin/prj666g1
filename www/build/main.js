@@ -1,4 +1,4 @@
-webpackJsonp([17],{
+webpackJsonp([18],{
 
 /***/ 140:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7,7 +7,7 @@ webpackJsonp([17],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(71);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -47,9 +47,9 @@ var HomePage = /** @class */ (function () {
             selector: 'page-home',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div background-size default-background [ngStyle]="{\'background-image\': \'url(../../assets/images/splashscreen/3.jpg)\'}">\n    <div class="ionic-description" text-center>\n      <h2 item-title>PRJ666 Group 1</h2>\n      <h2 item-title>MeeTogether</h2>\n      <p item-subtitle>Dennis Arul</p>\n      <p item-subtitle>Jay Ansin</p>\n      <p item-subtitle>Shlok Purani</p>\n      <p item-subtitle>Yankai Tian (leader)</p>\n    </div>\n    <a href="https://zenit.senecac.on.ca/~prj666_182a01/" target="_blank">Group 1 Zenit</a>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/home/home.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
     ], HomePage);
     return HomePage;
 }());
@@ -65,7 +65,7 @@ var HomePage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FriendListPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -76,56 +76,472 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 
 
 
-/**
- * Generated class for the FriendListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 var FriendListPage = /** @class */ (function () {
-    function FriendListPage(navCtrl, navParams) {
+    function FriendListPage(navCtrl, navParams, alertCtrl, actionSheetCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.alertCtrl = alertCtrl;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.data = { "toolbarTitle": "Friends",
+            "title": "Search for friend",
+            "headerImage": "assets/images/background/" + Math.ceil(Math.random() * 23) + ".jpg" };
         this.user = {};
+        this.userDoc = {};
+        this.requestDoc = {};
+        this.searchTerm = "";
         this.friendList = [];
+        this.blockedList = [];
+        this.requestList = [];
+        this.displayList = [];
+        this.listReady = false;
+        this.displayFriends = true;
+        this.displayRequest = false;
+        this.displayBlocked = false;
         this.user.uid = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().currentUser.uid;
+        this.searchTerm = "";
+        this.getLists();
     }
     FriendListPage.prototype.ionViewDidLoad = function () { };
-    FriendListPage.prototype.ionViewWillEnter = function () {
-        this.friendList.length = 0;
-        this.getFriendList();
+    FriendListPage.prototype.ionViewDidEnter = function () {
+        this.search(""); // use search to initialize
     };
-    FriendListPage.prototype.getFriendList = function () {
+    FriendListPage.prototype.ionViewDidLeave = function () {
+        this.userDoc.onSnapshot(function () { });
+        this.requestDoc.onSnapshot(function () { });
+    };
+    FriendListPage.prototype.getLists = function () {
         var _this = this;
-        var doc = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
-        doc.get().then(function (data) {
+        this.displayList.length = 0;
+        this.userDoc = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
+        this.requestDoc = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Request').doc(this.user.uid);
+        this.userDoc.onSnapshot(function (data) {
+            _this.friendList.length = 0;
+            _this.blockedList.length = 0;
             _this.user.friendList = data.data().friendList;
+            _this.user.blockedUsers = data.data().blockedUsers;
+            // Retrieve friendlist
             _this.user.friendList.forEach(function (fRef) {
                 fRef.get().then(function (friend) {
                     var f = {};
+                    f.uid = friend.id;
                     f.firstName = friend.data().firstName;
                     f.lastName = friend.data().lastName;
                     f.username = friend.data().username;
                     f.email = friend.data().email;
+                    if (f.avatar == null || f.avatar == "") {
+                        f.avatar = "assets/images/avatar/25.jpg";
+                    }
                     _this.friendList.push(f);
+                    if (_this.searchTerm.trim() == "" && _this.displayFriends)
+                        _this.displayList = _this.friendList.slice(0);
+                });
+            });
+            // Retrieve blockedlist
+            _this.user.blockedUsers.forEach(function (bRef) {
+                bRef.get().then(function (blocked) {
+                    var b = {};
+                    b.uid = blocked.id;
+                    b.firstName = blocked.data().firstName;
+                    b.lastName = blocked.data().lastName;
+                    b.username = blocked.data().username;
+                    b.email = blocked.data().email;
+                    if (b.avatar == null || b.avatar == "") {
+                        b.avatar = "assets/images/avatar/25.jpg";
+                    }
+                    _this.blockedList.push(b);
+                    if (_this.searchTerm.trim() == "" && _this.displayBlocked)
+                        _this.displayList = _this.blockedList.slice(0);
+                });
+            });
+        });
+        // Retrieve requestlist
+        this.requestDoc.onSnapshot(function (doc) {
+            _this.requestList.length = 0;
+            var reqList = doc.data().friendRequest;
+            reqList.forEach(function (req) {
+                req.from.get().then(function (ppl) {
+                    var nr = {
+                        uid: req.from.id,
+                        avatar: "assets/images/avatar/25.jpg",
+                        firstName: ppl.data().firstName,
+                        lastName: ppl.data().lastName,
+                        email: ppl.data().email,
+                        username: ppl.data().username,
+                        msg: req.msg
+                    };
+                    _this.requestList.push(nr);
+                    if (_this.searchTerm.trim() == "" && _this.displayRequest)
+                        _this.displayList = _this.requestList.slice(0);
                 });
             });
         });
     };
+    FriendListPage.prototype.switchList = function (listIdx) {
+        switch (listIdx) {
+            case 0: {
+                this.displayFriends = true;
+                this.displayRequest = false;
+                this.displayBlocked = false;
+                this.displayList = this.friendList.slice(0);
+                break;
+            }
+            case 1: {
+                this.displayFriends = false;
+                this.displayRequest = true;
+                this.displayBlocked = false;
+                this.displayList = this.requestList.slice(0);
+                break;
+            }
+            case 2: {
+                this.displayFriends = false;
+                this.displayRequest = false;
+                this.displayBlocked = true;
+                this.displayList = this.blockedList.slice(0);
+                break;
+            }
+        }
+    };
     FriendListPage.prototype.addFriend = function () {
         this.navCtrl.push('AddFriendPage', this.user);
     };
+    FriendListPage.prototype.search = function (keyword) {
+        var _this = this;
+        keyword = keyword.trim().toLowerCase();
+        this.listReady = false;
+        var targetList;
+        if (this.displayBlocked)
+            targetList = this.blockedList;
+        if (this.displayFriends)
+            targetList = this.friendList;
+        if (this.displayRequest)
+            targetList = this.requestList;
+        this.displayList.length = 0;
+        targetList.forEach(function (f) {
+            var isFound = false;
+            var fullName = f.firstName + " " + f.lastName;
+            var fullNameR = f.lastName + ", " + f.firstName;
+            if (!isFound)
+                isFound = fullName.toLowerCase().includes(keyword);
+            if (!isFound)
+                isFound = fullNameR.toLowerCase().includes(keyword);
+            if (!isFound)
+                isFound = f.username.toLowerCase().includes(keyword);
+            if (!isFound)
+                isFound = f.email.toLowerCase().includes(keyword);
+            if (isFound)
+                _this.displayList.push(f);
+        });
+        this.listReady = true;
+        if (keyword.length == 0)
+            this.displayList = targetList.slice(0);
+    };
+    FriendListPage.prototype.presentActionSheet = function (uid) {
+        var _this = this;
+        var actionSheet;
+        // For displaying friend
+        if (this.displayFriends)
+            actionSheet = this.actionSheetCtrl.create({
+                title: '',
+                buttons: [
+                    {
+                        text: 'View Profile',
+                        handler: function () {
+                            _this.navCtrl.push("ViewProfilePage", uid);
+                        }
+                    },
+                    {
+                        text: 'Send Message',
+                        handler: function () {
+                            _this.sendMessage(uid);
+                        }
+                    },
+                    {
+                        text: 'Delete Friend',
+                        role: 'destructive',
+                        handler: function () {
+                            _this.deleteFriend(uid);
+                        }
+                    },
+                    {
+                        text: 'Block Friend',
+                        handler: function () {
+                            _this.blockFriend(uid, true);
+                        }
+                    },
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        handler: function () {
+                        }
+                    }
+                ]
+            });
+        // For displaying request
+        if (this.displayRequest)
+            actionSheet = this.actionSheetCtrl.create({
+                title: '',
+                buttons: [
+                    {
+                        text: 'View Profile',
+                        handler: function () {
+                            _this.navCtrl.push("ViewProfilePage", uid);
+                        }
+                    },
+                    {
+                        text: 'Approve',
+                        handler: function () {
+                            _this.requestOperate(uid, true);
+                        }
+                    },
+                    {
+                        text: 'Decline',
+                        role: 'destructive',
+                        handler: function () {
+                            _this.requestOperate(uid, false);
+                        }
+                    },
+                    {
+                        text: 'Block User',
+                        handler: function () {
+                            _this.blockFriend(uid, false);
+                        }
+                    },
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        handler: function () { }
+                    }
+                ]
+            });
+        // For displaying blocked
+        if (this.displayBlocked)
+            actionSheet = this.actionSheetCtrl.create({
+                title: '',
+                buttons: [
+                    {
+                        text: 'View Profile',
+                        handler: function () {
+                            _this.navCtrl.push("ViewProfilePage", uid);
+                        }
+                    },
+                    {
+                        text: 'Remove Blocked',
+                        role: 'destructive',
+                        handler: function () {
+                            console.log("remove from block");
+                        }
+                    },
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        handler: function () { }
+                    }
+                ]
+            });
+        actionSheet.present();
+    };
+    FriendListPage.prototype.deleteFriend = function (uid) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var friendRef, friendData, friend, alert;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        friendRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(uid);
+                        return [4 /*yield*/, friendRef.get()];
+                    case 1:
+                        friendData = _a.sent();
+                        friend = {};
+                        friend.firstName = friendData.data().firstName;
+                        friend.lastName = friendData.data().lastName;
+                        alert = this.alertCtrl.create({
+                            title: 'Delete Friend',
+                            message: 'Are you sure to delete "' + friend.firstName + ' ' + friend.lastName + '"',
+                            buttons: [
+                                {
+                                    text: 'Cancel',
+                                    role: 'cancel',
+                                    handler: function () { }
+                                },
+                                {
+                                    text: 'Confirm',
+                                    handler: function () {
+                                        _this.deleteFriendCommon(uid);
+                                    }
+                                }
+                            ]
+                        });
+                        alert.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    FriendListPage.prototype.deleteFriendCommon = function (uid) {
+        var chatId;
+        if (this.user.uid.localeCompare(uid) > 0)
+            chatId = this.user.uid + "" + uid;
+        else
+            chatId = uid + "" + this.user.uid;
+        var userRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
+        var friendRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(uid);
+        userRef.get().then(function (doc) {
+            var fList = doc.data().friendList;
+            var idx = fList.indexOf(fList.find(function (ppl) { return ppl.isEqual(friendRef); }));
+            fList.splice(idx, 1);
+            userRef.update('friendList', fList);
+        });
+        friendRef.get().then(function (doc) {
+            var fList = doc.data().friendList;
+            var idx = fList.indexOf(fList.find(function (ppl) { return ppl.isEqual(userRef); }));
+            fList.splice(idx, 1);
+            friendRef.update('friendList', fList);
+        });
+        __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Chat').doc(chatId).delete();
+    };
+    FriendListPage.prototype.blockFriend = function (uid, isFriend) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var friendRef, friendData, friend, alert;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        friendRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(uid);
+                        return [4 /*yield*/, friendRef.get()];
+                    case 1:
+                        friendData = _a.sent();
+                        friend = {};
+                        friend.firstName = friendData.data().firstName;
+                        friend.lastName = friendData.data().lastName;
+                        alert = this.alertCtrl.create({
+                            title: 'Block User',
+                            message: 'Are you sure to block "' + friend.firstName + ' ' + friend.lastName + '"',
+                            buttons: [
+                                {
+                                    text: 'Cancel',
+                                    role: 'cancel',
+                                    handler: function () { }
+                                },
+                                {
+                                    text: 'Confirm',
+                                    handler: function () {
+                                        if (isFriend)
+                                            _this.deleteFriendCommon(uid);
+                                        var userRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(_this.user.uid);
+                                        userRef.get().then(function (doc) {
+                                            _this.user.blockedUsers = doc.data().blockedUsers;
+                                            var idx = _this.user.blockedUsers.findIndex(function (u) { return u.isEqual(friendRef); });
+                                            if (idx < 0) {
+                                                _this.user.blockedUsers.push(friendRef);
+                                                userRef.update('blockedUsers', _this.user.blockedUsers);
+                                            }
+                                        });
+                                    }
+                                }
+                            ]
+                        });
+                        alert.present();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    FriendListPage.prototype.requestOperate = function (uid, isApproved) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var tRef;
+            return __generator(this, function (_a) {
+                tRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(uid);
+                if (isApproved) {
+                    this.userDoc.get().then(function (doc) {
+                        var fl = doc.data().friendList;
+                        fl.push(tRef);
+                        _this.userDoc.update('friendList', fl);
+                    });
+                    tRef.get().then(function (doc) {
+                        var fl = doc.data().friendList;
+                        fl.push(_this.userDoc);
+                        tRef.update('friendList', fl);
+                    });
+                }
+                this.requestDoc.get().then(function (doc) {
+                    var reqList = doc.data().friendRequest;
+                    var idx = reqList.findIndex(function (r) {
+                        return r.from.id == uid;
+                    });
+                    if (idx > -1)
+                        reqList.splice(idx, 1);
+                    _this.requestDoc.update('friendRequest', reqList);
+                });
+                return [2 /*return*/];
+            });
+        });
+    };
+    FriendListPage.prototype.sendMessage = function (uid) {
+        var _this = this;
+        // get chat id
+        var chatId = "";
+        if (this.user.uid.localeCompare(uid) > 0)
+            chatId = this.user.uid + "" + uid;
+        else
+            chatId = uid + "" + this.user.uid;
+        // find this id in chat id
+        var chatRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Chat').doc(chatId);
+        chatRef.get().then(function (doc) {
+            if (!doc.exists)
+                __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Chat').doc(chatId).set({
+                    messages: [],
+                    name: "Private Chat"
+                });
+            _this.navCtrl.push("ChatPage", chatRef);
+        });
+    };
     FriendListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-friend-list',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/friend-list/friend-list.html"*/'<!--\n  Generated template for the FriendListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Friend List</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngFor="let f of friendList">\n      <ion-icon ios="ios-person" md="md-person"></ion-icon>\n        {{f.username}} as {{f.firstName}} {{f.lastName}}\n        <p>\n          <ion-icon ios="ios-mail" md="md-mail"></ion-icon>\n          {{f.email}}\n        </p>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab bottom right>\n    <button ion-fab (click)="addFriend()">\n      <ion-icon ios="ios-add" md="md-add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/friend-list/friend-list.html"*/,
+            selector: 'page-friend-list',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/friend-list/friend-list.html"*/'<ion-header header-ios>\n  <ion-navbar transparent>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <!--<ion-title *ngIf="data != null">{{data.toolbarTitle}}</ion-title>-->\n  </ion-navbar>\n\n  <ion-toolbar no-padding>\n      <div background-size *ngIf="data != null" [ngStyle]="{\'background-image\': \'url(\' + data.headerImage + \')\'}">\n        <div search-bar-bcg>\n          <!-- Header Title -->\n          <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>\n          <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>\n        </div>\n      </div>\n      <ion-grid>\n        <ion-row>\n          <ion-col (click)="switchList(0)">Friends</ion-col>\n          <ion-col (click)="switchList(1)">Request</ion-col>\n          <ion-col (click)="switchList(2)">Blocked</ion-col>\n          <ion-col (click)="addFriend()">Add</ion-col>\n        </ion-row>\n      </ion-grid>\n  </ion-toolbar>\n</ion-header>\n\n\n<!-- Content -->\n<ion-content elastic-header>\n  <!-- Display Friend List -->\n  <ion-list *ngIf="listReady">\n\n    <ion-item>Place Holder</ion-item> <!-- Need to remove after restyle -->\n\n    <ion-item *ngIf="displayList.length == 0 && listReady && searchTerm.length != 0"><p>No results for: "{{searchTerm}}"</p></ion-item>\n    <ion-item border no-lines *ngFor="let friend of displayList; let i = index">\n      <ion-avatar item-start>\n        <img [src]="friend.avatar"/>\n      </ion-avatar>\n      <h2 item-title>{{friend.firstName}} {{friend.lastName}}</h2>\n      <h3 item-subtitle text-wrap>{{friend.username}}</h3>\n      <h4 text-wrap *ngIf="displayRequest">{{friend.msg}}</h4>\n      <!-- Action Sheet Button-->\n      <button text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(friend.uid)"><ion-icon name="more"></ion-icon></button>\n    </ion-item>\n  </ion-list>\n  <!-- Display Blocked List -->\n</ion-content>\n\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/friend-list/friend-list.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _d || Object])
     ], FriendListPage);
     return FriendListPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=friend-list.js.map
@@ -139,8 +555,8 @@ var FriendListPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -197,6 +613,22 @@ var LoginPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.toastCtrl = toastCtrl;
+        this.data = { "toolbarTitle": "Login",
+            "forgotPassword": "Forgot password?",
+            "other": "Test User",
+            "subtitle": "Welcome",
+            "labelEmail": "EMAIL",
+            "labelUsername": "USERNAME",
+            "labelPassword": "PASSWORD",
+            "title": "Login to your account",
+            "email": "Enter your email",
+            "username": "Enter your username",
+            "password": "Enter your password",
+            "register": "Register",
+            "login": "Login",
+            "logo": "assets/images/logo/2.png",
+            "errorUser": "Field can't be empty.",
+            "errorPassword": "Field can't be empty." };
         this.user = {};
         this.password = "";
         this.err_msg = "";
@@ -289,13 +721,13 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/login/login.html"*/'<ion-header>\n\n    <ion-navbar>\n      <button ion-button menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      <ion-title>Login</ion-title>\n    </ion-navbar>\n  \n  </ion-header>\n  \n  <ion-content padding>\n    <ion-grid no-padding>\n      <ion-row padding-horizontal align-self-center>\n  \n        <ion-col align-self start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n          <button ion-button button-clear text-capitalize clear float-left>Some other button</button>\n          <button ion-button button-clear text-capitalize clear float-right (click)="resetPwd()">Forgot Password</button>\n        </ion-col>\n        \n        <ion-col align-self-end col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n          <!--Logo-->\n          <img src="../../assets/images/logo/2.png">\n          <!--Logo Subtitle-->\n          <h2 login-subtitle no-margin>Welcome</h2>\n          <!---Logo Title-->\n          <h1 ion-text padding-bottom login-title no-margin>Login to your account</h1>\n        </ion-col>\n  \n        <ion-col align-self-start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n          <!--Input field username-->\n          <ion-item transparent>\n            <ion-label stacked>Email</ion-label>\n            <ion-input required placeholder="email" type="email" [(ngModel)]="user.email"></ion-input>\n          </ion-item>\n  \n          <!--Input field password-->\n          <ion-item transparent>\n              <ion-label stacked>Password</ion-label>\n              <ion-input required type="password" placeholder="password" [(ngModel)]="password"></ion-input>\n          </ion-item>\n        </ion-col>\n  \n        <!--Share Section-->\n        <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n          <!---Login button-->\n          <button ion-button  full text-capitalize default-button (click)="login(user)">Login</button>\n          <!---Facebook button-->\n          <button ion-button default-button color="facebook" full text-capitalize block>Login with Facebook</button>\n          <!---Google button-->\n          <button ion-button default-button color="goole" full text-capitalize block>Login with Google</button>\n          <!---Twitter button-->\n          <button ion-button default-button color="twitter" full text-capitalize block>Login with Twitter</button>\n        </ion-col>\n  \n        <ion-col col-12>\n          <div description text-center>\n            <p>Don\'t have an account? <a text-capitalize ion-text color="primary" (click)="register()">Register</a></p>\n          </div>\n        </ion-col>\n        <!--End Share Section-->\n      </ion-row>\n    </ion-grid>\n  </ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/login/login.html"*/'<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <!--<ion-title>{{data.toolbarTitle}}</ion-title>-->\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <ion-grid no-padding>\n    <ion-row padding-horizontal align-self-center>\n\n      <ion-col align-self start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n        <button ion-button button-clear text-capitalize clear float-left (click)="login(user)">{{data.other}}</button>\n        <button ion-button button-clear text-capitalize clear float-right (click)="resetPwd()">{{data.forgotPassword}}</button>\n      </ion-col>\n      \n      <ion-col align-self-end col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n        <!--Logo-->\n        <img [src]="data.logo">\n        <!--Logo Subtitle-->\n        <h2 login-subtitle no-margin>{{data.subtitle}}</h2>\n        <!---Logo Title-->\n        <h1 ion-text padding-bottom login-title no-margin>{{data.title}}</h1>\n      </ion-col>\n\n      <ion-col align-self-start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n        <!---Input field username-->\n        <ion-item transparent>\n          <ion-label stacked>{{data.labelEmail}}</ion-label>\n          <ion-input required placeholder="{{data.email}}" type="email" [(ngModel)]="user.email"></ion-input>\n        </ion-item>\n\n        <!--Input field password-->\n        <ion-item transparent>\n          <ion-label stacked>{{data.labelPassword}}</ion-label>\n          <ion-input required type="password" placeholder="{{data.password}}" [(ngModel)]="password"></ion-input>\n        </ion-item>\n      </ion-col>\n\n      <!--Share Section-->\n      <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>\n        <!---Login button-->\n        <button ion-button  full text-capitalize default-button (click)="login(user)">Login</button>\n        <!---Facebook button-->\n        <button ion-button default-button color="facebook" full text-capitalize block><ion-icon name="logo-facebook"></ion-icon> Login with Facebook</button>\n        <!---Google button-->\n        <button ion-button default-button google-button color="google" full text-capitalize block><ion-icon name="logo-google"></ion-icon> Login with Google</button>\n      </ion-col>\n\n      <ion-col col-12>\n        <div description text-center>\n          <p>Don\'t have an account? <a text-capitalize ion-text color="primary" (click)="register()">Register</a></p>\n        </div>\n      </ion-col>\n      <!--End Share Section-->\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/login/login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
     ], LoginPage);
     return LoginPage;
 }());
@@ -311,7 +743,7 @@ var LoginPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LogoutPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(71);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -354,11 +786,11 @@ var LogoutPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-logout',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/logout/logout.html"*/'<!--\n  Generated template for the LogoutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Logout</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n\n  <h2> Are you sure you want to logout? </h2>\n\n  <p> Note: After Logout you cannot get the notification from others! </p>\n\n  <button ion-button (click)="logoutBtnListener()">Logout</button>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/logout/logout.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */]])
     ], LogoutPage);
     return LogoutPage;
 }());
@@ -374,7 +806,7 @@ var LogoutPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ManageEventPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -388,37 +820,47 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-/**
- * Generated class for the ManageEventPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 var ManageEventPage = /** @class */ (function () {
-    function ManageEventPage(navCtrl, navParams) {
+    function ManageEventPage(navCtrl, navParams, actionSheetCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.actionSheetCtrl = actionSheetCtrl;
+        this.eventIcon = "assets/images/logo/1.png";
+        this.data = { "toolbarTitle": "List of Events",
+            "title": "Search for events",
+            "headerImage": "assets/images/background/" + Math.ceil(Math.random() * 23) + ".jpg" };
         this.user = {};
         this.events = [];
+        this.eventRequests = [];
+        this.displayList = [];
+        this.searchTerm = "";
+        this.displayEvents = true;
+        this.listReady = false;
         this.user.uid = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().currentUser.uid;
+        this.displayEvents = true;
+        this.searchTerm = "";
+        this.userRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
+        this.reqRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Request').doc(this.user.uid);
     }
-    ManageEventPage.prototype.ionViewDidLoad = function () {
-    };
     ManageEventPage.prototype.ionViewWillEnter = function () {
-        this.getEventList();
+        this.getLists();
+    };
+    ManageEventPage.prototype.ionViewDidEnter = function () {
+        this.search("");
     };
     ManageEventPage.prototype.ionViewDidLeave = function () {
         this.events.length = 0; // by set count = 0 not erase all data
-        this.user.eventList.forEach(function (eventRef) {
-            eventRef.onSnapshot(function () { });
-        });
+        this.userRef.onSnapshot(function () { });
+        this.reqRef.onSnapshot(function () { });
     };
-    ManageEventPage.prototype.getEventList = function () {
+    ManageEventPage.prototype.getLists = function () {
         var _this = this;
-        var doc = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
-        doc.get().then(function (doc) {
+        this.listReady = false;
+        this.userRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
+        this.userRef.onSnapshot(function (doc) {
             if (doc.data() != null) {
                 _this.events.length = 0;
+                _this.displayList.length = 0;
                 _this.user.eventList = doc.data().eventList;
                 _this.user.eventList.forEach(function (e) {
                     var event = {};
@@ -428,14 +870,47 @@ var ManageEventPage = /** @class */ (function () {
                             event.eventName = content.data().eventName;
                             event.date = content.data().date;
                             _this.events.push(event);
+                            if (_this.searchTerm.trim() == "" && _this.displayEvents)
+                                _this.displayList = _this.events.slice(0);
                         }
                     });
                 });
             }
+            _this.reqRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Request').doc(_this.user.uid);
+            _this.reqRef.onSnapshot(function (doc) {
+                _this.eventRequests.length = 0;
+                var reqList = doc.data().eventRequest;
+                reqList.forEach(function (req) {
+                    req.from.get().then(function (e) {
+                        var ne = {
+                            eventId: req.from.id,
+                            eventName: e.data().eventName,
+                            date: e.data().date,
+                            msg: req.msg
+                        };
+                        _this.eventRequests.push(ne);
+                        if (_this.searchTerm.trim() == "" && !_this.displayEvents)
+                            _this.displayList = _this.eventRequests.slice(0);
+                    });
+                });
+            });
+            _this.listReady = true;
         });
     };
-    ManageEventPage.prototype.viewEvent = function (eventRef) {
-        this.navCtrl.push('ViewEventPage', eventRef);
+    ManageEventPage.prototype.viewRequest = function (tf) {
+        this.displayEvents = !tf;
+        this.search("");
+    };
+    ManageEventPage.prototype.viewEvent = function (eventId, viewOnly) {
+        this.navCtrl.push('ViewEventPage', { 'eventId': eventId,
+            'viewOnly': viewOnly });
+    };
+    ManageEventPage.prototype.groupChat = function (eventId) {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Event').doc(eventId).get().then(function (doc) {
+            var chatRef = doc.data().chat;
+            _this.navCtrl.push('ChatPage', chatRef);
+        });
     };
     ManageEventPage.prototype.createEvent = function () {
         this.navCtrl.push('CreateEventPage');
@@ -443,14 +918,116 @@ var ManageEventPage = /** @class */ (function () {
     ManageEventPage.prototype.joinEvent = function () {
         this.navCtrl.push('JoinEventPage');
     };
+    ManageEventPage.prototype.search = function (keyword) {
+        var _this = this;
+        keyword = keyword.trim().toLowerCase();
+        var currList;
+        if (this.displayEvents)
+            currList = this.events;
+        else
+            currList = this.eventRequests;
+        this.listReady = false;
+        this.displayList.length = 0;
+        currList.forEach(function (e) {
+            var isFound = false;
+            if (!isFound)
+                isFound = e.eventName.toLowerCase().includes(keyword);
+            if (isFound)
+                _this.displayList.push(e);
+        });
+        this.listReady = true;
+        if (keyword.length == 0)
+            this.displayList = currList.slice(0);
+    };
+    ManageEventPage.prototype.presentActionSheet = function (eid) {
+        var _this = this;
+        var actionSheet;
+        // For displaying event
+        if (this.displayEvents)
+            actionSheet = this.actionSheetCtrl.create({
+                title: '',
+                buttons: [
+                    {
+                        text: 'View Event',
+                        handler: function () { _this.viewEvent(eid, false); }
+                    },
+                    {
+                        text: 'Group Chat',
+                        handler: function () {
+                            _this.groupChat(eid);
+                        }
+                    },
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        handler: function () {
+                        }
+                    }
+                ]
+            });
+        else
+            actionSheet = this.actionSheetCtrl.create({
+                title: '',
+                buttons: [
+                    {
+                        text: 'View Event',
+                        handler: function () { _this.viewEvent(eid, true); }
+                    },
+                    {
+                        text: 'Join',
+                        handler: function () {
+                            _this.requestOperate(eid, true);
+                        }
+                    },
+                    {
+                        text: 'Decline',
+                        handler: function () {
+                            _this.requestOperate(eid, false);
+                        }
+                    },
+                    {
+                        text: 'Cancel',
+                        role: 'cancel',
+                        handler: function () {
+                        }
+                    }
+                ]
+            });
+        actionSheet.present();
+    };
+    ManageEventPage.prototype.requestOperate = function (eid, isApproved) {
+        var _this = this;
+        var eRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Event').doc(eid);
+        if (isApproved) {
+            this.userRef.get().then(function (doc) {
+                var el = doc.data().eventList;
+                el.push(eRef);
+                _this.userRef.update('eventList', el);
+            });
+            eRef.get().then(function (doc) {
+                var pl = doc.data().participants;
+                pl.push(_this.userRef);
+                eRef.update('participants', pl);
+            });
+        }
+        this.reqRef.get().then(function (doc) {
+            var reqList = doc.data().eventRequest;
+            var idx = reqList.findIndex(function (r) {
+                return r.from.id == eid;
+            });
+            if (idx > -1)
+                reqList.splice(idx, 1);
+            _this.reqRef.update('eventRequest', reqList);
+        });
+    };
     ManageEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-manage-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/manage-event/manage-event.html"*/'<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Manage Event</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let e of events" outline (click)="viewEvent(e.eventId)">\n      <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>\n      {{e.eventName}}\n      <p>{{e.date | date:\'yyyy MMM dd H:mm\'}}</p>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab bottom right>\n    <button ion-fab>\n      <ion-icon ios="ios-add" md="md-add"></ion-icon>\n    </button>\n    <ion-fab-list side="top">\n      <button (click)="createEvent()" ion-fab>Create</button>\n      <button (click)="joinEvent()" ion-fab>Join</button>\n    </ion-fab-list>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/manage-event/manage-event.html"*/,
+            selector: 'page-manage-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/manage-event/manage-event.html"*/'<ion-header header-ios>\n  <ion-navbar transparent>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n  </ion-navbar>\n\n  <ion-toolbar no-padding>\n    <div background-size *ngIf="data != null" [ngStyle]="{\'background-image\': \'url(\' + data.headerImage + \')\'}">\n      <div search-bar-bcg>\n        <!-- Header Title -->\n        <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>\n        <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>\n      </div>\n    </div>\n    <ion-grid>\n      <ion-row>\n        <ion-col (click)="viewRequest(false)">Events</ion-col>\n        <ion-col (click)="viewRequest(true)">Request</ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-toolbar>\n  \n</ion-header>\n\n<ion-content elastic-header>\n  <ion-list *ngIf="events != null && listReady">\n\n    <ion-item>Place Holder</ion-item> <!-- Need to delete -->\n    <ion-item>\n      <ion-grid>\n        <ion-row>\n          <ion-col (click)="createEvent()">Create</ion-col>\n          <ion-col (click)="joinEvent()">Join</ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-item>\n    \n    <ion-item *ngIf="displayList.length == 0 && listReady && searchTerm.length != 0"><p>No results for: "{{searchTerm}}"</p></ion-item>\n    <ion-item *ngFor="let e of displayList" outline>\n      <ion-avatar item-start>\n        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>\n      </ion-avatar>\n      <h2 item-title>{{e.eventName}}</h2>\n      <h3 item-subtitle text-wrap>{{e.date | date:\'yyyy MMM dd H:mm\'}}</h3>\n      <h4 *ngIf="!displayEvents" text-wrap>{{e.msg}}</h4>\n      <button text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(e.eventId)"><ion-icon name="more"></ion-icon></button>\n    </ion-item>\n  </ion-list>\n\n  <!-- IDK why is not working after scss -->\n  <ion-fab bottom right>\n    <button ion-fab>\n        <img [src]="eventIcon"/>\n    </button>\n    <ion-fab-list side="top">\n      <button (click)="createEvent()" ion-fab>Create</button>\n      <button (click)="joinEvent()" ion-fab>Join</button>\n    </ion-fab-list>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/manage-event/manage-event.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _c || Object])
     ], ManageEventPage);
     return ManageEventPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=manage-event.js.map
@@ -464,9 +1041,8 @@ var ManageEventPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__(71);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -479,16 +1055,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var ProfilePage = /** @class */ (function () {
-    function ProfilePage(navCtrl, navParams, afAuth, toast) {
+    function ProfilePage(navCtrl, navParams, toast) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.afAuth = afAuth;
         this.toast = toast;
         this.user = {};
-        this.user.uid = afAuth.auth.currentUser.uid;
-        this.user.email = afAuth.auth.currentUser.email;
+        this.user.uid = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().currentUser.uid;
+        this.user.email = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]().currentUser.email;
         /* empty info */
         this.user.username = "";
         this.user.firstName = "";
@@ -505,7 +1079,7 @@ var ProfilePage = /** @class */ (function () {
         console.log(img);
         */
         // get informations
-        var doc = __WEBPACK_IMPORTED_MODULE_3_firebase__["firestore"]().collection('Users').doc(this.user.uid);
+        var doc = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(this.user.uid);
         doc.get().then(function (doc) {
             if (doc.exists) {
                 _this.user.username = doc.data().username;
@@ -522,7 +1096,7 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage.prototype.changePwd = function () {
         var _this = this;
-        var auth = __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"]();
+        var auth = __WEBPACK_IMPORTED_MODULE_2_firebase__["auth"]();
         return auth.sendPasswordResetEmail(this.user.email)
             .then(function () {
             console.log("email sent");
@@ -537,10 +1111,9 @@ var ProfilePage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-profile',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/profile/profile.html"*/'<ion-header>\n\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Profile</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-avatar block>\n    <img class="circle-pic" \n    src="https://firebasestorage.googleapis.com/v0/b/meetogether-prj666g1.appspot.com/o/avatar%2Fdefault_avatar.png?alt=media&token=c0c88e7e-71cd-4de5-aa78-27573c8f3f2a" />\n  </ion-avatar>\n  {{user.avatar}}\n  <ion-item (click)="getQr()">\n    <ion-icon ios="ios-finger-print" md="md-finger-print"></ion-icon>\n    Show QR Code\n  </ion-item>\n  <ion-item>\n    <ion-icon ios="ios-mail" md="md-mail"></ion-icon>\n    {{user.email}}\n  </ion-item>\n  <ion-item>\n    <ion-icon ios="ios-glasses" md="md-glasses"></ion-icon>\n    {{user.username}}\n  </ion-item>\n  <ion-item>\n    <ion-icon ios="ios-contact" md="md-contact"></ion-icon>\n    {{user.firstName}} {{user.lastName}}\n  </ion-item>\n  <button ion-button clear block (click)="editProfile()">Edit Profile</button>\n  <button ion-button block (click) = "changePwd()">Change Password</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/profile/profile.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__["a" /* AngularFireAuth */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ToastController */]])
     ], ProfilePage);
     return ProfilePage;
 }());
@@ -571,75 +1144,79 @@ webpackEmptyAsyncContext.id = 181;
 
 var map = {
 	"../pages/add-friend/add-friend.module": [
-		742,
-		7
+		743,
+		8
 	],
 	"../pages/chat/chat.module": [
-		739,
-		15
+		740,
+		16
 	],
 	"../pages/create-event/create-event.module": [
-		749,
-		14
+		750,
+		15
 	],
 	"../pages/edit-event/edit-event.module": [
-		740,
-		13
+		741,
+		14
 	],
 	"../pages/edit-profile/edit-profile.module": [
-		743,
-		12
+		744,
+		13
 	],
 	"../pages/friend-list/friend-list.module": [
-		750,
-		5
+		751,
+		4
 	],
 	"../pages/home/home.module": [
 		326
 	],
 	"../pages/join-event/join-event.module": [
-		744,
-		6
+		745,
+		7
 	],
 	"../pages/login/login.module": [
-		751,
-		4
+		752,
+		5
 	],
 	"../pages/logout/logout.module": [
-		752,
-		16
+		753,
+		17
 	],
 	"../pages/manage-event/manage-event.module": [
-		753,
+		754,
 		2
 	],
 	"../pages/profile/profile.module": [
-		754,
+		755,
 		0
 	],
 	"../pages/qr-code/qr-code.module": [
-		748,
+		749,
 		1
 	],
 	"../pages/qr-scan/qr-scan.module": [
 		738,
-		11
+		12
 	],
 	"../pages/register/register.module": [
-		745,
-		10
+		746,
+		11
 	],
 	"../pages/reset/reset.module": [
-		746,
-		9
+		747,
+		10
 	],
 	"../pages/view-event-participants/view-event-participants.module": [
-		741,
-		8
+		742,
+		6
 	],
 	"../pages/view-event/view-event.module": [
-		747,
+		748,
 		3
+	],
+	"../pages/view-profile/view-profile.module": [
+		739,
+		9
 	]
 };
 function webpackAsyncContext(req) {
@@ -685,7 +1262,7 @@ var HomePageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
             ],
         })
     ], HomePageModule);
@@ -728,9 +1305,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_home_home_module__ = __webpack_require__(326);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__ = __webpack_require__(367);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_angularfire2__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_angularfire2__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_angularfire2_database__ = __webpack_require__(721);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angularfire2_auth__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angularfire2_auth__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_angularfire2_firestore__ = __webpack_require__(729);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_angularfire2_storage__ = __webpack_require__(733);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_api_config__ = __webpack_require__(737);
@@ -787,7 +1364,7 @@ var AppModule = /** @class */ (function () {
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/add-friend/add-friend.module#AddFriendPageModule', name: 'AddFriendPage', segment: 'add-friend', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/chat/chat.module#ChatPageModule', name: 'ChatPage', segment: 'chat', priority: 'low', defaultHistory: [] },
@@ -806,7 +1383,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reset/reset.module#ResetPageModule', name: 'ResetPage', segment: 'reset', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-event-participants/view-event-participants.module#ViewEventParticipantsPageModule', name: 'ViewEventParticipantsPage', segment: 'view-event-participants', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/view-event/view-event.module#ViewEventPageModule', name: 'ViewEventPage', segment: 'view-event', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/view-event/view-event.module#ViewEventPageModule', name: 'ViewEventPage', segment: 'view-event', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/view-profile/view-profile.module#ViewProfilePageModule', name: 'ViewProfilePage', segment: 'view-profile', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_13_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_18__app_api_config__["a" /* FIREBASE_CONFIG */]),
@@ -816,7 +1394,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_17_angularfire2_storage__["a" /* AngularFireStorageModule */],
                 __WEBPACK_IMPORTED_MODULE_10__pages_home_home_module__["HomePageModule"]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */],
@@ -830,7 +1408,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_11__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_12__ionic_native_splash_screen__["a" /* SplashScreen */],
                 __WEBPACK_IMPORTED_MODULE_14_angularfire2_database__["a" /* AngularFireDatabase */],
-                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicErrorHandler */] },
+                { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicErrorHandler */] },
                 __WEBPACK_IMPORTED_MODULE_20__ionic_native_google_maps__["a" /* GoogleMaps */],
                 __WEBPACK_IMPORTED_MODULE_19__ionic_native_geolocation__["a" /* Geolocation */],
                 __WEBPACK_IMPORTED_MODULE_21__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]
@@ -939,16 +1517,16 @@ var MyApp = /** @class */ (function () {
         this.nav.setRoot(page.component);
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Nav */])
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Nav */])
     ], MyApp.prototype, "nav", void 0);
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/app/app.html"*/'<ion-menu [content]="content">\n  <ion-header>\n    <div header-background-image padding [ngStyle]="{\'background-image\': \'url(../../assets/images/avatar/25.jpg)\'}">\n    </div>\n  </ion-header>\n\n  <ion-content>\n    <ion-list>\n      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">\n        <ion-icon ios="ios-{{p.icon}}" md="md-{{p.icon}}"></ion-icon>{{p.title}}\n      </button>\n      <button ion-button clear ><ion-icon name="cog">Settings</ion-icon></button>\n    </ion-list>\n  </ion-content>\n\n</ion-menu>\n\n<!-- Disable swipe-to-go-back because it\'s poor UX to combine STGB with side menus -->\n<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* Platform */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Events */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */]])
     ], MyApp);
     return MyApp;
 }());

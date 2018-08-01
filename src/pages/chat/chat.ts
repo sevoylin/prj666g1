@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-
 import { User } from '../../models/user';
 
 import * as firebase from 'firebase';
@@ -23,10 +21,9 @@ export class ChatPage {
   emojiDisplay = false;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              private afAuth: AngularFireAuth) {
-    this.user.uid = this.afAuth.auth.currentUser.uid;
-    this.user.email = this.afAuth.auth.currentUser.email;
+              public navParams: NavParams) {
+    this.user.uid = firebase.auth().currentUser.uid;
+    this.user.email = firebase.auth().currentUser.email;
     this.chatRef = navParams.data;
     this.getUser();
   }
@@ -37,15 +34,14 @@ export class ChatPage {
   
   getUser() {
     var doc = firebase.firestore().collection('Users').doc(this.user.uid);
-    doc.onSnapshot((doc) => {
+    doc.get().then((doc) => {
       if (doc.data() != null){
         if (doc.data().username != "")
-          this.user = doc.data().username;
+          this.user.username = doc.data().username;
+        else
+          this.user.username = doc.data().email;
       }
     });
-
-    // detach listener
-    doc.onSnapshot(()=>{});
   }
 
   // Chat listener
@@ -66,11 +62,14 @@ export class ChatPage {
   sendBtn() {
     // Do nothing if there is nothing but &nbsp;
     if (!this.msgInput.trim()) return;
-
-    var msg = {sender: this.user, content: this.msgInput.trim()};
+    var msg = {
+      sender: this.user.username,
+      userId: this.user.uid,
+      content: this.msgInput.trim()};
     // console.log("From Input : " + msg.sender + " said " + msg.content);
     this.msgList.push(msg);
     this.chatRef.update({messages: this.msgList});
+    this.msgInput = "";
   }
 
 }

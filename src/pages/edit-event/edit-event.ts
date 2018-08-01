@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, CameraPosition, GoogleMapOptions, Circle, Marker, MarkerOptions, LatLng} from '@ionic-native/google-maps';
 import { Event } from '../../models/event';
 import * as firebase from 'firebase';
@@ -25,7 +25,8 @@ export class EditEventPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public platform:Platform) {
+              public platform:Platform,
+              public alertCtrl: AlertController) {
     this.eventRef = navParams.data;
   }
 
@@ -116,7 +117,8 @@ export class EditEventPage {
     if (isValid) {
       this.event.eventName = this.event.eventName.trim();
       this.event.password = this.event.password.trim();
-
+      if (this.event.description == undefined)
+        this.event.description = " ";
       /* Trick things here:
         marker.getPostion().lat and marker.getPostion().lng supposed to be 2 number
         in this plugin it turned to 2 getter function
@@ -132,6 +134,52 @@ export class EditEventPage {
     }
 
     return isValid;
+  }
+
+  endBtn(){
+    let alert = this.alertCtrl.create({
+      title: 'Elimilate Event',
+      message: 'Are you sure to elimilate event: ' + this.event.eventName,
+      buttons:[
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => { }
+        },
+        {
+          text: 'Eliminate',
+          handler:()=>{
+            this.endEvent();
+            this.navCtrl.remove(2,1);
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+
+  async endEvent(){
+    await this.eventRef.get().then((doc)=>{
+      this.event.participants=doc.data().participants;
+      doc.data().chat.delete();
+      this.event.participants.forEach(ppl => {
+        ppl.get().then(data => {
+          var pplEvent = data.data().eventList;
+          var pplEventIdx = pplEvent.indexOf(pplEvent.find(e => {return e.isEqual(this.eventRef);}));
+          console.log(pplEventIdx);
+          if (pplEventIdx > -1) pplEvent.splice(pplEventIdx,1);
+          ppl.update('eventList',pplEvent);
+        });
+      });
+    });
+    this.eventRef.delete().then(function(){
+      console.log("Document successfully deleted!");
+      window.history.go(-2);
+    }).catch(function(error){
+      console.error("Error removing document: ",error);
+    });
   }
 
   ionViewDidLoad() {

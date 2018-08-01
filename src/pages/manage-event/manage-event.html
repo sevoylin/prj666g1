@@ -1,27 +1,57 @@
-<ion-header>
-
-  <ion-navbar>
+<ion-header header-ios>
+  <ion-navbar transparent>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Manage Event</ion-title>
   </ion-navbar>
 
+  <ion-toolbar no-padding>
+    <div background-size *ngIf="data != null" [ngStyle]="{'background-image': 'url(' + data.headerImage + ')'}">
+      <div search-bar-bcg>
+        <!-- Header Title -->
+        <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>
+        <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>
+      </div>
+    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col (click)="viewRequest(false)">Events</ion-col>
+        <ion-col (click)="viewRequest(true)">Request</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  
 </ion-header>
 
+<ion-content elastic-header>
+  <ion-list *ngIf="events != null && listReady">
 
-<ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let e of events" outline (click)="viewEvent(e.eventId)">
-      <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
-      {{e.eventName}}
-      <p>{{e.date | date:'yyyy MMM dd H:mm'}}</p>
+    <ion-item>Place Holder</ion-item> <!-- Need to delete -->
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col (click)="createEvent()">Create</ion-col>
+          <ion-col (click)="joinEvent()">Join</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    
+    <ion-item *ngIf="displayList.length == 0 && listReady && searchTerm.length != 0"><p>No results for: "{{searchTerm}}"</p></ion-item>
+    <ion-item *ngFor="let e of displayList" outline>
+      <ion-avatar item-start>
+        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+      </ion-avatar>
+      <h2 item-title>{{e.eventName}}</h2>
+      <h3 item-subtitle text-wrap>{{e.date | date:'yyyy MMM dd H:mm'}}</h3>
+      <h4 *ngIf="!displayEvents" text-wrap>{{e.msg}}</h4>
+      <button text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(e.eventId)"><ion-icon name="more"></ion-icon></button>
     </ion-item>
   </ion-list>
 
+  <!-- IDK why is not working after scss -->
   <ion-fab bottom right>
     <button ion-fab>
-      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+        <img [src]="eventIcon"/>
     </button>
     <ion-fab-list side="top">
       <button (click)="createEvent()" ion-fab>Create</button>
