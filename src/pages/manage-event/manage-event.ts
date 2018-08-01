@@ -10,12 +10,13 @@ import * as firebase from 'firebase';
   templateUrl: 'manage-event.html',
 })
 export class ManageEventPage {
-
-  eventIcon = "assets/images/logo/1.png";
-
-  data: any = { "toolbarTitle"  : "List of Events",
-                "title"         : "Search for events",
-                "headerImage"   : "assets/images/background/" + Math.ceil(Math.random() * 23) + ".jpg" };
+  data: any = {
+    "toolbarTitle": "Events List",
+    "headerImage": "assets/images/places/" + Math.ceil(Math.random() * 8) + ".jpg",
+    //"backgroundImage": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg",
+    "backgroundImage" : "assets/images/maps/0.jpg",
+  };
+  //backgroundImage = "assets/images/places/" + Math.ceil(Math.random() * 9) + ".jpg"
 
   user = {} as User;
   events = [];
@@ -42,6 +43,7 @@ export class ManageEventPage {
   }
 
   ionViewDidEnter() {
+    this.displayList.length = 0;
     this.search("");
   }
 
@@ -65,7 +67,9 @@ export class ManageEventPage {
           e.get().then((content)=>{
             if (content.data() != null){
               event.eventName = content.data().eventName;
+              event.description = content.data().description;
               event.date = content.data().date;
+              event.creator = content.data().creator;
               this.events.push(event);
               if (this.searchTerm.trim() == "" && this.displayEvents)
                 this.displayList = this.events.slice(0);
@@ -105,12 +109,6 @@ export class ManageEventPage {
                                         'viewOnly': viewOnly});
   }
 
-  groupChat(eventId){
-    firebase.firestore().collection('Event').doc(eventId).get().then( doc=>{
-      var chatRef = doc.data().chat;
-      this.navCtrl.push('ChatPage',chatRef);
-    });
-  }
 
   createEvent(){
     this.navCtrl.push('CreateEventPage');
@@ -137,63 +135,6 @@ export class ManageEventPage {
     this.listReady = true;
     if (keyword.length == 0)
       this.displayList = currList.slice(0);
-  }
-
-  presentActionSheet(eid) {
-    let actionSheet;
-    // For displaying event
-    if (this.displayEvents)
-      actionSheet = this.actionSheetCtrl.create({
-        title: '',
-        buttons: [
-          {
-            text: 'View Event',
-            handler: () => { this.viewEvent(eid,false); }
-          },
-          {
-            text: 'Group Chat',
-            handler: () => {
-              this.groupChat(eid);
-            }
-          },
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-            }
-          }
-        ]
-      });
-    // for displaying request
-    else
-      actionSheet = this.actionSheetCtrl.create({
-        title: '',
-        buttons: [
-          {
-            text: 'View Event',
-            handler: () => { this.viewEvent(eid, true); }
-          },
-          {
-            text: 'Join',
-            handler: () => {
-              this.requestOperate(eid,true);
-            }
-          },
-          {
-            text: 'Decline',
-            handler: () => {
-              this.requestOperate(eid,false);
-            }
-          },
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: () => {
-            }
-          }
-        ]
-      });
-    actionSheet.present();
   }
 
   requestOperate(eid, isApproved: boolean){

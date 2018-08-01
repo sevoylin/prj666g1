@@ -834,10 +834,13 @@ var ManageEventPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.actionSheetCtrl = actionSheetCtrl;
-        this.eventIcon = "assets/images/logo/1.png";
-        this.data = { "toolbarTitle": "List of Events",
-            "title": "Search for events",
-            "headerImage": "assets/images/background/" + Math.ceil(Math.random() * 23) + ".jpg" };
+        this.data = {
+            "toolbarTitle": "Events List",
+            "headerImage": "assets/images/places/" + Math.ceil(Math.random() * 8) + ".jpg",
+            //"backgroundImage": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg",
+            "backgroundImage": "assets/images/maps/0.jpg",
+        };
+        //backgroundImage = "assets/images/places/" + Math.ceil(Math.random() * 9) + ".jpg"
         this.user = {};
         this.events = [];
         this.eventRequests = [];
@@ -855,6 +858,7 @@ var ManageEventPage = /** @class */ (function () {
         this.getLists();
     };
     ManageEventPage.prototype.ionViewDidEnter = function () {
+        this.displayList.length = 0;
         this.search("");
     };
     ManageEventPage.prototype.ionViewDidLeave = function () {
@@ -877,7 +881,9 @@ var ManageEventPage = /** @class */ (function () {
                     e.get().then(function (content) {
                         if (content.data() != null) {
                             event.eventName = content.data().eventName;
+                            event.description = content.data().description;
                             event.date = content.data().date;
+                            event.creator = content.data().creator;
                             _this.events.push(event);
                             if (_this.searchTerm.trim() == "" && _this.displayEvents)
                                 _this.displayList = _this.events.slice(0);
@@ -914,13 +920,6 @@ var ManageEventPage = /** @class */ (function () {
         this.navCtrl.push('ViewEventPage', { 'eventId': eventId,
             'viewOnly': viewOnly });
     };
-    ManageEventPage.prototype.groupChat = function (eventId) {
-        var _this = this;
-        __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Event').doc(eventId).get().then(function (doc) {
-            var chatRef = doc.data().chat;
-            _this.navCtrl.push('ChatPage', chatRef);
-        });
-    };
     ManageEventPage.prototype.createEvent = function () {
         this.navCtrl.push('CreateEventPage');
     };
@@ -947,62 +946,6 @@ var ManageEventPage = /** @class */ (function () {
         this.listReady = true;
         if (keyword.length == 0)
             this.displayList = currList.slice(0);
-    };
-    ManageEventPage.prototype.presentActionSheet = function (eid) {
-        var _this = this;
-        var actionSheet;
-        // For displaying event
-        if (this.displayEvents)
-            actionSheet = this.actionSheetCtrl.create({
-                title: '',
-                buttons: [
-                    {
-                        text: 'View Event',
-                        handler: function () { _this.viewEvent(eid, false); }
-                    },
-                    {
-                        text: 'Group Chat',
-                        handler: function () {
-                            _this.groupChat(eid);
-                        }
-                    },
-                    {
-                        text: 'Cancel',
-                        role: 'cancel',
-                        handler: function () {
-                        }
-                    }
-                ]
-            });
-        else
-            actionSheet = this.actionSheetCtrl.create({
-                title: '',
-                buttons: [
-                    {
-                        text: 'View Event',
-                        handler: function () { _this.viewEvent(eid, true); }
-                    },
-                    {
-                        text: 'Join',
-                        handler: function () {
-                            _this.requestOperate(eid, true);
-                        }
-                    },
-                    {
-                        text: 'Decline',
-                        handler: function () {
-                            _this.requestOperate(eid, false);
-                        }
-                    },
-                    {
-                        text: 'Cancel',
-                        role: 'cancel',
-                        handler: function () {
-                        }
-                    }
-                ]
-            });
-        actionSheet.present();
     };
     ManageEventPage.prototype.requestOperate = function (eid, isApproved) {
         var _this = this;
@@ -1031,13 +974,12 @@ var ManageEventPage = /** @class */ (function () {
     };
     ManageEventPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-manage-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/manage-event/manage-event.html"*/'<ion-header header-ios>\n  <ion-navbar transparent>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n  </ion-navbar>\n\n  <ion-toolbar no-padding>\n    <div background-size *ngIf="data != null" [ngStyle]="{\'background-image\': \'url(\' + data.headerImage + \')\'}">\n      <div search-bar-bcg>\n        <!-- Header Title -->\n        <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>\n        <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>\n      </div>\n    </div>\n    <ion-grid>\n      <ion-row>\n        <ion-col (click)="viewRequest(false)">Events</ion-col>\n        <ion-col (click)="viewRequest(true)">Request</ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-toolbar>\n  \n</ion-header>\n\n<ion-content elastic-header>\n  <ion-list *ngIf="events != null && listReady">\n\n    <ion-item>Place Holder</ion-item> <!-- Need to delete -->\n    <ion-item>\n      <ion-grid>\n        <ion-row>\n          <ion-col (click)="createEvent()">Create</ion-col>\n          <ion-col (click)="joinEvent()">Join</ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-item>\n    \n    <ion-item *ngIf="displayList.length == 0 && listReady && searchTerm.length != 0"><p>No results for: "{{searchTerm}}"</p></ion-item>\n    <ion-item *ngFor="let e of displayList" outline>\n      <ion-avatar item-start>\n        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>\n      </ion-avatar>\n      <h2 item-title>{{e.eventName}}</h2>\n      <h3 item-subtitle text-wrap>{{e.date | date:\'yyyy MMM dd H:mm\'}}</h3>\n      <h4 *ngIf="!displayEvents" text-wrap>{{e.msg}}</h4>\n      <button text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(e.eventId)"><ion-icon name="more"></ion-icon></button>\n    </ion-item>\n  </ion-list>\n\n  <!-- IDK why is not working after scss -->\n  <ion-fab bottom right>\n    <button ion-fab>\n        <img [src]="eventIcon"/>\n    </button>\n    <ion-fab-list side="top">\n      <button (click)="createEvent()" ion-fab>Create</button>\n      <button (click)="joinEvent()" ion-fab>Join</button>\n    </ion-fab-list>\n  </ion-fab>\n</ion-content>'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/manage-event/manage-event.html"*/,
+            selector: 'page-manage-event',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/manage-event/manage-event.html"*/'<ion-header header-ios>\n  <ion-navbar transparent>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n  </ion-navbar>\n\n  <ion-toolbar no-padding>\n    <div background-size *ngIf="data != null" [ngStyle]="{\'background-image\': \'url(\' + data.headerImage + \')\'}">\n      <div search-bar-bcg>\n        <!-- Header Title -->\n        <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>\n        <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>\n      </div>\n    </div>\n    <ion-grid>\n      <ion-row>\n        <ion-col (click)="viewRequest(false)">Events</ion-col>\n        <ion-col (click)="viewRequest(true)">Request</ion-col>\n      </ion-row>\n    </ion-grid>\n  </ion-toolbar>\n  \n</ion-header>\n\n<ion-content elastic-header>\n    <ion-grid no-padding *ngIf="events != null && data != null">\n        <ion-row>\n          <ion-col no-padding col-12 col-md-6 *ngFor="let e of displayList;">\n            <ion-card background-size text-left (click)="viewEvent(e.eventId)" [ngStyle]="{\'background-image\': \'url(\' + data.backgroundImage + \')\'}">\n              <!--ngStyle]="{\'background-image\': \'url(\' + data.backgroundImage + \')\'}-->\n              <!-- Event Name -->\n              <div card-title>{{e.eventName}}</div>\n              <!-- Event Description and Date -->\n              <div text-wrap card-subtitle>\n                <b>Description:</b> {{e.description}} <br>\n                <!--<b>Creator:</b> {{e.creator}} <br>-->\n                <b>Time:</b> {{e.date | date:\'EEEE, MMMM d y h:mm a\'}}</div>\n            </ion-card>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n</ion-content>\n\n<!-- Bottom Button -->\n<ion-footer transparent>\n    <ion-fab bottom right>\n      <button ion-fab>\n        <ion-icon ios="ios-add" md="md-add"></ion-icon>\n      </button>\n      <ion-fab-list side="top">\n        <button (click)="createEvent()" ion-fab>Create</button>\n        <button (click)="joinEvent()" ion-fab>Join</button>\n      </ion-fab-list>\n    </ion-fab>\n  </ion-footer>'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/manage-event/manage-event.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]) === "function" && _c || Object])
     ], ManageEventPage);
     return ManageEventPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=manage-event.js.map
@@ -1398,12 +1340,12 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/manage-event/manage-event.module#ManageEventPageModule', name: 'ManageEventPage', segment: 'manage-event', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/qr-code/qr-code.module#QrCodePageModule', name: 'QrCodePage', segment: 'qr-code', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/qr-scan/qr-scan.module#QrScanPageModule', name: 'QrScanPage', segment: 'qr-scan', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/reset/reset.module#ResetPageModule', name: 'ResetPage', segment: 'reset', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-event-participants/view-event-participants.module#ViewEventParticipantsPageModule', name: 'ViewEventParticipantsPage', segment: 'view-event-participants', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/view-event/view-event.module#ViewEventPageModule', name: 'ViewEventPage', segment: 'view-event', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/view-profile/view-profile.module#ViewProfilePageModule', name: 'ViewProfilePage', segment: 'view-profile', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/view-profile/view-profile.module#ViewProfilePageModule', name: 'ViewProfilePage', segment: 'view-profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/qr-scan/qr-scan.module#QrScanPageModule', name: 'QrScanPage', segment: 'qr-scan', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_13_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_18__app_api_config__["a" /* FIREBASE_CONFIG */]),

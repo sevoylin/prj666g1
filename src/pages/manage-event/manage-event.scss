@@ -1,39 +1,68 @@
 page-manage-event {
-    // HEADER (SEARCH BAR)
-    @include avatar(true);
-    ion-navbar {
-      z-index: 9999;
+  // Settings Background Image
+  ion-card {
       position: relative;
-    }
-    .back-button,
-    .toolbar-title {
-      color: theme-colors('textColors', 'secondaryBase') !important;
-    }
-    .toolbar-ios {
-      min-height: 64px;
-    }
-    .bar-button-default-ios,
-    .toolbar-title-ios {
-      padding-top: 20px;
-    }
-  
-    ion-toolbar {
-      position: absolute;
-      top: 0;
-  
-      .searchbar-ios .searchbar-input {
-        background-color: #f7f7f7 !important;
+      height: 215px;
+      border-radius: $border-radius;
+      @include darkening-blend-mode;
+      box-shadow: none;
+      margin-bottom: 16px;
+      //Card Title
+      [card-title] {
+        padding: 22px;
+        font-size: $h1-font-size !important;
+        white-space:nowrap;
+        position: relative;
+        z-index: 9999;
+        color: color($googleCard, card-title-full-images-cards) !important;
+      }
+      // Card Subtitle
+      [card-subtitle] {
+        padding: 22px;
+        position: absolute;
+        z-index: 9999;
+        bottom: 0;
+        width: 95%;
+        color: color($googleCard, card-subtitle-full-images-cards) !important;
       }
     }
   
-    ion-content {
-      top: 105px;
-      &.content-ios {
-        top: 95px;
-      }
+  // HEADER (SEARCH BAR)
+  @include avatar(true);
+  ion-navbar {
+    z-index: 9999;
+    position: relative;
+  }
+  .back-button,
+  .toolbar-title {
+    color: theme-colors('textColors', 'secondaryBase') !important;
+  }
+  .toolbar-ios {
+    min-height: 64px;
+  }
+  .bar-button-default-ios,
+  .toolbar-title-ios {
+    padding-top: 20px;
+  }
+  
+  ion-toolbar {
+    position: absolute;
+    top: 0;
+  
+    .searchbar-ios .searchbar-input {
+      background-color: #f7f7f7 !important;
     }
-    // Settings Big Image
-    [background-size] {
+  }
+  
+  ion-content {
+    top: 105px;
+    &.content-ios {
+      top: 95px;
+    }
+  }
+  
+     // Settings Big Image
+     [background-size] {
       min-height: 160px!important;
       @include darkening-blend-mode;
       position: relative;
@@ -55,19 +84,8 @@ page-manage-event {
         }
       }
     }
-    // Settings Images Border Radius
-    ion-thumbnail img {
-      border-radius: $border-radius;
-    }
   
-    .input-wrapper {
-      display: block;
-    }
   
-    ion-badge {
-      right: 0;
-      bottom: 0;
-    }
+    
+  }
   
-    // CONTENT (EVENTS)
-}

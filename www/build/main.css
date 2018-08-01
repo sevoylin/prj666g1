@@ -37311,6 +37311,57 @@ page-login [bottom-form] [default-button] {
   font-weight: 400 !important;
 }
 
+page-manage-event ion-card {
+  position: relative;
+  height: 215px;
+  border-radius: 8px;
+  background-color: #00ff36 !important;
+  background-blend-mode: multiply;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  margin-bottom: 16px;
+}
+
+page-manage-event ion-card::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00ff36;
+  mix-blend-mode: multiply;
+}
+
+page-manage-event ion-card::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #23278a;
+  mix-blend-mode: lighten;
+}
+
+page-manage-event ion-card [card-title] {
+  padding: 22px;
+  font-size: 34px !important;
+  white-space: nowrap;
+  position: relative;
+  z-index: 9999;
+  color: white !important;
+}
+
+page-manage-event ion-card [card-subtitle] {
+  padding: 22px;
+  position: absolute;
+  z-index: 9999;
+  bottom: 0;
+  width: 95%;
+  color: white !important;
+}
+
 page-manage-event [images-filter] {
   mix-blend-mode: multiply;
   -webkit-filter: grayscale(100%) contrast(1.2);
@@ -37397,19 +37448,6 @@ page-manage-event [background-size] [search-bar-bcg] [search-bar-title] {
 
 page-manage-event [background-size] [search-bar-bcg] .searchbar-input {
   border-radius: 8px;
-}
-
-page-manage-event ion-thumbnail img {
-  border-radius: 8px;
-}
-
-page-manage-event .input-wrapper {
-  display: block;
-}
-
-page-manage-event ion-badge {
-  right: 0;
-  bottom: 0;
 }
 
 @-webkit-keyframes headerOff {

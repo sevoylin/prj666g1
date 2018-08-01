@@ -24,38 +24,33 @@
 </ion-header>
 
 <ion-content elastic-header>
-  <ion-list *ngIf="events != null && listReady">
-
-    <ion-item>Place Holder</ion-item> <!-- Need to delete -->
-    <ion-item>
-      <ion-grid>
+    <ion-grid no-padding *ngIf="events != null && data != null">
         <ion-row>
-          <ion-col (click)="createEvent()">Create</ion-col>
-          <ion-col (click)="joinEvent()">Join</ion-col>
+          <ion-col no-padding col-12 col-md-6 *ngFor="let e of displayList;">
+            <ion-card background-size text-left (click)="viewEvent(e.eventId)" [ngStyle]="{'background-image': 'url(' + data.backgroundImage + ')'}">
+              <!--ngStyle]="{'background-image': 'url(' + data.backgroundImage + ')'}-->
+              <!-- Event Name -->
+              <div card-title>{{e.eventName}}</div>
+              <!-- Event Description and Date -->
+              <div text-wrap card-subtitle>
+                <b>Description:</b> {{e.description}} <br>
+                <!--<b>Creator:</b> {{e.creator}} <br>-->
+                <b>Time:</b> {{e.date | date:'EEEE, MMMM d y h:mm a'}}</div>
+            </ion-card>
+          </ion-col>
         </ion-row>
       </ion-grid>
-    </ion-item>
-    
-    <ion-item *ngIf="displayList.length == 0 && listReady && searchTerm.length != 0"><p>No results for: "{{searchTerm}}"</p></ion-item>
-    <ion-item *ngFor="let e of displayList" outline>
-      <ion-avatar item-start>
-        <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
-      </ion-avatar>
-      <h2 item-title>{{e.eventName}}</h2>
-      <h3 item-subtitle text-wrap>{{e.date | date:'yyyy MMM dd H:mm'}}</h3>
-      <h4 *ngIf="!displayEvents" text-wrap>{{e.msg}}</h4>
-      <button text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(e.eventId)"><ion-icon name="more"></ion-icon></button>
-    </ion-item>
-  </ion-list>
-
-  <!-- IDK why is not working after scss -->
-  <ion-fab bottom right>
-    <button ion-fab>
-        <img [src]="eventIcon"/>
-    </button>
-    <ion-fab-list side="top">
-      <button (click)="createEvent()" ion-fab>Create</button>
-      <button (click)="joinEvent()" ion-fab>Join</button>
-    </ion-fab-list>
-  </ion-fab>
 </ion-content>
+
+<!-- Bottom Button -->
+<ion-footer transparent>
+    <ion-fab bottom right>
+      <button ion-fab>
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+      <ion-fab-list side="top">
+        <button (click)="createEvent()" ion-fab>Create</button>
+        <button (click)="joinEvent()" ion-fab>Join</button>
+      </ion-fab-list>
+    </ion-fab>
+  </ion-footer>
