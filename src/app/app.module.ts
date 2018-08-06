@@ -8,7 +8,6 @@ import { HomePage } from '../pages/home/home';
 import { ManageEventPage } from '../pages/manage-event/manage-event';
 import { FriendListPage } from '../pages/friend-list/friend-list';
 import { LoginPage } from '../pages/login/login';
-import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from '../pages/profile/profile';
 import { AvatarsPage } from '../pages/avatars/avatars';
 
@@ -39,7 +38,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   declarations: [
     MyApp,
     LoginPage,
-    LogoutPage,
     ManageEventPage,
     ProfilePage,
     FriendListPage,
@@ -60,7 +58,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     MyApp,
     HomePage,
     LoginPage,
-    LogoutPage,
     ManageEventPage,
     ProfilePage,
     FriendListPage,

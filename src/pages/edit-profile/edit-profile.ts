@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { User } from '../../models/user';
 
 import * as firebase from 'firebase';
@@ -14,6 +14,7 @@ export class EditProfilePage {
   user = {} as User;
 
   constructor(public navCtrl: NavController,
+              public events: Events,
               public navParams: NavParams) {
     // receive data from push
     this.user = navParams.data;
@@ -31,6 +32,7 @@ export class EditProfilePage {
       birth: this.user.birth,
       gender: this.user.gender
     });
+    this.events.publish('login_status', true, this.user);
     this.navCtrl.pop();
   }
 
