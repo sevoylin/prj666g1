@@ -9,7 +9,6 @@ import { HomePage } from '../pages/home/home';
 import { ManageEventPage } from '../pages/manage-event/manage-event';
 import { FriendListPage } from '../pages/friend-list/friend-list';
 import { LoginPage } from '../pages/login/login';
-import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from '../pages/profile/profile';
 //import { AvatarsPage } from '../pages/avatars/avatars';
 
@@ -49,8 +48,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     // default navigation
     this.pages = [
-      { title: 'Home', component: HomePage, icon: 'home' },
-      { title: 'Login', component: LoginPage, icon: 'log-in' }
+      { title: 'Home', component: HomePage, icon: 'home' }
+      //{ title: 'Login', component: LoginPage, icon: 'log-in' }
     ];
 
     // using events subscribe to track login/out status
@@ -69,16 +68,16 @@ export class MyApp {
           { title: 'Home', component: HomePage, icon: 'home' },
           { title: 'My Profile', component: ProfilePage, icon: 'person' },
           { title: 'My Friends', component: FriendListPage, icon: 'people' },
-          { title: 'My Events', component: ManageEventPage, icon: 'calendar' },
+          { title: 'My Events', component: ManageEventPage, icon: 'calendar' }
           //{ title: 'Avatars', component: AvatarsPage, icon: 'people' },
-          { title: 'Logout', component: LogoutPage, icon: 'exit' }
+          //{ title: 'Logout', component: LogoutPage, icon: 'exit' }
         ];
       }
       else {
         this.isLogged = false;
         this.pages = [
-          { title: 'Home', component: HomePage, icon: 'home' },
-          { title: 'Login', component: LoginPage, icon: 'log-in' }
+          { title: 'Home', component: HomePage, icon: 'home' }
+          //{ title: 'Login', component: LoginPage, icon: 'log-in' }
         ];
       }
     })
@@ -118,7 +117,7 @@ export class MyApp {
   }
 
   login() {
-    this.openPage(this.pages.find(p=>{return p.title == "Login";}))
+    this.openPage({ title: 'Login', component: LoginPage, icon: 'log-in' });
   }
 
   logout() {

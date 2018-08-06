@@ -37032,7 +37032,14 @@ ion-navbar.toolbar {
   position: relative;
 }
 
-[header-background-image] img {
+[header-background-image] p {
+  font-size: 14px !important;
+  color: white;
+  z-index: 99999;
+  position: relative;
+}
+
+[header-background-image] .logo {
   position: relative;
   display: block;
   padding-top: 24px;
@@ -37041,11 +37048,11 @@ ion-navbar.toolbar {
   position: relative;
 }
 
-[header-background-image] p {
-  font-size: 14px !important;
-  color: white;
-  z-index: 99999;
-  position: relative;
+[header-background-image] .avatar {
+  border-radius: 50% !important;
+  height: 92px;
+  width: 92px;
+  margin: 50px auto 0;
 }
 
 ion-header [class^="icon-"]:before, ion-header [class*=" icon-"]:before {
@@ -37055,6 +37062,52 @@ ion-header [class^="icon-"]:before, ion-header [class*=" icon-"]:before {
 
 [main-menu] .item-inner {
   margin-left: 6px !important;
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.masters {
+  color: white;
+}
+
+.button-group .col:first-child:not(:last-child) {
+  padding-right: 0;
+}
+
+.button-group .col:first-child:not(:last-child) .button {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.button-group .col:not(:first-child):not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.button-group .col:not(:first-child):not(:last-child) .button {
+  border-radius: 0;
+}
+
+.button-group .col:last-child:not(:first-child) {
+  padding-left: 0;
+}
+
+.button-group .col:last-child:not(:first-child) .button {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+page-avatars ion-card {
+  position: relative;
+  height: 120px;
+  width: calc(100% - 6px) !important;
+  margin: 6px 3px 0 3px !important;
+  border-radius: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 page-create-event #map {
