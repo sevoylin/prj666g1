@@ -269,6 +269,36 @@ module.exports = [
     "clobbers": [
       "plugin.google.maps"
     ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.geolocation",
+    "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "navigator.geolocation"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.PositionError",
+    "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "runs": true
+  },
+  {
+    "id": "cordova-plugin-googleplus.GooglePlus",
+    "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
+    "pluginId": "cordova-plugin-googleplus",
+    "clobbers": [
+      "window.plugins.googleplus"
+    ]
+  },
+  {
+    "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+    "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+    "pluginId": "phonegap-plugin-barcodescanner",
+    "clobbers": [
+      "cordova.plugins.barcodeScanner"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -281,7 +311,10 @@ module.exports.metadata =
   "cordova-plugin-ionic-keyboard": "2.0.5",
   "cordova-plugin-badge": "0.8.7",
   "cordova-plugin-local-notification": "0.9.0-beta.2",
-  "cordova-plugin-googlemaps": "2.3.6"
+  "cordova-plugin-googlemaps": "2.3.6",
+  "cordova-plugin-geolocation": "4.0.1",
+  "cordova-plugin-googleplus": "5.3.0",
+  "phonegap-plugin-barcodescanner": "8.0.0"
 };
 // BOTTOM OF METADATA
 });

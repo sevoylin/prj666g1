@@ -4,6 +4,23 @@
             "outputFile": "/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rPT/values-pt-rPT.xml",
             "map": [
                 {
+                    "source": "/home/soul/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b82380b54bff20acfc1e273648e1cdaf/res/values-pt-rPT/values-pt-rPT.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "5507",
+                        "endColumns": "100",
+                        "endOffsets": "5603"
+                    }
+                },
+                {
                     "source": "/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/src/main/res/values-pt-rPT/pgm_strings.xml",
                     "from": {
                         "startLines": "3,18,2,5,4,6,7,8,9,10,11,12,13,14,17,15,16",
@@ -52,23 +69,6 @@
                         "startOffsets": "1294",
                         "endColumns": "203",
                         "endOffsets": "1493"
-                    }
-                },
-                {
-                    "source": "/home/soul/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/82ab99051394d36bfe881f61013acc5b/res/values-pt-rPT/values-pt-rPT.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "5507",
-                        "endColumns": "100",
-                        "endOffsets": "5603"
                     }
                 }
             ]

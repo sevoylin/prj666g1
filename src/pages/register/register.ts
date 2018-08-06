@@ -23,6 +23,8 @@ export class RegisterPage {
       username: "",
       firstName: "",
       lastName: "",
+      birth: null,
+      gender: "",
       eventList: [],
       friendList:[],
       blockedUsers: [],

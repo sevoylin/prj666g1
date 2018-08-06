@@ -34,6 +34,20 @@
       <ion-label floating>Last Name</ion-label>
       <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>
   </ion-item>
+
+  <ion-item>
+    <ion-label floating>Birthday</ion-label>
+    <ion-input type="Date" [(ngModel)]="user.birth"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Gender</ion-label>
+    <ion-select [(ngModel)]="user.gender" type="text">
+      <ion-option [value]="Male">Male</ion-option>
+      <ion-option [value]="Female">Female</ion-option>
+      <ion-option [value]="">Prefer not to tell</ion-option>
+    </ion-select>
+  </ion-item>
   <button ion-button block (click) = "saveBtn()">Save</button>
 
 </ion-content>

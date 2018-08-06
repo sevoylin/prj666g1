@@ -161,25 +161,30 @@ export class EditEventPage {
 
 
   async endEvent(){
-    await this.eventRef.get().then((doc)=>{
-      this.event.participants=doc.data().participants;
-      doc.data().chat.delete();
-      this.event.participants.forEach(ppl => {
-        ppl.get().then(data => {
-          var pplEvent = data.data().eventList;
-          var pplEventIdx = pplEvent.indexOf(pplEvent.find(e => {return e.isEqual(this.eventRef);}));
-          console.log(pplEventIdx);
-          if (pplEventIdx > -1) pplEvent.splice(pplEventIdx,1);
-          ppl.update('eventList',pplEvent);
+    try{
+      await this.eventRef.get().then((doc)=>{
+        this.event.participants=doc.data().participants;
+        doc.data().chat.delete();
+        this.event.participants.forEach(ppl => {
+          ppl.get().then(data => {
+            var pplEvent = data.data().eventList;
+            var pplEventIdx = pplEvent.indexOf(pplEvent.find(e => {return e.isEqual(this.eventRef);}));
+            console.log(pplEventIdx);
+            if (pplEventIdx > -1) pplEvent.splice(pplEventIdx,1);
+            ppl.update('eventList',pplEvent);
+          });
         });
       });
-    });
-    this.eventRef.delete().then(function(){
-      console.log("Document successfully deleted!");
-      window.history.go(-2);
-    }).catch(function(error){
-      console.error("Error removing document: ",error);
-    });
+      this.eventRef.delete().then(function(){
+        console.log("Document successfully deleted!");
+        //window.history.go(-2);
+      }).catch(function(error){
+        console.error("Error removing document: ",error);
+      });
+    }
+    catch(e){
+      console.log(e);
+    }
   }
 
   ionViewDidLoad() {

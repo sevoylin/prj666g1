@@ -1,18 +1,47 @@
 <ion-menu [content]="content">
   <ion-header>
-    <div header-background-image padding [ngStyle]="{'background-image': 'url(../../assets/images/avatar/25.jpg)'}">
+    <div header-background-image padding [ngStyle]="{'background-image': 'url(' + data.background + ')'}">
+      <ion-thumbnail>
+        <img *ngIf="isLogged == false" src="{{data.image}}" class="logo">
+        <img *ngIf="isLogged == true" src="{{data.userImage}}" class="avatar">
+      </ion-thumbnail>
+      <!--Text if NOT logged in-->
+      <h2 *ngIf="isLogged == false" ion-text header-title>{{data.title}}</h2>
+      <p *ngIf="isLogged == false">{{data.description}}</p>
+      <!--Text if logged in-->
+      <h2 *ngIf="isLogged == true" ion-text header-title>{{data.username}}</h2>
+      <p *ngIf="isLogged == true">{{data.userName}}</p>
     </div>
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon ios="ios-{{p.icon}}" md="md-{{p.icon}}"></ion-icon>{{p.title}}
+    <ion-list no-margin>
+      <button menuClose ion-item item-title main-menu no-lines border *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon icon-small item-left ios="ios-{{p.icon}}" md="md-{{p.icon}}"></ion-icon>{{p.title}}
       </button>
-      <button ion-button clear ><ion-icon name="cog">Settings</ion-icon></button>
     </ion-list>
   </ion-content>
 
+  <!-- Bottom Buttons -->
+  <ion-footer menuClose transparent no-padding no-margin>
+    <ion-grid no-padding class="button-group">
+      <ion-row no-padding *ngIf="isLogged == false">
+        <ion-col no-padding>
+          <button ion-button item-start no-padding no-margin block color="primary" (click)="login()">
+            <ion-icon name="exit">Login</ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row no-padding *ngIf="isLogged == true">
+        <!--<ion-col no-padding><button ion-button item-start no-padding no-margin ion-button block color="secondary" (click)="profileSettings()"><ion-icon name="cog">Settings</ion-icon></button></ion-col>-->
+        <ion-col no-padding>
+          <button ion-button item-end no-padding no-margin block color="primary" (click)="logout()">
+            <ion-icon name="exit">Logout</ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

@@ -7,7 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content elastic-header padding>
+<ion-content no-padding elastic-header>
   <div *ngIf="data != null && data.background != null" background-size default-background [ngStyle]="{'background-image': 'url(' + data.background + ')'}">
     <div class="ionic-description" text-center>
       <h2 item-title>{{data.title}}</h2>

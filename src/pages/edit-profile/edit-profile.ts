@@ -20,7 +20,6 @@ export class EditProfilePage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EditProfilePage');
   }
 
   saveBtn() {
@@ -28,7 +27,9 @@ export class EditProfilePage {
     doc.update({
       username: this.user.username,
       firstName: this.user.firstName,
-      lastName: this.user.lastName
+      lastName: this.user.lastName,
+      birth: this.user.birth,
+      gender: this.user.gender
     });
     this.navCtrl.pop();
   }

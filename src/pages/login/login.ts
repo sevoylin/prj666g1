@@ -55,6 +55,7 @@ export class LoginPage {
               this.password=""; // delete password
               user.uid = data.uid;
               firebase.firestore().collection('Users').doc(user.uid).get().then(data=>{
+                this.user.username = data.data().username;
                 this.user.firstName = data.data().firstName;
                 this.user.lastName = data.data().lastName;
                 this.events.publish('login_status', true, user);
@@ -105,6 +106,7 @@ export class LoginPage {
     }
     catch (e) {
       //console.error(e);
+      console.log(e);
     }
   }
 

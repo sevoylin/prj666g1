@@ -280,29 +280,34 @@ export class FriendListPage {
   }
 
   async deleteFriend(uid){
-    var friendRef = firebase.firestore().collection('Users').doc(uid);
-    var friendData = await friendRef.get();
-    var friend = {} as User;
-    friend.firstName = friendData.data().firstName;
-    friend.lastName = friendData.data().lastName;
-    let alert = this.alertCtrl.create({
-      title: 'Delete Friend',
-      message: 'Are you sure to delete "' + friend.firstName + ' ' + friend.lastName + '"',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => { }
-        },
-        {
-          text: 'Confirm',
-          handler: () => {
-            this.deleteFriendCommon(uid);
+    try{
+      var friendRef = firebase.firestore().collection('Users').doc(uid);
+      var friendData = await friendRef.get();
+      var friend = {} as User;
+      friend.firstName = friendData.data().firstName;
+      friend.lastName = friendData.data().lastName;
+      let alert = this.alertCtrl.create({
+        title: 'Delete Friend',
+        message: 'Are you sure to delete "' + friend.firstName + ' ' + friend.lastName + '"',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => { }
+          },
+          {
+            text: 'Confirm',
+            handler: () => {
+              this.deleteFriendCommon(uid);
+            }
           }
-        }
-      ]
-    });
-    alert.present();
+        ]
+      });
+      alert.present();
+    }
+    catch(e){
+      console.log(e);
+    }
   }
 
   private deleteFriendCommon(uid){
@@ -333,64 +338,74 @@ export class FriendListPage {
   }
 
   async blockFriend(uid,isFriend: boolean){
+    try{
     var friendRef = firebase.firestore().collection('Users').doc(uid);
     var friendData = await friendRef.get();
     var friend = {} as User;
     friend.firstName = friendData.data().firstName;
     friend.lastName = friendData.data().lastName;
     let alert = this.alertCtrl.create({
-    title: 'Block User',
-    message: 'Are you sure to block "' + friend.firstName + ' ' + friend.lastName + '"',
-    buttons: [
-      {
-        text: 'Cancel',
-        role: 'cancel',
-        handler: () => { }
-      },
-      {
-        text: 'Confirm',
-        handler: () => {
-          if (isFriend)
-            this.deleteFriendCommon(uid);
-          var userRef = firebase.firestore().collection('Users').doc(this.user.uid);
-          userRef.get().then(doc=>{
-            this.user.blockedUsers = doc.data().blockedUsers;
-            var idx = this.user.blockedUsers.findIndex( u => {return u.isEqual(friendRef);});
-            if (idx < 0){
-              this.user.blockedUsers.push(friendRef);
-              userRef.update('blockedUsers',this.user.blockedUsers);
-            }
-          });
+      title: 'Block User',
+      message: 'Are you sure to block "' + friend.firstName + ' ' + friend.lastName + '"',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => { }
+        },
+        {
+          text: 'Confirm',
+          handler: () => {
+            if (isFriend)
+              this.deleteFriendCommon(uid);
+            var userRef = firebase.firestore().collection('Users').doc(this.user.uid);
+            userRef.get().then(doc=>{
+              this.user.blockedUsers = doc.data().blockedUsers;
+              var idx = this.user.blockedUsers.findIndex( u => {return u.isEqual(friendRef);});
+              if (idx < 0){
+                this.user.blockedUsers.push(friendRef);
+                userRef.update('blockedUsers',this.user.blockedUsers);
+              }
+            });
+          }
         }
-      }
-    ]
-  });
-  alert.present();
+      ]
+    });
+    alert.present();
+    }
+    catch(e){
+      console.log(e);
+    }
   }
 
   async requestOperate(uid, isApproved: boolean){
-    var tRef = firebase.firestore().collection('Users').doc(uid);
-    if (isApproved){
-      this.userDoc.get().then(doc=>{
-        var fl = doc.data().friendList;
-        fl.push(tRef);
-        this.userDoc.update('friendList',fl);
-      });
-      tRef.get().then(doc=>{
-        var fl = doc.data().friendList;
-        fl.push(this.userDoc);
-        tRef.update('friendList',fl);
+    try{
+      var tRef = firebase.firestore().collection('Users').doc(uid);
+      if (isApproved){
+        this.userDoc.get().then(doc=>{
+          var fl = doc.data().friendList;
+          fl.push(tRef);
+          this.userDoc.update('friendList',fl);
+        });
+        tRef.get().then(doc=>{
+          var fl = doc.data().friendList;
+          fl.push(this.userDoc);
+          tRef.update('friendList',fl);
+        });
+      }
+      this.requestDoc.get().then((doc)=>{
+        var reqList = doc.data().friendRequest;
+        var idx = reqList.findIndex( r =>{
+          return r.from.id == uid;
+        });
+        if (idx > -1)
+          reqList.splice(idx,1);
+        this.requestDoc.update('friendRequest',reqList);
       });
     }
-    this.requestDoc.get().then((doc)=>{
-      var reqList = doc.data().friendRequest;
-      var idx = reqList.findIndex( r =>{
-        return r.from.id == uid;
-      });
-      if (idx > -1)
-        reqList.splice(idx,1);
-      this.requestDoc.update('friendRequest',reqList);
-    });
+    catch(e){
+      console.log(e);
+    }
   }
 
   sendMessage(uid){

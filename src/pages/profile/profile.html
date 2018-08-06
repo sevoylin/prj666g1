@@ -8,31 +8,88 @@
 </ion-header>
 
 <ion-content elastic-header>
-    <div padding background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + data.background + ')'}">
+  <div padding background-size id="elastic-header" [ngStyle]="{'background-image': 'url(' + data.background + ')'}">
     <ion-thumbnail *ngIf="user != null">
       <img [src]="user.avatar" />
     </ion-thumbnail>
     <h2 text-center parallax-title *ngIf="user != null">{{user.username}}</h2>
     <h3 text-center parallax-subtitle *ngIf="user != null">{{user.firstName}} {{user.lastName}}</h3>
   </div>
+  <ion-item-group>
+    <ion-item-divider border no-lines>
+      <h2 item-subtitle>Personal Info</h2>
+      <!--<button item-end ion-button button-action-shit><ion-icon name="more" role="img" class="icon icon-ios ion-ios-more" aria-label="more" ng-reflect-name="more"></ion-icon></button>-->
+    </ion-item-divider>
+    <!--First and Last Name-->
+    <ion-item>
+      <ion-icon color="primary" name="arrow-dropright" item-start></ion-icon>
+      <p><b>Name:</b> {{user.firstName}} {{user.lastName}}</p>
+      <!--<ion-icon icon-small ios="ios-create" md="md-create" item-end></ion-icon>-->
+    </ion-item>
+    <!--DoB-->
+    <ion-item>
+      <ion-icon color="primary" name="arrow-dropright" item-start></ion-icon>
+      <p><b>Birthday: </b>{{user.birth | date:'yyyy MMM dd'}}</p>
+    </ion-item>
+    <!--Gender-->
+    <ion-item>
+      <ion-icon color="primary" name="arrow-dropright" item-start></ion-icon>
+      <p><b>Gender: </b><span *ngIf="!user.gender">Prefer not to say</span>{{user.gender}}</p>
+    </ion-item>
+  </ion-item-group>
 
-  <ion-item (click)="getQr()">
-    <ion-icon ios="ios-finger-print" md="md-finger-print"></ion-icon>
-    Show QR Code
-  </ion-item>
-  <ion-item>
-    <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
-    {{user.email}}
-  </ion-item>
-  <ion-item>
-    <ion-icon ios="ios-glasses" md="md-glasses"></ion-icon>
-    {{user.username}}
-  </ion-item>
-  <ion-item>
-    <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
-    {{user.firstName}} {{user.lastName}}
-  </ion-item>
-  <button ion-button clear block (click)="editProfile()">Edit Profile</button>
-  <button ion-button block (click)="changePwd()">Change Password</button>
+  <ion-item-group>
+    <ion-item-divider border no-lines>
+      <h2 item-subtitle>Account Info</h2>
+    </ion-item-divider>
+    <!--Username-->
+    <ion-item>
+      <ion-icon color="primary" name="arrow-dropright" item-start></ion-icon>
+      <p><b>Username:</b> {{user.username}}</p>
+    </ion-item>
+    <!--Email-->
+    <ion-item>
+      <ion-icon color="primary" name="arrow-dropright" item-start></ion-icon>
+      <p><b>Email:</b> {{user.email}}</p>
+    </ion-item>
+    <!--Password-->
+    <ion-item no-margin>
+      <ion-icon color="primary" name="code-working" item-start></ion-icon>
+      <!--<p><b>Password:</b> ********</p>
+      <ion-icon icon-small name="send" item-end (click)="changePwd()"></ion-icon>-->
+      <button no-padding no-margin ion-button clear (click)="changePwd()">Change Password</button>
+    </ion-item>
+    <!--QR-->
+    <ion-item no-margin>
+      <ion-icon color="primary" name="finger-print" item-start></ion-icon>
+      <!--<p ><b>Show QR Code</b></p>-->
+      <button no-padding no-margin ion-button clear (click)="getQr()">My QR Code</button>
+    </ion-item>
+  </ion-item-group>
 
+  <ion-item-group>
+    <ion-item-divider border no-lines>
+      <h2 item-subtitle>Connected Accounts</h2>
+    </ion-item-divider>
+    <!--Facebook-->
+    <ion-item>
+      <ion-icon color="primary" ios="logo-facebook" md="logo-facebook" item-start></ion-icon>
+      <p no-padding>Facebook</p>
+      <!--TODO: do a check to decide which icon to display-->
+      <ion-icon color="primary" name="close-circle" item-end></ion-icon>
+    </ion-item>
+    <!--Google-->
+    <ion-item>
+      <ion-icon color="primary" ios="logo-google" md="logo-google" item-start></ion-icon>
+      <p no-padding>Google+</p>
+      <!--TODO: do a check to decide which icon to display-->
+      <ion-icon color="primary" name="checkmark-circle" item-end></ion-icon>
+    </ion-item>
+  </ion-item-group>
 </ion-content>
+
+<!-- Bottom Buttons -->
+<ion-footer transparent no-padding no-margin>
+  <button ion-button clear block (click)="editProfile()">Edit Profile</button>
+  <!--<button ion-button block no-margin (click)="changePwd()">Change Password</button>-->
+</ion-footer>

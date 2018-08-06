@@ -4,6 +4,8 @@ export interface User{
     username: string;
     firstName: string;
     lastName: string;
+    birth: Date;
+    gender: string;
     avatar?: string;
     eventList: Array<any>;
     friendList: Array<any>;

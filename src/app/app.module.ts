@@ -10,6 +10,7 @@ import { FriendListPage } from '../pages/friend-list/friend-list';
 import { LoginPage } from '../pages/login/login';
 import { LogoutPage } from '../pages/logout/logout';
 import { ProfilePage } from '../pages/profile/profile';
+import { AvatarsPage } from '../pages/avatars/avatars';
 
 // Page Module Import
 import { HomePageModule } from '../pages/home/home.module';
@@ -41,7 +42,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     LogoutPage,
     ManageEventPage,
     ProfilePage,
-    FriendListPage
+    FriendListPage,
+    //AvatarsPage,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +63,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     LogoutPage,
     ManageEventPage,
     ProfilePage,
-    FriendListPage
+    FriendListPage,
+    //AvatarsPage,
   ],
   providers: [
     StatusBar,

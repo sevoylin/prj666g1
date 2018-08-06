@@ -4,7 +4,7 @@
             "outputFile": "/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "/home/soul/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/82ab99051394d36bfe881f61013acc5b/res/values-v21/values-v21.xml",
+                    "source": "/home/soul/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b82380b54bff20acfc1e273648e1cdaf/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/soul/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/a03b386216f8e9530b68892c99a2aede/res/values-v21/values-v21.xml",
+                    "source": "/home/soul/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/2cdcab1b88ce6d4a812974aa60dd07d1/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",

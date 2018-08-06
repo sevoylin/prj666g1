@@ -4,13 +4,6 @@ import { User } from '../../models/user';
 import * as firebase from 'firebase';
 import { callUserCallback } from '@firebase/database/dist/src/core/util/util';
 
-/**
- * Generated class for the ViewEventParticipantsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-view-event-participants',

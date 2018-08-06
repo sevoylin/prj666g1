@@ -55,6 +55,22 @@
           <ion-input placeholder="last name (optional)" [(ngModel)]="user.lastName" type="text" pattern="[a-zA-Z]"></ion-input>
         </ion-item>
 
+        <ion-item>
+          <!--Input field birthday-->
+          <ion-label stacked>Birth Day</ion-label>
+          <ion-input placeholder="date" [(ngModel)]="user.birth" type="Date"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <!--Input field gender-->
+          <ion-label stacked>Gender</ion-label>
+          <ion-select placeholder="gender" [(ngModel)]="user.gender" type="text">
+            <ion-option [value]="Male">Male</ion-option>
+            <ion-option [value]="Female">Female</ion-option>
+            <ion-option [value]="">Prefer not to tell</ion-option>
+          </ion-select>
+        </ion-item>
+
         <!--Register button-->
         <button ion-button float-right clear button-clear text-capitalize (click)="register(user)">Register</button>
       </ion-col>

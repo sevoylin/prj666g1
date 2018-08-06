@@ -18,6 +18,7 @@ export class ProfilePage {
                 "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
   user = {} as User;
 
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private afAuth: AngularFireAuth,
@@ -50,6 +51,8 @@ export class ProfilePage {
         this.user.firstName = doc.data().firstName;
         this.user.lastName = doc.data().lastName;
         this.user.avatar = doc.data().avatar;
+        this.user.birth = doc.data().birth;
+        this.user.gender = doc.data().gender;
       }
     });
   }
