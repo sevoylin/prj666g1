@@ -10,7 +10,7 @@
       <p *ngIf="isLogged == false">{{data.description}}</p>
       <!--Text if logged in-->
       <h2 *ngIf="isLogged == true" ion-text header-title>{{data.username}}</h2>
-      <p *ngIf="isLogged == true">{{data.userName}}</p>
+      <p *ngIf="isLogged == false">{{data.userName}}</p>
     </div>
   </ion-header>
 
@@ -23,7 +23,7 @@
   </ion-content>
 
   <!-- Bottom Buttons -->
-  <ion-footer menuClose transparent no-padding no-margin>
+  <ion-footer transparent no-padding no-margin>
     <ion-grid no-padding class="button-group">
       <ion-row no-padding *ngIf="isLogged == false">
         <ion-col no-padding>

@@ -99,10 +99,11 @@ var InviteUserPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.toastCtrl = toastCtrl;
-        this.eventRef = {};
+        this.eventId = "";
+        this.user = {};
         this.email = "";
         this.msg = "";
-        this.eventRef = navParams.data;
+        this.eventId = navParams.data.toString();
     }
     InviteUserPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad InviteUserPage');
@@ -112,22 +113,52 @@ var InviteUserPage = /** @class */ (function () {
         var ucRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').where("email", "==", this.email).get().then(function (d) {
             if (d.docs.length > 0) {
                 console.log("has !");
-                _this.pushEventRequest(d.docs[0].id);
-            }
-            else {
-                // cannot find this guy
-                var err = _this.toastCtrl.create({
-                    message: "Cannot find user with email: " + _this.email,
-                    duration: 3000,
-                    position: "bottom"
-                });
-                err.present();
+                _this.pushInviteRequest(d.docs[0].id);
             }
         });
     };
-    InviteUserPage.prototype.pushEventRequest = function (fId) {
+    InviteUserPage.prototype.pushInviteRequest = function (fId) {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var uRef_1, eRef_1;
             return __generator(this, function (_a) {
+                try {
+                    uRef_1 = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(fId);
+                    eRef_1 = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Event').doc(this.eventId);
+                    // determine if the person is already in list
+                    eRef_1.get().then(function (doc) {
+                        var canFind = doc.data().participants.find(function (ele) { return ele.isEqual(uRef_1); });
+                        if (undefined != canFind) {
+                            _this.toastCtrl.create({
+                                message: "User already in the event",
+                                duration: 3000,
+                                position: "bottom"
+                            }).present();
+                        }
+                        else {
+                            var fReq_1 = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Request').doc(fId);
+                            fReq_1.get().then(function (doc) {
+                                var is = doc.data().eventRequest.find(function (fr) { return fr.from.isEqual(eRef_1); });
+                                if (undefined == is) {
+                                    var fReqList = doc.data().eventRequest;
+                                    fReqList.push({
+                                        from: eRef_1,
+                                        msg: _this.msg.trim()
+                                    });
+                                    fReq_1.update('eventRequest', fReqList);
+                                    _this.toastCtrl.create({
+                                        message: "Sent " + _this.email + " a invite request",
+                                        duration: 3000,
+                                        position: "bottom"
+                                    }).present();
+                                }
+                            });
+                        }
+                    });
+                }
+                catch (e) {
+                    console.log(e);
+                }
                 return [2 /*return*/];
             });
         });

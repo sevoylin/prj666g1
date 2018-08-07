@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { User } from '../../models/user';
+import { Event } from '../../models/event';
 import * as firebase from 'firebase';
 import { callUserCallback } from '@firebase/database/dist/src/core/util/util';
 
@@ -15,11 +16,12 @@ export class ViewEventParticipantsPage {
                 "title"         : "Search for participant",
                 "headerImage"  : "assets/images/background/" + Math.ceil(Math.random() * 23) + ".jpg" };
 
-  searchTerm: any = "";
   participants= [];
-  listReady = false;
-  isAdmin = true;
   displayList = [];
+  searchTerm: any = "";
+  eventId = "";
+  listReady = false;
+  isAdmin = false;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,6 +29,15 @@ export class ViewEventParticipantsPage {
     this.searchTerm = "";
   }
 
+  ionViewDidLoad() {
+    this.getParticipants(this.navParams.get('pList'));
+    this.isAdmin = this.navParams.get('isAdmin');
+    this.eventId = this.navParams.get('eventId').toString();
+  }
+
+  ionViewDidLeave(){
+    // detach listener
+  }
   getParticipants(pRef){
     this.listReady = false;
     this.participants.length = 0;
@@ -65,6 +76,10 @@ export class ViewEventParticipantsPage {
       this.displayList = this.participants.slice(0);
   }
 
+  inviteUser(){
+    this.navCtrl.push('InviteUserPage', this.eventId);
+  }
+
   presentActionSheet(uid) {
     let actionSheet = this.actionSheetCtrl.create({
       title: '',
@@ -72,7 +87,10 @@ export class ViewEventParticipantsPage {
         {
           text: 'View Profile',
           handler: () => {
-            this.navCtrl.push("ViewProfilePage", uid);
+            this.navCtrl.push("ViewProfilePage", {'uid': uid,
+                                                  'fromEvent': true,
+                                                  'eventId':this.eventId,
+                                                  'isAdmin': this.isAdmin});
           }
         },
         {
@@ -91,14 +109,4 @@ export class ViewEventParticipantsPage {
     actionSheet.present();
   }
 
-  ionViewDidLoad() {
-    this.getParticipants(this.navParams.data);
-  }
-
-  ionViewDidLeave(){
-    // detach listener
-    this.navParams.data.forEach((p) => {
-      p.onSnapshot(()=>{});
-    })
-  }
 }

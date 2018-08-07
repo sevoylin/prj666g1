@@ -15,11 +15,20 @@ export class ViewProfilePage {
                 "title" : "",
                 "subtitle" : "",
                 "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
+  btnList = [];
   user = {} as User;
+  fromEvent = true as boolean;
+  isEventAdmin = false as boolean;
+  eventId = "";
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams) {
-    this.user.uid = navParams.data;
+              public navParams: NavParams,) {
+    this.user.uid = navParams.get('uid');
+    this.fromEvent = navParams.get('fromEvent');
+  }
+
+  ionViewDidLoad() {
+    this.fillUserInfo();
   }
 
   fillUserInfo(){
@@ -30,16 +39,19 @@ export class ViewProfilePage {
           this.user.avatar = doc.data().avatar;
           this.user.email = doc.data().email;
           this.user.username = doc.data().username;
-          this.user.firstName = doc.data().firstName;
-          this.user.lastName = doc.data().lastName;
+          if (this.fromEvent){
+            this.user.lastName = "";
+            this.user.firstName = "Not Avaliable";
+            this.eventId = this.navParams.get('eventId').toString();
+            this.isEventAdmin = this.navParams.get('isAdmin');
+          }
+          else{
+            this.user.firstName = doc.data().firstName;
+            this.user.lastName = doc.data().lastName;
+          }
         }
       });
     }
-  }
-
-
-  ionViewDidLoad() {
-    this.fillUserInfo();
   }
 
 }

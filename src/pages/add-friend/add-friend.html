@@ -16,16 +16,19 @@
 <ion-content padding>
 
   <ion-list>
-    <ion-item>
+    <ion-item *ngIf="scanned">
+      Email: {{email}}
+    </ion-item>
+    <ion-item *ngIf="!scanned">
       <ion-label floating>Enter the email</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
+    <button *ngIf="!email.length" ion-button full outline (click)="scanQR()">OR Scan User QR</button>
     <ion-item>
       <ion-label floating>Enter the message:</ion-label>
       <ion-input type="text" [(ngModel)]="msg"></ion-input>
     </ion-item>
   </ion-list>
-  <span (click)="scanQR()">OR Scan their QR Code</span>
   <button ion-button block (click)="submitEmail()">Submit</button>
 
 </ion-content>

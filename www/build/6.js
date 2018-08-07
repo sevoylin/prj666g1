@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewProfilePageModule", function() { return ViewProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_profile__ = __webpack_require__(760);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_profile__ = __webpack_require__(766);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var ViewProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 741:
+/***/ 742:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46,7 +46,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewEventParticipantsPageModule", function() { return ViewEventParticipantsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_event_participants__ = __webpack_require__(765);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_event_participants__ = __webpack_require__(790);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__view_profile_view_profile_module__ = __webpack_require__(738);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -79,7 +79,7 @@ var ViewEventParticipantsPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 760:
+/***/ 766:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -108,9 +108,17 @@ var ViewProfilePage = /** @class */ (function () {
             "title": "",
             "subtitle": "",
             "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
+        this.btnList = [];
         this.user = {};
-        this.user.uid = navParams.data;
+        this.fromEvent = true;
+        this.isEventAdmin = false;
+        this.eventId = "";
+        this.user.uid = navParams.get('uid');
+        this.fromEvent = navParams.get('fromEvent');
     }
+    ViewProfilePage.prototype.ionViewDidLoad = function () {
+        this.fillUserInfo();
+    };
     ViewProfilePage.prototype.fillUserInfo = function () {
         var _this = this;
         if (undefined != this.user.uid) {
@@ -120,14 +128,19 @@ var ViewProfilePage = /** @class */ (function () {
                     _this.user.avatar = doc.data().avatar;
                     _this.user.email = doc.data().email;
                     _this.user.username = doc.data().username;
-                    _this.user.firstName = doc.data().firstName;
-                    _this.user.lastName = doc.data().lastName;
+                    if (_this.fromEvent) {
+                        _this.user.lastName = "";
+                        _this.user.firstName = "Not Avaliable";
+                        _this.eventId = _this.navParams.get('eventId').toString();
+                        _this.isEventAdmin = _this.navParams.get('isAdmin');
+                    }
+                    else {
+                        _this.user.firstName = doc.data().firstName;
+                        _this.user.lastName = doc.data().lastName;
+                    }
                 }
             });
         }
-    };
-    ViewProfilePage.prototype.ionViewDidLoad = function () {
-        this.fillUserInfo();
     };
     ViewProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -143,7 +156,7 @@ var ViewProfilePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 765:
+/***/ 790:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -169,13 +182,22 @@ var ViewEventParticipantsPage = /** @class */ (function () {
         this.data = { "toolbarTitle": "Participants",
             "title": "Search for participant",
             "headerImage": "assets/images/background/" + Math.ceil(Math.random() * 23) + ".jpg" };
-        this.searchTerm = "";
         this.participants = [];
-        this.listReady = false;
-        this.isAdmin = true;
         this.displayList = [];
         this.searchTerm = "";
+        this.eventId = "";
+        this.listReady = false;
+        this.isAdmin = false;
+        this.searchTerm = "";
     }
+    ViewEventParticipantsPage.prototype.ionViewDidLoad = function () {
+        this.getParticipants(this.navParams.get('pList'));
+        this.isAdmin = this.navParams.get('isAdmin');
+        this.eventId = this.navParams.get('eventId').toString();
+    };
+    ViewEventParticipantsPage.prototype.ionViewDidLeave = function () {
+        // detach listener
+    };
     ViewEventParticipantsPage.prototype.getParticipants = function (pRef) {
         var _this = this;
         this.listReady = false;
@@ -214,6 +236,9 @@ var ViewEventParticipantsPage = /** @class */ (function () {
         if (keyword.length == 0)
             this.displayList = this.participants.slice(0);
     };
+    ViewEventParticipantsPage.prototype.inviteUser = function () {
+        this.navCtrl.push('InviteUserPage', this.eventId);
+    };
     ViewEventParticipantsPage.prototype.presentActionSheet = function (uid) {
         var _this = this;
         var actionSheet = this.actionSheetCtrl.create({
@@ -222,7 +247,10 @@ var ViewEventParticipantsPage = /** @class */ (function () {
                 {
                     text: 'View Profile',
                     handler: function () {
-                        _this.navCtrl.push("ViewProfilePage", uid);
+                        _this.navCtrl.push("ViewProfilePage", { 'uid': uid,
+                            'fromEvent': true,
+                            'eventId': _this.eventId,
+                            'isAdmin': _this.isAdmin });
                     }
                 },
                 {
@@ -240,18 +268,9 @@ var ViewEventParticipantsPage = /** @class */ (function () {
         });
         actionSheet.present();
     };
-    ViewEventParticipantsPage.prototype.ionViewDidLoad = function () {
-        this.getParticipants(this.navParams.data);
-    };
-    ViewEventParticipantsPage.prototype.ionViewDidLeave = function () {
-        // detach listener
-        this.navParams.data.forEach(function (p) {
-            p.onSnapshot(function () { });
-        });
-    };
     ViewEventParticipantsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-view-event-participants',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event-participants/view-event-participants.html"*/'<ion-header header-ios>\n  <ion-navbar transparent>\n  </ion-navbar>\n\n  <ion-toolbar no-padding>\n      <div background-size *ngIf="data != null" [ngStyle]="{\'background-image\': \'url(\' + data.headerImage + \')\'}">\n        <div search-bar-bcg>\n          <!-- Header Title -->\n          <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>\n          <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>\n        </div>\n      </div>\n  </ion-toolbar>\n\n</ion-header>\n \n<ion-content elastic-header>\n  <ion-list *ngIf="participants != null && listReady">\n    <ion-item *ngIf="displayList.length == 0"><p>No results for:{{searchTerm}}</p></ion-item>\n    <ion-item border no-lines *ngFor="let p of displayList">\n        <ion-avatar item-start>\n          <img [src]="p.avatar"/>\n        </ion-avatar>\n        <h2 item-title>{{p.username}}</h2>\n        <h3 item-subtitle text-wrap>{{p.email}}</h3>\n        <button *ngIf="isAdmin" text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(p.uid)"><ion-icon name="more"></ion-icon></button>\n    </ion-item>\n  </ion-list>\n    \n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event-participants/view-event-participants.html"*/,
+            selector: 'page-view-event-participants',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event-participants/view-event-participants.html"*/'<ion-header header-ios>\n  <ion-navbar transparent>\n  </ion-navbar>\n\n  <ion-toolbar no-padding>\n      <div background-size *ngIf="data != null" [ngStyle]="{\'background-image\': \'url(\' + data.headerImage + \')\'}">\n        <div search-bar-bcg>\n          <!-- Header Title -->\n          <h1 ion-text no-margin padding-left search-bar-title>{{data.title}}</h1>\n          <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="search(searchTerm)"></ion-searchbar>\n        </div>\n      </div>\n  </ion-toolbar>\n\n</ion-header>\n \n<ion-content elastic-header>\n  <ion-list *ngIf="participants != null && listReady">\n    <ion-item *ngIf="displayList.length == 0"><p>No results for:{{searchTerm}}</p></ion-item>\n    <ion-item border no-lines *ngFor="let p of displayList">\n        <ion-avatar item-start>\n          <img [src]="p.avatar"/>\n        </ion-avatar>\n        <h2 item-title>{{p.username}}</h2>\n        <h3 item-subtitle text-wrap>{{p.email}}</h3>\n        <button *ngIf="isAdmin" text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(p.uid)"><ion-icon name="more"></ion-icon></button>\n    </ion-item>\n  </ion-list>\n    \n</ion-content>\n\n<ion-footer transparent>\n  <ion-fab bottom right>\n    <button ion-fab (click)="inviteUser()">\n      <ion-icon ios="ios-add" md="md-add"></ion-icon>\n    </button>\n  </ion-fab>\n</ion-footer>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/view-event-participants/view-event-participants.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],

@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QrScanPageModule", function() { return QrScanPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__qr_scan__ = __webpack_require__(759);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__qr_scan__ = __webpack_require__(765);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -47,7 +47,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewProfilePageModule", function() { return ViewProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_profile__ = __webpack_require__(760);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_profile__ = __webpack_require__(766);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -85,7 +85,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatPageModule", function() { return ChatPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chat__ = __webpack_require__(761);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chat__ = __webpack_require__(767);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -115,7 +115,7 @@ var ChatPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 742:
+/***/ 743:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -123,7 +123,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddFriendPageModule", function() { return AddFriendPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_friend__ = __webpack_require__(770);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_friend__ = __webpack_require__(791);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__qr_scan_qr_scan_module__ = __webpack_require__(737);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -164,7 +164,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FriendListPageModule", function() { return FriendListPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_friend_add_friend_module__ = __webpack_require__(742);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__add_friend_add_friend_module__ = __webpack_require__(743);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__view_profile_view_profile_module__ = __webpack_require__(738);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__chat_chat_module__ = __webpack_require__(739);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__friend_list__ = __webpack_require__(166);
@@ -203,7 +203,7 @@ var FriendListPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 759:
+/***/ 765:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -266,7 +266,7 @@ var QrScanPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 760:
+/***/ 766:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -295,9 +295,17 @@ var ViewProfilePage = /** @class */ (function () {
             "title": "",
             "subtitle": "",
             "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
+        this.btnList = [];
         this.user = {};
-        this.user.uid = navParams.data;
+        this.fromEvent = true;
+        this.isEventAdmin = false;
+        this.eventId = "";
+        this.user.uid = navParams.get('uid');
+        this.fromEvent = navParams.get('fromEvent');
     }
+    ViewProfilePage.prototype.ionViewDidLoad = function () {
+        this.fillUserInfo();
+    };
     ViewProfilePage.prototype.fillUserInfo = function () {
         var _this = this;
         if (undefined != this.user.uid) {
@@ -307,14 +315,19 @@ var ViewProfilePage = /** @class */ (function () {
                     _this.user.avatar = doc.data().avatar;
                     _this.user.email = doc.data().email;
                     _this.user.username = doc.data().username;
-                    _this.user.firstName = doc.data().firstName;
-                    _this.user.lastName = doc.data().lastName;
+                    if (_this.fromEvent) {
+                        _this.user.lastName = "";
+                        _this.user.firstName = "Not Avaliable";
+                        _this.eventId = _this.navParams.get('eventId').toString();
+                        _this.isEventAdmin = _this.navParams.get('isAdmin');
+                    }
+                    else {
+                        _this.user.firstName = doc.data().firstName;
+                        _this.user.lastName = doc.data().lastName;
+                    }
                 }
             });
         }
-    };
-    ViewProfilePage.prototype.ionViewDidLoad = function () {
-        this.fillUserInfo();
     };
     ViewProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -330,7 +343,7 @@ var ViewProfilePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 761:
+/***/ 767:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -423,7 +436,7 @@ var ChatPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 791:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -479,18 +492,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-/**
- * Generated class for the AddFriendPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 var AddFriendPage = /** @class */ (function () {
     function AddFriendPage(navCtrl, navParams, toastCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.toastCtrl = toastCtrl;
         this.user = {};
+        this.tId = "";
+        this.scanned = false;
         this.email = "";
         this.msg = "";
         this.user = navParams.data;
@@ -516,7 +525,22 @@ var AddFriendPage = /** @class */ (function () {
         });
     };
     AddFriendPage.prototype.scanQR = function () {
-        this.navCtrl.push('QrScanPage');
+        var _this = this;
+        var cbFunction = function (params) {
+            return new Promise(function (resolve, reject) {
+                _this.tId = params;
+                if (undefined != _this.tId && "" != _this.tId) {
+                    __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(_this.tId).get().then(function (doc) {
+                        if (doc.exists) {
+                            _this.email = doc.data().email;
+                            _this.scanned = true;
+                        }
+                    });
+                }
+                resolve();
+            });
+        };
+        this.navCtrl.push('QrScanPage', { callback: cbFunction });
     };
     AddFriendPage.prototype.pushFriendRequest = function (fId) {
         return __awaiter(this, void 0, void 0, function () {
@@ -583,6 +607,7 @@ var AddFriendPage = /** @class */ (function () {
                             position: "bottom"
                         });
                         msg.present();
+                        this.navCtrl.pop();
                         _a.label = 4;
                     case 4: return [3 /*break*/, 6];
                     case 5:
@@ -596,7 +621,7 @@ var AddFriendPage = /** @class */ (function () {
     };
     AddFriendPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-add-friend',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/add-friend/add-friend.html"*/'<!--\n  Generated template for the AddFriendPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Friend</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item>\n      <ion-label floating>Enter the email</ion-label>\n      <ion-input type="email" [(ngModel)]="email"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Enter the message:</ion-label>\n      <ion-input type="text" [(ngModel)]="msg"></ion-input>\n    </ion-item>\n  </ion-list>\n  <span (click)="scanQR()">OR Scan their QR Code</span>\n  <button ion-button block (click)="submitEmail()">Submit</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/add-friend/add-friend.html"*/,
+            selector: 'page-add-friend',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/add-friend/add-friend.html"*/'<!--\n  Generated template for the AddFriendPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Add Friend</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item *ngIf="scanned">\n      Email: {{email}}\n    </ion-item>\n    <ion-item *ngIf="!scanned">\n      <ion-label floating>Enter the email</ion-label>\n      <ion-input type="email" [(ngModel)]="email"></ion-input>\n    </ion-item>\n    <button *ngIf="!email.length" ion-button full outline (click)="scanQR()">OR Scan User QR</button>\n    <ion-item>\n      <ion-label floating>Enter the message:</ion-label>\n      <ion-input type="text" [(ngModel)]="msg"></ion-input>\n    </ion-item>\n  </ion-list>\n  <button ion-button block (click)="submitEmail()">Submit</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/add-friend/add-friend.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],

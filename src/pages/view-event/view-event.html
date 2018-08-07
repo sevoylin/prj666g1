@@ -22,9 +22,13 @@
               <button *ngIf="!viewOnly" padding-top text-capitalize button-clear ion-button item-end clear (click)="presentActionSheet(user, event)"><ion-icon name="more"></ion-icon></button>
             </ion-item-divider>
             <!--Event Info-->
-            <div padding-left padding-top>
-                <h2 ion-text float-left color="primary"> Participants: {{event.participants.length}}</h2><!--{{event.participants.length}}-->
-                <!--<ion-icon no-padding no-margin no-border icon-small ios="ios-people" md="md-people" (click)="viewParticipants()" item-start></ion-icon>-->
+            <div padding-left padding-top (click)="viewEventQR()">
+              <ion-icon no-padding no-margin no-border icon-small ios="finger-print" md="finger-print" item-start></ion-icon>
+                <h2 ion-text float-left color="primary"> EventID: {{event.eventId}}</h2>
+            </div>
+            <div padding-left padding-top (click)="viewParticipants()">
+              <ion-icon no-padding no-margin no-border icon-small ios="ios-people" md="md-people" item-start></ion-icon>
+                <h2 ion-text float-left color="primary"> Participants: {{event.participants.length}}</h2>
             </div>
           </ion-item>
         </ion-col>
@@ -51,32 +55,32 @@
               <h2 no-padding>Created by {{creator}}</h2>
             </ion-item>
             <!--Info Chat-->
-            <ion-item border>
+            <ion-item border *ngIf="!viewOnly">
               <button button-clear clear ion-button (click)="groupChatBtn()" no-padding>
                 <ion-icon icon-medium color="primary" ios="ios-chatbubbles" md="md-chatbubbles" item-start></ion-icon>
                 <h2 no-padding>Group Chat</h2>
               </button>
             </ion-item>
-            <!--Info Participants-->
-            <ion-item border>
-              <button button-clear clear ion-button (click)="viewParticipants()" no-padding>
-                <ion-icon icon-medium color="primary" ios="ios-people" md="md-people" item-start></ion-icon>
-                <h2 no-padding>View Participants</h2>
-              </button>
-            </ion-item>
             <!--Edit Event-->
-            <ion-item border>
+            <ion-item border *ngIf="isAdmin&&!viewOnly">
               <button button-clear color="danger" clear ion-button (click)="editEventBtn()" no-padding>
                   <ion-icon icon-medium color="primary" ios="ios-settings" md="md-settings" item-start></ion-icon>
                   <h2 no-padding>Edit Event</h2>
                 </button>
               </ion-item>
             <!--Leave Event-->
-            <ion-item border>
+            <ion-item border *ngIf="!viewOnly">
               <button button-clear color="danger" clear ion-button (click)="leaveEventBtn()" no-padding>
                 <ion-icon icon-medium color="primary" ios="ios-exit" md="md-exit" item-start></ion-icon>
                 <h2 no-padding>Leave Event</h2>
               </button>
+            </ion-item>
+            <!--Join Event-->
+            <ion-item border *ngIf="viewOnly">
+                <button button-clear color="danger" clear ion-button (click)="joinEvent()" no-padding>
+                  <ion-icon icon-medium color="primary" ios="ios-add" md="md-add" item-start></ion-icon>
+                  <h2 no-padding>Join Event</h2>
+                </button>
             </ion-item>
           </ion-item-group>
         </ion-col>

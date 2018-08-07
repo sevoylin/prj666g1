@@ -39,11 +39,11 @@ export class ManageEventPage {
   }
 
   ionViewWillEnter() {
-    this.getLists();
   }
 
   ionViewDidEnter() {
-    this.displayList.length = 0;
+    this.displayList = [];
+    this.getLists();
     this.search("");
   }
 
@@ -106,10 +106,9 @@ export class ManageEventPage {
 
   viewEvent(eventId, viewOnly){
     this.navCtrl.push('ViewEventPage',{ 'eventId': eventId,
-                                        'viewOnly': viewOnly});
+                                        'viewOnly': !this.displayEvents});
   }
-
-
+  
   createEvent(){
     this.navCtrl.push('CreateEventPage');
   }
@@ -124,7 +123,7 @@ export class ManageEventPage {
     if (this.displayEvents) currList = this.events;
     else currList = this.eventRequests;
     this.listReady = false;
-    this.displayList.length = 0;
+    this.displayList = [];
     currList.forEach(e =>{
       var isFound = false;
       if (!isFound)

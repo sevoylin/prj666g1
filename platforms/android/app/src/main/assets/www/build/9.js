@@ -1,14 +1,14 @@
 webpackJsonp([9],{
 
-/***/ 739:
+/***/ 738:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewProfilePageModule", function() { return ViewProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_profile__ = __webpack_require__(762);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__view_profile__ = __webpack_require__(766);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,13 +38,13 @@ var ViewProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 762:
+/***/ 766:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ViewProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -67,9 +67,17 @@ var ViewProfilePage = /** @class */ (function () {
             "title": "",
             "subtitle": "",
             "background": "assets/images/images/" + Math.ceil(Math.random() * 17) + ".jpg" };
+        this.btnList = [];
         this.user = {};
-        this.user.uid = navParams.data;
+        this.fromEvent = true;
+        this.isEventAdmin = false;
+        this.eventId = "";
+        this.user.uid = navParams.get('uid');
+        this.fromEvent = navParams.get('fromEvent');
     }
+    ViewProfilePage.prototype.ionViewDidLoad = function () {
+        this.fillUserInfo();
+    };
     ViewProfilePage.prototype.fillUserInfo = function () {
         var _this = this;
         if (undefined != this.user.uid) {
@@ -79,14 +87,19 @@ var ViewProfilePage = /** @class */ (function () {
                     _this.user.avatar = doc.data().avatar;
                     _this.user.email = doc.data().email;
                     _this.user.username = doc.data().username;
-                    _this.user.firstName = doc.data().firstName;
-                    _this.user.lastName = doc.data().lastName;
+                    if (_this.fromEvent) {
+                        _this.user.lastName = "";
+                        _this.user.firstName = "Not Avaliable";
+                        _this.eventId = _this.navParams.get('eventId').toString();
+                        _this.isEventAdmin = _this.navParams.get('isAdmin');
+                    }
+                    else {
+                        _this.user.firstName = doc.data().firstName;
+                        _this.user.lastName = doc.data().lastName;
+                    }
                 }
             });
         }
-    };
-    ViewProfilePage.prototype.ionViewDidLoad = function () {
-        this.fillUserInfo();
     };
     ViewProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({

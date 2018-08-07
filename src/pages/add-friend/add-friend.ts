@@ -4,13 +4,6 @@ import { User } from '../../models/user';
 import * as firebase from 'firebase';
 import { exceptionGuard } from '@firebase/database/dist/src/core/util/util';
 
-/**
- * Generated class for the AddFriendPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-add-friend',
@@ -18,8 +11,10 @@ import { exceptionGuard } from '@firebase/database/dist/src/core/util/util';
 })
 export class AddFriendPage {
   user = {} as User;
-  email = "";
-  msg = "";
+  tId = "" as string;
+  scanned = false as boolean;
+  email = "" as string;
+  msg = "" as string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -28,6 +23,7 @@ export class AddFriendPage {
   }
 
   ionViewDidLoad() {
+    
   }
 
 
@@ -50,7 +46,21 @@ export class AddFriendPage {
   }
 
   scanQR(){
-    this.navCtrl.push('QrScanPage');
+    var cbFunction = (params) => {
+      return new Promise((resolve,reject)=>{
+        this.tId = params;
+        if (undefined != this.tId && "" != this.tId){
+          firebase.firestore().collection('Users').doc(this.tId).get().then(doc=>{
+            if (doc.exists){
+              this.email = doc.data().email;
+              this.scanned = true;
+            }
+          })
+        }
+        resolve();
+      });
+    }
+    this.navCtrl.push('QrScanPage', {callback: cbFunction});
   }
 
   async pushFriendRequest(fId){
@@ -113,6 +123,7 @@ export class AddFriendPage {
           position: "bottom"
         });
         msg.present();
+        this.navCtrl.pop();
     }}
     catch(e){
       console.log(e);

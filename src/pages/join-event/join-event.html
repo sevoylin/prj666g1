@@ -14,15 +14,17 @@
 
 
 <ion-content padding>
-  <ion-item>
-    <button *ngIf="needScan" ion-button full outline (click)="scanQR()">ScanQR</button>
-  </ion-item>
-  <ion-item *ngIf="!needScan">
+  <ion-item *ngIf="!needInput">
     {{targetId}}
   </ion-item>
-  <ion-item *ngIf="hasPasswd">
-    <ion-label color="primary">Password</ion-label>
-    <ion-input [(ngModel)]="eventPwd"></ion-input>
+  <ion-item  *ngIf="needInput">
+    <ion-label color="primary" float>Event Id</ion-label>
+    <ion-input [(ngModel)]="targetId"></ion-input>
   </ion-item>
-  <button *ngIf="!needScan" ion-button block (click)="joinBtn()">Join</button>
+  <button *ngIf="!targetId.length" ion-button full outline (click)="scanQR()">OR Scan Event QR</button>
+  <ion-item>
+    <ion-label color="primary">Password</ion-label>
+    <ion-input [(ngModel)]="eventPwd" type="password"></ion-input>
+  </ion-item>
+  <button *ngIf="targetId.length" ion-button block (click)="joinBtn()">Join</button>
 </ion-content>

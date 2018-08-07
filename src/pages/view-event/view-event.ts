@@ -1,5 +1,5 @@
 import { Component,ElementRef,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Platform, ActionSheetController, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps, GoogleMap, GoogleMapsEvent, CameraPosition, GoogleMapOptions, Marker, Circle, MarkerOptions, LatLng} from '@ionic-native/google-maps';
@@ -37,11 +37,26 @@ export class ViewEventPage {
               public navParams: NavParams,
               public afAuth: AngularFireAuth,
               public platform:Platform,
-              public actionSheetCtrl: ActionSheetController) {
+              public actionSheetCtrl: ActionSheetController,
+              public toastCtrl: ToastController) {
     this.user.uid = afAuth.auth.currentUser.uid;
     this.event.eventId = navParams.get('eventId').toString();
     this.viewOnly = navParams.get('viewOnly');
     this.initialEmptyEvent();
+  }
+
+  ionViewWillLoad() {
+    this.loadEvent(this.event.eventId);
+    this.event.eventId = this.navParams.get('eventId').toString();
+    this.viewOnly = this.navParams.get('viewOnly');
+    this.initialEmptyEvent();
+  }
+
+  ionViewDidLeave(){
+    this.eventRef.onSnapshot(()=>{});
+    this.event.participants.forEach((userRef)=>{
+      userRef.onSnapshot(()=>{});
+    })
   }
 
   initialEmptyEvent(){
@@ -113,10 +128,6 @@ export class ViewEventPage {
     });
   }
 
-  groupChatBtn(){
-    this.navCtrl.push('ChatPage',this.event.chat);
-  }
-
   trackListener(){
     if (!this.viewOnly)
       this.event.participants.forEach((userRef)=>{
@@ -146,8 +157,54 @@ export class ViewEventPage {
       });
   }
 
+  joinEvent(){
+    if (this.viewOnly){
+      var eventName = "" as string;
+      var userRef = firebase.firestore().collection('Users').doc(this.user.uid);
+      var eventRef = firebase.firestore().collection('Event').doc(this.event.eventId);
+      var reqRef = firebase.firestore().collection('Request').doc(this.user.uid);
+      var userDoc = userRef.get().then((data)=>{
+        this.user.eventList = data.data().eventList;
+        this.user.eventList.push(eventRef);
+        userRef.update('eventList',this.user.eventList);
+      });
+      var eventDoc = eventRef.get().then((da)=>{
+        eventName = da.data().eventName;
+        this.event.participants = da.data().participants;
+        this.event.participants.push(userRef);
+        eventRef.update('participants',this.event.participants);
+      });
+      var reqDoc = reqRef.get().then((doc)=>{
+        var reqList = doc.data().eventRequest;
+        var idx = reqList.findIndex( r =>{
+          return r.from.id == this.event.eventId;
+        });
+        if (idx > -1)
+          reqList.splice(idx,1);
+        reqRef.update('eventRequest',reqList);
+      });
+      this.toastCtrl.create({
+        message: "You have Joined " + eventName,
+        duration: 3000,
+        position: "bottom"
+      }).present();
+      this.navCtrl.pop();
+    }
+  }
+
+  viewEventQR(){
+    this.navCtrl.push('QrCodePage', this.event.eventId);
+  }
+
+  groupChatBtn(){
+    this.navCtrl.push('ChatPage',this.event.chat);
+  }
+
   viewParticipants(){
-    this.navCtrl.push('ViewEventParticipantsPage', this.event.participants);
+    if (!this.viewOnly)
+      this.navCtrl.push('ViewEventParticipantsPage', {'pList': this.event.participants,
+                                                      'isAdmin': this.isAdmin,
+                                                      'eventId':this.event.eventId});
   }
 
   editEventBtn(){
@@ -189,20 +246,6 @@ export class ViewEventPage {
       }
     });
     this.navCtrl.pop();
-  }
-
-  ionViewWillLoad() {
-    this.loadEvent(this.event.eventId);
-    this.event.eventId = this.navParams.get('eventId').toString();
-    this.viewOnly = this.navParams.get('viewOnly');
-    this.initialEmptyEvent();
-  }
-
-  ionViewDidLeave(){
-    this.eventRef.onSnapshot(()=>{});
-    this.event.participants.forEach((userRef)=>{
-      userRef.onSnapshot(()=>{});
-    })
   }
 
   // private functions

@@ -182,7 +182,8 @@ export class FriendListPage {
           {
             text: 'View Profile',
             handler: () => {
-              this.navCtrl.push("ViewProfilePage", uid);
+              this.navCtrl.push("ViewProfilePage", {'uid': uid,
+                                                    'fromEvent': false});
             }
           },
           {
