@@ -14,7 +14,7 @@
     <ion-row padding-horizontal align-self-center>
 
       <ion-col align-self start col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
-        <button ion-button button-clear text-capitalize clear float-left (click)="login(user)">{{data.other}}</button>
+        <button ion-button button-clear text-capitalize clear float-left (click)="about()">{{data.other}}</button>
         <button ion-button button-clear text-capitalize clear float-right (click)="resetPwd()">{{data.forgotPassword}}</button>
       </ion-col>
       
@@ -43,14 +43,11 @@
 
       <!--Share Section-->
       <ion-col align-self-end bottom-form col-12 col-sm-12 col-md-12 offset-lg-3 col-lg-6 offset-xl-3 col-xl-6>
-        <!---Login button-->
-        <button ion-button  full text-capitalize default-button (click)="login(user)">Login</button>
-        <!---Facebook button-->
-        <button ion-button default-button color="facebook" full text-capitalize block><ion-icon name="logo-facebook"></ion-icon> Login with Facebook</button>
-        <!---Google button-->
-        <button ion-button default-button google-button color="google" full text-capitalize block><ion-icon name="logo-google"></ion-icon> Login with Google</button>
+      <!---Login button-->
+      <button ion-button  full text-capitalize default-button (click)="login(user)">Login</button>
+      <!---Google button-->
+      <google-login></google-login>
       </ion-col>
-
       <ion-col col-12>
         <div description text-center>
           <p>Don't have an account? <a text-capitalize ion-text color="primary" (click)="register()">Register</a></p>

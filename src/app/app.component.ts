@@ -14,7 +14,9 @@ import { ProfilePage } from '../pages/profile/profile';
 
 // Import plugins
 import { AngularFireAuth } from 'angularfire2/auth';
-import { User } from '../models/user'; ////////////////////////////////////////
+import { User } from '../models/user';
+
+import * as firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
@@ -99,6 +101,24 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+    });
+    var user = {} as User;
+    var loginStatus = this.afAuth.authState;
+    loginStatus.subscribe(data=>{
+      if (data.uid)
+        user.uid = data.uid;
+        firebase.firestore().collection('Users').doc(user.uid).get().then(data=>{
+          user.username = data.data().username;
+          user.firstName = data.data().firstName;
+          user.lastName = data.data().lastName;
+          this.events.publish('login_status', true, user);
+          this.toastCtrl.create({
+            message: "Welcome! " + user.firstName + " " + user.lastName,
+            duration: 3000,
+            position: "bottom"
+          }).present();
+          this.nav.setRoot('HomePage');
+        }); 
     });
   }
 

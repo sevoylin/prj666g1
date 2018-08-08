@@ -79,10 +79,12 @@
   "cordova-plugin-googleplus": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-googleplus"
+      "id": "cordova-plugin-googleplus@^5.3.0"
     },
     "is_top_level": true,
-    "variables": {}
+    "variables": {
+      "REVERSED_CLIENT_ID": "com.googleusercontent.apps.719772453281-g8icq8gpf0tls9t878lkq614t0bv7qpv"
+    }
   },
   "phonegap-plugin-barcodescanner": {
     "source": {

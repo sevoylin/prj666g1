@@ -39658,6 +39658,68 @@ ion-header [class^="icon-"]:before, ion-header [class*=" icon-"]:before {
   border-bottom-left-radius: 0;
 }
 
+google-login ion-grid,
+google-login ion-row {
+  height: 100%;
+}
+
+google-login img {
+  max-width: 72px;
+  max-height: 72px;
+  margin-bottom: 24px;
+  display: block;
+}
+
+google-login ion-item {
+  padding-left: 0 !important;
+  padding-bottom: 15px !important;
+}
+
+google-login ion-item [error-field] {
+  margin: 0 !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  font-size: 12px;
+}
+
+google-login ion-item .item-inner {
+  border-bottom-color: #8e8e93 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+google-login ion-item ion-label {
+  margin: 0 !important;
+}
+
+google-login [stacked] {
+  font-size: 10px !important;
+}
+
+google-login [login-title] {
+  color: #efeff4;
+}
+
+google-login [login-subtitle] {
+  color: black;
+}
+
+google-login [description] {
+  font-size: 15px !important;
+  font-weight: 100;
+  letter-spacing: 1px;
+  color: #8e8e93;
+}
+
+google-login [bottom-form] button:nth-child(1) {
+  margin: 12px 0;
+}
+
+google-login [bottom-form] [default-button] {
+  font-weight: 400 !important;
+}
+
 page-avatars ion-card {
   position: relative;
   height: 120px;

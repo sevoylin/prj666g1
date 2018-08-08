@@ -23,6 +23,13 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 
+// Social Sharing
+import { GooglePlus } from '@ionic-native/google-plus';
+
+// Components Module
+import { ComponentsModule } from '../components/components.module';
+import { CommonModule } from '@angular/common';
+
 // api file
 import { FIREBASE_CONFIG } from './app.api.config';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -51,7 +58,9 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    HomePageModule
+    HomePageModule,
+    ComponentsModule,
+    CommonModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,6 +78,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     GoogleMaps,
+    GooglePlus,
     Geolocation,
     BarcodeScanner
   ]

@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { RegisterPageModule } from '../register/register.module';
 import { ResetPageModule } from '../reset/reset.module';
 import { LoginPage } from './login';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { LoginPage } from './login';
   imports: [
     IonicPageModule.forChild(LoginPage),
     RegisterPageModule,
-    ResetPageModule
+    ResetPageModule,
+    CommonModule
   ],
 })
 export class LoginPageModule {}

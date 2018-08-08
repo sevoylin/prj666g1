@@ -24,6 +24,7 @@
     "@ionic-native/barcode-scanner": "^4.10.0",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/geolocation": "^4.9.1",
+    "@ionic-native/google-plus": "^4.11.0",
     "@ionic-native/local-notifications": "^4.7.0",
     "@ionic-native/splash-screen": "4.7.0",
     "@ionic-native/status-bar": "4.7.0",
@@ -74,7 +75,9 @@
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "geolocation"
       },
-      "cordova-plugin-googleplus": {},
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.719772453281-g8icq8gpf0tls9t878lkq614t0bv7qpv"
+      },
       "phonegap-plugin-barcodescanner": {
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       }

@@ -12,7 +12,7 @@ import * as firebase from 'firebase';
 export class LoginPage {
   data: any = { "toolbarTitle"   : "Login", 
                 "forgotPassword" : "Forgot password?",
-                "other"          : "Test User",
+                "other"          : "About",
                 "subtitle"       : "Welcome",
                 "labelEmail"     : "EMAIL",
                 "labelUsername"  : "USERNAME",
@@ -37,7 +37,7 @@ export class LoginPage {
               private toastCtrl: ToastController) {
   }
 
-  ionViewDidLoad() {
+  ionViewWillLoad() {
   }
 
   async login(user: User) {
@@ -53,12 +53,12 @@ export class LoginPage {
             // email verified
             this.afAuth.auth.onAuthStateChanged(data =>{
               this.password=""; // delete password
-              user.uid = data.uid;
-              firebase.firestore().collection('Users').doc(user.uid).get().then(data=>{
+              this.user.uid = data.uid;
+              firebase.firestore().collection('Users').doc(this.user.uid).get().then(data=>{
                 this.user.username = data.data().username;
                 this.user.firstName = data.data().firstName;
                 this.user.lastName = data.data().lastName;
-                this.events.publish('login_status', true, user);
+                this.events.publish('login_status', true, this.user);
                 this.toastCtrl.create({
                   message: "Welcome! " + this.user.firstName + " " + this.user.lastName,
                   duration: 3000,
@@ -116,5 +116,9 @@ export class LoginPage {
 
   resetPwd() {
     this.navCtrl.push('ResetPage');
+  }
+
+  about() {
+    console.log("about");
   }
 }

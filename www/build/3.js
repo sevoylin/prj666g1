@@ -1,15 +1,15 @@
 webpackJsonp([3],{
 
-/***/ 740:
+/***/ 743:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QrCodePageModule", function() { return QrCodePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_qrcode2__ = __webpack_require__(768);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__qr_code__ = __webpack_require__(788);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_qrcode2__ = __webpack_require__(771);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__qr_code__ = __webpack_require__(791);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,7 +41,7 @@ var QrCodePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 756:
+/***/ 759:
 /***/ (function(module, exports) {
 
 var toSJISFunction
@@ -111,11 +111,11 @@ exports.toSJIS = function toSJIS (kanji) {
 
 /***/ }),
 
-/***/ 757:
+/***/ 760:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Version = __webpack_require__(762)
-var Regex = __webpack_require__(763)
+var Version = __webpack_require__(765)
+var Regex = __webpack_require__(766)
 
 /**
  * Numeric mode encodes data from the decimal digit set (0 - 9)
@@ -285,7 +285,7 @@ exports.from = function from (value, defaultValue) {
 
 /***/ }),
 
-/***/ 758:
+/***/ 761:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -298,7 +298,7 @@ exports.from = function from (value, defaultValue) {
 
 
 
-var isArray = __webpack_require__(759)
+var isArray = __webpack_require__(762)
 
 var K_MAX_LENGTH = 0x7fffffff
 
@@ -749,7 +749,7 @@ module.exports = Buffer
 
 /***/ }),
 
-/***/ 759:
+/***/ 762:
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -761,7 +761,7 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 760:
+/***/ 763:
 /***/ (function(module, exports) {
 
 exports.L = { bit: 1 }
@@ -818,10 +818,10 @@ exports.from = function from (value, defaultValue) {
 
 /***/ }),
 
-/***/ 761:
+/***/ 764:
 /***/ (function(module, exports, __webpack_require__) {
 
-var ECLevel = __webpack_require__(760)
+var ECLevel = __webpack_require__(763)
 
 var EC_BLOCKS_TABLE = [
 // L  M  Q  H
@@ -960,14 +960,14 @@ exports.getTotalCodewordsCount = function getTotalCodewordsCount (version, error
 
 /***/ }),
 
-/***/ 762:
+/***/ 765:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Utils = __webpack_require__(756)
-var ECCode = __webpack_require__(761)
-var ECLevel = __webpack_require__(760)
-var Mode = __webpack_require__(757)
-var isArray = __webpack_require__(759)
+var Utils = __webpack_require__(759)
+var ECCode = __webpack_require__(764)
+var ECLevel = __webpack_require__(763)
+var Mode = __webpack_require__(760)
+var isArray = __webpack_require__(762)
 
 // Generator polynomial used to encode version information
 var G18 = (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0)
@@ -1140,7 +1140,7 @@ exports.getEncodedBits = function getEncodedBits (version) {
 
 /***/ }),
 
-/***/ 763:
+/***/ 766:
 /***/ (function(module, exports) {
 
 var numeric = '[0-9]+'
@@ -1176,7 +1176,7 @@ exports.testAlphanumeric = function testAlphanumeric (str) {
 
 /***/ }),
 
-/***/ 764:
+/***/ 767:
 /***/ (function(module, exports) {
 
 function hex2rgba (hex) {
@@ -1259,14 +1259,14 @@ exports.qrToImageData = function qrToImageData (imgData, qr, margin, scale, colo
 
 /***/ }),
 
-/***/ 768:
+/***/ 771:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgxQRCodeModule; });
 /* unused harmony export NgxQRCodeComponent */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(42);
 
 
 
@@ -1274,7 +1274,7 @@ exports.qrToImageData = function qrToImageData (imgData, qr, margin, scale, colo
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-var QRCode = __webpack_require__(769);
+var QRCode = __webpack_require__(772);
 var NgxQRCodeComponent = /** @class */ (function () {
     function NgxQRCodeComponent(renderer) {
         this.renderer = renderer;
@@ -1452,12 +1452,12 @@ var NgxQRCodeModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 769:
+/***/ 772:
 /***/ (function(module, exports, __webpack_require__) {
 
-var QRCode = __webpack_require__(770)
-var CanvasRenderer = __webpack_require__(786)
-var SvgRenderer = __webpack_require__(787)
+var QRCode = __webpack_require__(773)
+var CanvasRenderer = __webpack_require__(789)
+var SvgRenderer = __webpack_require__(790)
 
 function renderCanvas (renderFunc, canvas, text, opts, cb) {
   var argsNum = arguments.length - 1
@@ -1514,24 +1514,24 @@ exports.qrcodedraw = function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 773:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
-var Utils = __webpack_require__(756)
-var ECLevel = __webpack_require__(760)
-var BitBuffer = __webpack_require__(771)
-var BitMatrix = __webpack_require__(772)
-var AlignmentPattern = __webpack_require__(773)
-var FinderPattern = __webpack_require__(774)
-var MaskPattern = __webpack_require__(775)
-var ECCode = __webpack_require__(761)
-var ReedSolomonEncoder = __webpack_require__(776)
-var Version = __webpack_require__(762)
-var FormatInfo = __webpack_require__(779)
-var Mode = __webpack_require__(757)
-var Segments = __webpack_require__(780)
-var isArray = __webpack_require__(759)
+var Buffer = __webpack_require__(761)
+var Utils = __webpack_require__(759)
+var ECLevel = __webpack_require__(763)
+var BitBuffer = __webpack_require__(774)
+var BitMatrix = __webpack_require__(775)
+var AlignmentPattern = __webpack_require__(776)
+var FinderPattern = __webpack_require__(777)
+var MaskPattern = __webpack_require__(778)
+var ECCode = __webpack_require__(764)
+var ReedSolomonEncoder = __webpack_require__(779)
+var Version = __webpack_require__(765)
+var FormatInfo = __webpack_require__(782)
+var Mode = __webpack_require__(760)
+var Segments = __webpack_require__(783)
+var isArray = __webpack_require__(762)
 
 /**
  * QRCode for JavaScript
@@ -2015,7 +2015,7 @@ exports.create = function create (data, options) {
 
 /***/ }),
 
-/***/ 771:
+/***/ 774:
 /***/ (function(module, exports) {
 
 function BitBuffer () {
@@ -2059,10 +2059,10 @@ module.exports = BitBuffer
 
 /***/ }),
 
-/***/ 772:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
+var Buffer = __webpack_require__(761)
 
 /**
  * Helper class to handle QR Code symbol modules
@@ -2135,7 +2135,7 @@ module.exports = BitMatrix
 
 /***/ }),
 
-/***/ 773:
+/***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2148,7 +2148,7 @@ module.exports = BitMatrix
  * and their number depends on the symbol version.
  */
 
-var getSymbolSize = __webpack_require__(756).getSymbolSize
+var getSymbolSize = __webpack_require__(759).getSymbolSize
 
 /**
  * Calculate the row/column coordinates of the center module of each alignment pattern
@@ -2225,10 +2225,10 @@ exports.getPositions = function getPositions (version) {
 
 /***/ }),
 
-/***/ 774:
+/***/ 777:
 /***/ (function(module, exports, __webpack_require__) {
 
-var getSymbolSize = __webpack_require__(756).getSymbolSize
+var getSymbolSize = __webpack_require__(759).getSymbolSize
 var FINDER_PATTERN_SIZE = 7
 
 /**
@@ -2254,7 +2254,7 @@ exports.getPositions = function getPositions (version) {
 
 /***/ }),
 
-/***/ 775:
+/***/ 778:
 /***/ (function(module, exports) {
 
 /**
@@ -2474,11 +2474,11 @@ exports.getBestMask = function getBestMask (data, setupFormatFunc) {
 
 /***/ }),
 
-/***/ 776:
+/***/ 779:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
-var Polynomial = __webpack_require__(777)
+var Buffer = __webpack_require__(761)
+var Polynomial = __webpack_require__(780)
 
 function ReedSolomonEncoder (degree) {
   this.genPoly = undefined
@@ -2540,11 +2540,11 @@ module.exports = ReedSolomonEncoder
 
 /***/ }),
 
-/***/ 777:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
-var GF = __webpack_require__(778)
+var Buffer = __webpack_require__(761)
+var GF = __webpack_require__(781)
 
 /**
  * Multiplies two polynomials inside Galois Field
@@ -2611,10 +2611,10 @@ exports.generateECPolynomial = function generateECPolynomial (degree) {
 
 /***/ }),
 
-/***/ 778:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
+var Buffer = __webpack_require__(761)
 
 var EXP_TABLE = new Buffer(512)
 var LOG_TABLE = new Buffer(256)
@@ -2690,10 +2690,10 @@ exports.mul = function mul (x, y) {
 
 /***/ }),
 
-/***/ 779:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Utils = __webpack_require__(756)
+var Utils = __webpack_require__(759)
 
 var G15 = (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0)
 var G15_MASK = (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1)
@@ -2726,17 +2726,17 @@ exports.getEncodedBits = function getEncodedBits (errorCorrectionLevel, mask) {
 
 /***/ }),
 
-/***/ 780:
+/***/ 783:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Mode = __webpack_require__(757)
-var NumericData = __webpack_require__(781)
-var AlphanumericData = __webpack_require__(782)
-var ByteData = __webpack_require__(783)
-var KanjiData = __webpack_require__(784)
-var Regex = __webpack_require__(763)
-var Utils = __webpack_require__(756)
-var dijkstra = __webpack_require__(785)
+var Mode = __webpack_require__(760)
+var NumericData = __webpack_require__(784)
+var AlphanumericData = __webpack_require__(785)
+var ByteData = __webpack_require__(786)
+var KanjiData = __webpack_require__(787)
+var Regex = __webpack_require__(766)
+var Utils = __webpack_require__(759)
+var dijkstra = __webpack_require__(788)
 
 /**
  * Returns UTF8 byte length
@@ -3063,10 +3063,10 @@ exports.rawSplit = function rawSplit (data) {
 
 /***/ }),
 
-/***/ 781:
+/***/ 784:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Mode = __webpack_require__(757)
+var Mode = __webpack_require__(760)
 
 function NumericData (data) {
   this.mode = Mode.NUMERIC
@@ -3113,10 +3113,10 @@ module.exports = NumericData
 
 /***/ }),
 
-/***/ 782:
+/***/ 785:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Mode = __webpack_require__(757)
+var Mode = __webpack_require__(760)
 
 /**
  * Array of characters available in alphanumeric mode
@@ -3179,11 +3179,11 @@ module.exports = AlphanumericData
 
 /***/ }),
 
-/***/ 783:
+/***/ 786:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
-var Mode = __webpack_require__(757)
+var Buffer = __webpack_require__(761)
+var Mode = __webpack_require__(760)
 
 function ByteData (data) {
   this.mode = Mode.BYTE
@@ -3213,11 +3213,11 @@ module.exports = ByteData
 
 /***/ }),
 
-/***/ 784:
+/***/ 787:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Mode = __webpack_require__(757)
-var Utils = __webpack_require__(756)
+var Mode = __webpack_require__(760)
+var Utils = __webpack_require__(759)
 
 function KanjiData (data) {
   this.mode = Mode.KANJI
@@ -3274,7 +3274,7 @@ module.exports = KanjiData
 
 /***/ }),
 
-/***/ 785:
+/***/ 788:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3447,10 +3447,10 @@ if (true) {
 
 /***/ }),
 
-/***/ 786:
+/***/ 789:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Utils = __webpack_require__(764)
+var Utils = __webpack_require__(767)
 
 function clearCanvas (ctx, canvas, size) {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -3517,10 +3517,10 @@ exports.renderToDataURL = function renderToDataURL (qrData, canvas, options) {
 
 /***/ }),
 
-/***/ 787:
+/***/ 790:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Utils = __webpack_require__(764)
+var Utils = __webpack_require__(767)
 
 function getColorAttrib (color) {
   return 'fill="rgb(' + [color.r, color.g, color.b].join(',') + ')" ' +
@@ -3566,13 +3566,13 @@ exports.render = function render (qrData, options) {
 
 /***/ }),
 
-/***/ 788:
+/***/ 791:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QrCodePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
