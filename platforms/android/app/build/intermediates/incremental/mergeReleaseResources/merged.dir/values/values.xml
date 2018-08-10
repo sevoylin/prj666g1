@@ -222,6 +222,8 @@
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="google_play_services_version">12451000</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
+    <string name="account_name">@string/app_name</string>
+    <string name="account_type">io.ionic.starter.account</string>
     <string name="activity_name">@string/launcher_name</string>
     <string name="app_name">MeeTogether</string>
     <string name="app_picker_name">Applications</string>
@@ -267,6 +269,7 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="content_authority">io.ionic.starter</string>
     <string name="contents_contact">Contact info</string>
     <string name="contents_email">Email address</string>
     <string name="contents_location">Geographic coordinates</string>

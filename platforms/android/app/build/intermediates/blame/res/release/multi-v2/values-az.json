@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-az/values-az.xml",
+            "outputFile": "/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-az/values-az.xml",
             "map": [
                 {
                     "source": "/home/soul/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/b82380b54bff20acfc1e273648e1cdaf/res/values-az/values-az.xml",

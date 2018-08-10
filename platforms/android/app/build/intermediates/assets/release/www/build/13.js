@@ -1,14 +1,14 @@
 webpackJsonp([13],{
 
-/***/ 752:
+/***/ 756:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InviteUserPageModule", function() { return InviteUserPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invite_user__ = __webpack_require__(799);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__invite_user__ = __webpack_require__(803);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,14 +38,14 @@ var InviteUserPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 799:
+/***/ 803:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InviteUserPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -99,10 +99,11 @@ var InviteUserPage = /** @class */ (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.toastCtrl = toastCtrl;
-        this.eventRef = {};
+        this.eventId = "";
+        this.user = {};
         this.email = "";
         this.msg = "";
-        this.eventRef = navParams.data;
+        this.eventId = navParams.data.toString();
     }
     InviteUserPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad InviteUserPage');
@@ -112,29 +113,59 @@ var InviteUserPage = /** @class */ (function () {
         var ucRef = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').where("email", "==", this.email).get().then(function (d) {
             if (d.docs.length > 0) {
                 console.log("has !");
-                _this.pushEventRequest(d.docs[0].id);
-            }
-            else {
-                // cannot find this guy
-                var err = _this.toastCtrl.create({
-                    message: "Cannot find user with email: " + _this.email,
-                    duration: 3000,
-                    position: "bottom"
-                });
-                err.present();
+                _this.pushInviteRequest(d.docs[0].id);
             }
         });
     };
-    InviteUserPage.prototype.pushEventRequest = function (fId) {
+    InviteUserPage.prototype.pushInviteRequest = function (fId) {
         return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            var uRef_1, eRef_1;
             return __generator(this, function (_a) {
+                try {
+                    uRef_1 = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Users').doc(fId);
+                    eRef_1 = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Event').doc(this.eventId);
+                    // determine if the person is already in list
+                    eRef_1.get().then(function (doc) {
+                        var canFind = doc.data().participants.find(function (ele) { return ele.isEqual(uRef_1); });
+                        if (undefined != canFind) {
+                            _this.toastCtrl.create({
+                                message: "User already in the event",
+                                duration: 3000,
+                                position: "bottom"
+                            }).present();
+                        }
+                        else {
+                            var fReq_1 = __WEBPACK_IMPORTED_MODULE_2_firebase__["firestore"]().collection('Request').doc(fId);
+                            fReq_1.get().then(function (doc) {
+                                var is = doc.data().eventRequest.find(function (fr) { return fr.from.isEqual(eRef_1); });
+                                if (undefined == is) {
+                                    var fReqList = doc.data().eventRequest;
+                                    fReqList.push({
+                                        from: eRef_1,
+                                        msg: _this.msg.trim()
+                                    });
+                                    fReq_1.update('eventRequest', fReqList);
+                                    _this.toastCtrl.create({
+                                        message: "Sent " + _this.email + " a invite request",
+                                        duration: 3000,
+                                        position: "bottom"
+                                    }).present();
+                                }
+                            });
+                        }
+                    });
+                }
+                catch (e) {
+                    console.log(e);
+                }
                 return [2 /*return*/];
             });
         });
     };
     InviteUserPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-invite-user',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/invite-user/invite-user.html"*/'<!--\n  Generated template for the InviteUserPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Invite User</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item>\n      <ion-label floating>Enter the email</ion-label>\n      <ion-input type="email" [(ngModel)]="email"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Enter the message:</ion-label>\n      <ion-input type="text" [(ngModel)]="msg"></ion-input>\n    </ion-item>\n  </ion-list>\n  <button ion-button block (click)="invite()">Invite</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/invite-user/invite-user.html"*/,
+            selector: 'page-invite-user',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/src/pages/invite-user/invite-user.html"*/'<!--\n  Generated template for the InviteUserPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Invite User</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-list>\n    <ion-item>\n      <ion-label floating>Enter the email</ion-label>\n      <ion-input type="email" [(ngModel)]="email"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label floating>Enter the message:</ion-label>\n      <ion-input type="text" [(ngModel)]="msg"></ion-input>\n    </ion-item>\n  </ion-list>\n  <button ion-button block (click)="invite()">Invite</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/src/pages/invite-user/invite-user.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */],

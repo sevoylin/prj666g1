@@ -1,4 +1,0 @@
-#Tue Aug 07 13:28:13 EDT 2018
-base.0=/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
-renamed.0=classes.dex
-file.0=/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

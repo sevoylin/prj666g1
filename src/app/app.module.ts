@@ -29,6 +29,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
 // Components Module
 import { ComponentsModule } from '../components/components.module';
 import { CommonModule } from '@angular/common';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+
 
 // api file
 import { FIREBASE_CONFIG } from './app.api.config';
@@ -80,7 +82,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     GoogleMaps,
     GooglePlus,
     Geolocation,
-    BarcodeScanner
+    BarcodeScanner,
+    BackgroundGeolocation
   ]
 })
 export class AppModule {}

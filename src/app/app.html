@@ -10,7 +10,7 @@
       <p *ngIf="isLogged == false">{{data.description}}</p>
       <!--Text if logged in-->
       <h2 *ngIf="isLogged == true" ion-text header-title>{{data.username}}</h2>
-      <p *ngIf="isLogged == false">{{data.userName}}</p>
+      <p *ngIf="isLogged == true">{{data.userName}}</p>
     </div>
   </ion-header>
 

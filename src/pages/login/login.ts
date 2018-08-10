@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, ToastController, AlertController } from 'ionic-angular';
 import { User } from "../../models/user"; 
 import { AngularFireAuth } from "angularfire2/auth"
 import * as firebase from 'firebase';
@@ -34,7 +34,8 @@ export class LoginPage {
               public events: Events,
               public navCtrl: NavController,
               public navParams: NavParams,
-              private toastCtrl: ToastController) {
+              private toastCtrl: ToastController,
+              private alertCtrl: AlertController) {
   }
 
   ionViewWillLoad() {
@@ -119,6 +120,11 @@ export class LoginPage {
   }
 
   about() {
-    console.log("about");
+    this.alertCtrl.create({
+      subTitle: "About MeeTogether",
+      title: "PRJ666 Group 1",
+      message: "Code by Yankai(most backend), Jay(most foreground), Dennis and Shlok",
+      buttons: ['Dismiss']
+    }).present();
   }
 }

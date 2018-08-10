@@ -95,6 +95,7 @@ apply from: "../cordova-plugin-badge/starter-badge.gradle"
 apply from: "../cordova-plugin-local-notification/starter-localnotification.gradle"
 apply from: "../cordova-plugin-googlemaps/starter-tbxml-android.gradle"
 apply from: "../phonegap-plugin-barcodescanner/starter-barcodescanner.gradle"
+apply from: "../cordova-plugin-mauron85-background-geolocation/starter-logtofile.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -270,6 +271,8 @@ dependencies {
     compile "com.google.android.gms:play-services-auth:11.8.0"
     compile "com.google.android.gms:play-services-identity:11.8.0"
     compile "com.android.support:support-v4:27.+"
+    compile "com.google.android.gms:play-services-location:11+"
+    compile "com.android.support:support-v4:23+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

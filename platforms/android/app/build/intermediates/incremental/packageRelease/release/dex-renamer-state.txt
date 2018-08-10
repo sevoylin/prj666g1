@@ -1,4 +1,4 @@
-#Mon Aug 06 00:22:56 EDT 2018
-base.0=/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/build/intermediates/transforms/dex/release/0
+#Wed Aug 08 02:33:44 EDT 2018
+base.0=/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/platforms/android/app/build/intermediates/transforms/dex/release/0
 renamed.0=classes.dex
-file.0=/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/build/intermediates/transforms/dex/release/0/classes.dex
+file.0=/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/platforms/android/app/build/intermediates/transforms/dex/release/0/classes.dex

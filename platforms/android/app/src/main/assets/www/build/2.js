@@ -1,15 +1,15 @@
 webpackJsonp([2,3,14],{
 
-/***/ 740:
+/***/ 744:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "QrCodePageModule", function() { return QrCodePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_qrcode2__ = __webpack_require__(768);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__qr_code__ = __webpack_require__(788);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ngx_qrcode2__ = __webpack_require__(772);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__qr_code__ = __webpack_require__(792);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -41,15 +41,15 @@ var QrCodePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 744:
+/***/ 748:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EditProfilePageModule", function() { return EditProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_profile__ = __webpack_require__(792);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__edit_profile__ = __webpack_require__(796);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -79,17 +79,17 @@ var EditProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 755:
+/***/ 759:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__edit_profile_edit_profile_module__ = __webpack_require__(744);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__qr_code_qr_code_module__ = __webpack_require__(740);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__edit_profile_edit_profile_module__ = __webpack_require__(748);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__qr_code_qr_code_module__ = __webpack_require__(744);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -123,7 +123,7 @@ var ProfilePageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 756:
+/***/ 760:
 /***/ (function(module, exports) {
 
 var toSJISFunction
@@ -193,11 +193,11 @@ exports.toSJIS = function toSJIS (kanji) {
 
 /***/ }),
 
-/***/ 757:
+/***/ 761:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Version = __webpack_require__(762)
-var Regex = __webpack_require__(763)
+var Version = __webpack_require__(766)
+var Regex = __webpack_require__(767)
 
 /**
  * Numeric mode encodes data from the decimal digit set (0 - 9)
@@ -367,7 +367,7 @@ exports.from = function from (value, defaultValue) {
 
 /***/ }),
 
-/***/ 758:
+/***/ 762:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -380,7 +380,7 @@ exports.from = function from (value, defaultValue) {
 
 
 
-var isArray = __webpack_require__(759)
+var isArray = __webpack_require__(763)
 
 var K_MAX_LENGTH = 0x7fffffff
 
@@ -831,7 +831,7 @@ module.exports = Buffer
 
 /***/ }),
 
-/***/ 759:
+/***/ 763:
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -843,7 +843,7 @@ module.exports = Array.isArray || function (arr) {
 
 /***/ }),
 
-/***/ 760:
+/***/ 764:
 /***/ (function(module, exports) {
 
 exports.L = { bit: 1 }
@@ -900,10 +900,10 @@ exports.from = function from (value, defaultValue) {
 
 /***/ }),
 
-/***/ 761:
+/***/ 765:
 /***/ (function(module, exports, __webpack_require__) {
 
-var ECLevel = __webpack_require__(760)
+var ECLevel = __webpack_require__(764)
 
 var EC_BLOCKS_TABLE = [
 // L  M  Q  H
@@ -1042,14 +1042,14 @@ exports.getTotalCodewordsCount = function getTotalCodewordsCount (version, error
 
 /***/ }),
 
-/***/ 762:
+/***/ 766:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Utils = __webpack_require__(756)
-var ECCode = __webpack_require__(761)
-var ECLevel = __webpack_require__(760)
-var Mode = __webpack_require__(757)
-var isArray = __webpack_require__(759)
+var Utils = __webpack_require__(760)
+var ECCode = __webpack_require__(765)
+var ECLevel = __webpack_require__(764)
+var Mode = __webpack_require__(761)
+var isArray = __webpack_require__(763)
 
 // Generator polynomial used to encode version information
 var G18 = (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0)
@@ -1222,7 +1222,7 @@ exports.getEncodedBits = function getEncodedBits (version) {
 
 /***/ }),
 
-/***/ 763:
+/***/ 767:
 /***/ (function(module, exports) {
 
 var numeric = '[0-9]+'
@@ -1258,7 +1258,7 @@ exports.testAlphanumeric = function testAlphanumeric (str) {
 
 /***/ }),
 
-/***/ 764:
+/***/ 768:
 /***/ (function(module, exports) {
 
 function hex2rgba (hex) {
@@ -1341,14 +1341,14 @@ exports.qrToImageData = function qrToImageData (imgData, qr, margin, scale, colo
 
 /***/ }),
 
-/***/ 768:
+/***/ 772:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgxQRCodeModule; });
 /* unused harmony export NgxQRCodeComponent */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(42);
 
 
 
@@ -1356,7 +1356,7 @@ exports.qrToImageData = function qrToImageData (imgData, qr, margin, scale, colo
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-var QRCode = __webpack_require__(769);
+var QRCode = __webpack_require__(773);
 var NgxQRCodeComponent = /** @class */ (function () {
     function NgxQRCodeComponent(renderer) {
         this.renderer = renderer;
@@ -1534,12 +1534,12 @@ var NgxQRCodeModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 769:
+/***/ 773:
 /***/ (function(module, exports, __webpack_require__) {
 
-var QRCode = __webpack_require__(770)
-var CanvasRenderer = __webpack_require__(786)
-var SvgRenderer = __webpack_require__(787)
+var QRCode = __webpack_require__(774)
+var CanvasRenderer = __webpack_require__(790)
+var SvgRenderer = __webpack_require__(791)
 
 function renderCanvas (renderFunc, canvas, text, opts, cb) {
   var argsNum = arguments.length - 1
@@ -1596,24 +1596,24 @@ exports.qrcodedraw = function () {
 
 /***/ }),
 
-/***/ 770:
+/***/ 774:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
-var Utils = __webpack_require__(756)
-var ECLevel = __webpack_require__(760)
-var BitBuffer = __webpack_require__(771)
-var BitMatrix = __webpack_require__(772)
-var AlignmentPattern = __webpack_require__(773)
-var FinderPattern = __webpack_require__(774)
-var MaskPattern = __webpack_require__(775)
-var ECCode = __webpack_require__(761)
-var ReedSolomonEncoder = __webpack_require__(776)
-var Version = __webpack_require__(762)
-var FormatInfo = __webpack_require__(779)
-var Mode = __webpack_require__(757)
-var Segments = __webpack_require__(780)
-var isArray = __webpack_require__(759)
+var Buffer = __webpack_require__(762)
+var Utils = __webpack_require__(760)
+var ECLevel = __webpack_require__(764)
+var BitBuffer = __webpack_require__(775)
+var BitMatrix = __webpack_require__(776)
+var AlignmentPattern = __webpack_require__(777)
+var FinderPattern = __webpack_require__(778)
+var MaskPattern = __webpack_require__(779)
+var ECCode = __webpack_require__(765)
+var ReedSolomonEncoder = __webpack_require__(780)
+var Version = __webpack_require__(766)
+var FormatInfo = __webpack_require__(783)
+var Mode = __webpack_require__(761)
+var Segments = __webpack_require__(784)
+var isArray = __webpack_require__(763)
 
 /**
  * QRCode for JavaScript
@@ -2097,7 +2097,7 @@ exports.create = function create (data, options) {
 
 /***/ }),
 
-/***/ 771:
+/***/ 775:
 /***/ (function(module, exports) {
 
 function BitBuffer () {
@@ -2141,10 +2141,10 @@ module.exports = BitBuffer
 
 /***/ }),
 
-/***/ 772:
+/***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
+var Buffer = __webpack_require__(762)
 
 /**
  * Helper class to handle QR Code symbol modules
@@ -2217,7 +2217,7 @@ module.exports = BitMatrix
 
 /***/ }),
 
-/***/ 773:
+/***/ 777:
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -2230,7 +2230,7 @@ module.exports = BitMatrix
  * and their number depends on the symbol version.
  */
 
-var getSymbolSize = __webpack_require__(756).getSymbolSize
+var getSymbolSize = __webpack_require__(760).getSymbolSize
 
 /**
  * Calculate the row/column coordinates of the center module of each alignment pattern
@@ -2307,10 +2307,10 @@ exports.getPositions = function getPositions (version) {
 
 /***/ }),
 
-/***/ 774:
+/***/ 778:
 /***/ (function(module, exports, __webpack_require__) {
 
-var getSymbolSize = __webpack_require__(756).getSymbolSize
+var getSymbolSize = __webpack_require__(760).getSymbolSize
 var FINDER_PATTERN_SIZE = 7
 
 /**
@@ -2336,7 +2336,7 @@ exports.getPositions = function getPositions (version) {
 
 /***/ }),
 
-/***/ 775:
+/***/ 779:
 /***/ (function(module, exports) {
 
 /**
@@ -2556,11 +2556,11 @@ exports.getBestMask = function getBestMask (data, setupFormatFunc) {
 
 /***/ }),
 
-/***/ 776:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
-var Polynomial = __webpack_require__(777)
+var Buffer = __webpack_require__(762)
+var Polynomial = __webpack_require__(781)
 
 function ReedSolomonEncoder (degree) {
   this.genPoly = undefined
@@ -2622,11 +2622,11 @@ module.exports = ReedSolomonEncoder
 
 /***/ }),
 
-/***/ 777:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
-var GF = __webpack_require__(778)
+var Buffer = __webpack_require__(762)
+var GF = __webpack_require__(782)
 
 /**
  * Multiplies two polynomials inside Galois Field
@@ -2693,10 +2693,10 @@ exports.generateECPolynomial = function generateECPolynomial (degree) {
 
 /***/ }),
 
-/***/ 778:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
+var Buffer = __webpack_require__(762)
 
 var EXP_TABLE = new Buffer(512)
 var LOG_TABLE = new Buffer(256)
@@ -2772,10 +2772,10 @@ exports.mul = function mul (x, y) {
 
 /***/ }),
 
-/***/ 779:
+/***/ 783:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Utils = __webpack_require__(756)
+var Utils = __webpack_require__(760)
 
 var G15 = (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0)
 var G15_MASK = (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1)
@@ -2808,17 +2808,17 @@ exports.getEncodedBits = function getEncodedBits (errorCorrectionLevel, mask) {
 
 /***/ }),
 
-/***/ 780:
+/***/ 784:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Mode = __webpack_require__(757)
-var NumericData = __webpack_require__(781)
-var AlphanumericData = __webpack_require__(782)
-var ByteData = __webpack_require__(783)
-var KanjiData = __webpack_require__(784)
-var Regex = __webpack_require__(763)
-var Utils = __webpack_require__(756)
-var dijkstra = __webpack_require__(785)
+var Mode = __webpack_require__(761)
+var NumericData = __webpack_require__(785)
+var AlphanumericData = __webpack_require__(786)
+var ByteData = __webpack_require__(787)
+var KanjiData = __webpack_require__(788)
+var Regex = __webpack_require__(767)
+var Utils = __webpack_require__(760)
+var dijkstra = __webpack_require__(789)
 
 /**
  * Returns UTF8 byte length
@@ -3145,10 +3145,10 @@ exports.rawSplit = function rawSplit (data) {
 
 /***/ }),
 
-/***/ 781:
+/***/ 785:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Mode = __webpack_require__(757)
+var Mode = __webpack_require__(761)
 
 function NumericData (data) {
   this.mode = Mode.NUMERIC
@@ -3195,10 +3195,10 @@ module.exports = NumericData
 
 /***/ }),
 
-/***/ 782:
+/***/ 786:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Mode = __webpack_require__(757)
+var Mode = __webpack_require__(761)
 
 /**
  * Array of characters available in alphanumeric mode
@@ -3261,11 +3261,11 @@ module.exports = AlphanumericData
 
 /***/ }),
 
-/***/ 783:
+/***/ 787:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Buffer = __webpack_require__(758)
-var Mode = __webpack_require__(757)
+var Buffer = __webpack_require__(762)
+var Mode = __webpack_require__(761)
 
 function ByteData (data) {
   this.mode = Mode.BYTE
@@ -3295,11 +3295,11 @@ module.exports = ByteData
 
 /***/ }),
 
-/***/ 784:
+/***/ 788:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Mode = __webpack_require__(757)
-var Utils = __webpack_require__(756)
+var Mode = __webpack_require__(761)
+var Utils = __webpack_require__(760)
 
 function KanjiData (data) {
   this.mode = Mode.KANJI
@@ -3356,7 +3356,7 @@ module.exports = KanjiData
 
 /***/ }),
 
-/***/ 785:
+/***/ 789:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3529,10 +3529,10 @@ if (true) {
 
 /***/ }),
 
-/***/ 786:
+/***/ 790:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Utils = __webpack_require__(764)
+var Utils = __webpack_require__(768)
 
 function clearCanvas (ctx, canvas, size) {
   ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -3599,10 +3599,10 @@ exports.renderToDataURL = function renderToDataURL (qrData, canvas, options) {
 
 /***/ }),
 
-/***/ 787:
+/***/ 791:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Utils = __webpack_require__(764)
+var Utils = __webpack_require__(768)
 
 function getColorAttrib (color) {
   return 'fill="rgb(' + [color.r, color.g, color.b].join(',') + ')" ' +
@@ -3648,13 +3648,13 @@ exports.render = function render (qrData, options) {
 
 /***/ }),
 
-/***/ 788:
+/***/ 792:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return QrCodePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3683,7 +3683,7 @@ var QrCodePage = /** @class */ (function () {
     };
     QrCodePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-qr-code',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-code/qr-code.html"*/'<!--\n  Generated template for the QrCodePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>QR Code</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div>\n    <ion-card>\n        <ngx-qrcode [qrc-value]="QRstr"></ngx-qrcode>\n        <ion-card-content>\n          <p></p>\n        </ion-card-content>\n      </ion-card>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/qr-code/qr-code.html"*/,
+            selector: 'page-qr-code',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/src/pages/qr-code/qr-code.html"*/'<!--\n  Generated template for the QrCodePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>QR Code</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div>\n    <ion-card>\n        <ngx-qrcode [qrc-value]="QRstr"></ngx-qrcode>\n        <ion-card-content>\n          <p></p>\n        </ion-card-content>\n      </ion-card>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/src/pages/qr-code/qr-code.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* NavParams */]])
@@ -3695,14 +3695,14 @@ var QrCodePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 792:
+/***/ 796:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EditProfilePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3741,7 +3741,7 @@ var EditProfilePage = /** @class */ (function () {
     };
     EditProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-edit-profile',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/edit-profile/edit-profile.html"*/'<!--\n  Generated template for the EditProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit Profile</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-icon ios="ios-finger-print" md="md-finger-print"></ion-icon>\n    {{user.uid}}\n  </ion-item>\n  <ion-item>\n    <ion-icon ios="ios-mail" md="md-mail"></ion-icon>\n    {{user.email}}\n  </ion-item>\n  <ion-item>\n    <ion-label floating>User Name</ion-label>\n    <ion-input type="text" [(ngModel)]="user.username" max="12"></ion-input>\n  </ion-item>\n  <ion-item>\n      <ion-label floating>First Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.firstName"></ion-input>\n  </ion-item>\n  <ion-item>\n      <ion-label floating>Last Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Birthday</ion-label>\n    <ion-input type="Date" [(ngModel)]="user.birth"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Gender</ion-label>\n    <ion-select [(ngModel)]="user.gender" type="text">\n      <ion-option [value]="Male">Male</ion-option>\n      <ion-option [value]="Female">Female</ion-option>\n      <ion-option [value]="">Prefer not to tell</ion-option>\n    </ion-select>\n  </ion-item>\n  <button ion-button block (click) = "saveBtn()">Save</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/src/pages/edit-profile/edit-profile.html"*/,
+            selector: 'page-edit-profile',template:/*ion-inline-start:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/src/pages/edit-profile/edit-profile.html"*/'<!--\n  Generated template for the EditProfilePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Edit Profile</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-item>\n    <ion-icon ios="ios-finger-print" md="md-finger-print"></ion-icon>\n    {{user.uid}}\n  </ion-item>\n  <ion-item>\n    <ion-icon ios="ios-mail" md="md-mail"></ion-icon>\n    {{user.email}}\n  </ion-item>\n  <ion-item>\n    <ion-label floating>User Name</ion-label>\n    <ion-input type="text" [(ngModel)]="user.username" max="12"></ion-input>\n  </ion-item>\n  <ion-item>\n      <ion-label floating>First Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.firstName"></ion-input>\n  </ion-item>\n  <ion-item>\n      <ion-label floating>Last Name</ion-label>\n      <ion-input type="text" [(ngModel)]="user.lastName"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Birthday</ion-label>\n    <ion-input type="Date" [(ngModel)]="user.birth"></ion-input>\n  </ion-item>\n\n  <ion-item>\n    <ion-label floating>Gender</ion-label>\n    <ion-select [(ngModel)]="user.gender" type="text">\n      <ion-option [value]="Male">Male</ion-option>\n      <ion-option [value]="Female">Female</ion-option>\n      <ion-option [value]="">Prefer not to tell</ion-option>\n    </ion-select>\n  </ion-item>\n  <button ion-button block (click) = "saveBtn()">Save</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/src/pages/edit-profile/edit-profile.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* Events */],

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-lo/values-lo.xml",
+            "outputFile": "/home/soul/Workspace/PRJ/m2gteam/MeeTogether/prj666g1-bgGeo/platforms/android/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-lo/values-lo.xml",
             "map": [
                 {
                     "source": "/home/soul/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/e06e33579301db274c540a9085a1c8a9/res/values-lo/values.xml",
